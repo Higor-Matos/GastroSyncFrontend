@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ClientOptionsPanelComponent } from './components/modules/client-options-panel/client-options-panel.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,10 @@ export class AppComponent {
   title = 'GastroSyncFrontend';
   themeClass = 'ifood-light-theme';
 
-  constructor(private overlayContainer: OverlayContainer) {
+  constructor(
+    private overlayContainer: OverlayContainer,
+    private bottomSheet: MatBottomSheet
+  ) {
     this.setTheme(this.themeClass);
   }
 
@@ -27,5 +32,9 @@ export class AppComponent {
         ? 'ifood-dark-theme'
         : 'ifood-light-theme'
     );
+  }
+
+  openClientOptions(): void {
+    this.bottomSheet.open(ClientOptionsPanelComponent);
   }
 }
