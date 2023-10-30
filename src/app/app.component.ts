@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeService } from './components/services/theme.service';
-import { ClientOptionsPanelService } from './components/services/client-options-panel.service';
+import { ClientOptionsPanelService } from './components/services/OptionsPanelService';
 
 @Component({
   selector: 'app-root',
