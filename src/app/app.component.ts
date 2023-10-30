@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { ClientOptionsPanelComponent } from './components/modules/client-options-panel/client-options-panel.component';
+import { ThemeService } from './components/services/theme.service';
+import { ClientOptionsPanelService } from './components/services/client-options-panel.service';
 
 @Component({
   selector: 'app-root',
@@ -10,31 +9,17 @@ import { ClientOptionsPanelComponent } from './components/modules/client-options
 })
 export class AppComponent {
   title = 'GastroSyncFrontend';
-  themeClass = 'ifood-light-theme';
 
   constructor(
-    private overlayContainer: OverlayContainer,
-    private bottomSheet: MatBottomSheet
-  ) {
-    this.setTheme(this.themeClass);
-  }
+    private themeService: ThemeService,
+    private clientOptionsPanelService: ClientOptionsPanelService
+  ) {}
 
-  setTheme(theme: string) {
-    this.themeClass = theme;
-    const classList = this.overlayContainer.getContainerElement().classList;
-    classList.remove('ifood-light-theme', 'ifood-dark-theme');
-    classList.add(theme);
-  }
-
-  toggleTheme() {
-    this.setTheme(
-      this.themeClass === 'ifood-light-theme'
-        ? 'ifood-dark-theme'
-        : 'ifood-light-theme'
-    );
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   openClientOptions(): void {
-    this.bottomSheet.open(ClientOptionsPanelComponent);
+    this.clientOptionsPanelService.openClientOptions();
   }
 }
