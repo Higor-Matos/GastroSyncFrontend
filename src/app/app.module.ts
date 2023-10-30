@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { ClientOptionsPanelComponent } from './components/modules/client-options-panel/client-options-panel.component';
+import { ClientOptionsPanelComponent } from './components/modules/ClientPanel/clientoptionspanel/client-options-panel.component';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
