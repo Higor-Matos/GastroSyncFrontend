@@ -1,0 +1,10 @@
+Estrutura Básica:
+
+src/app: Esta é a pasta raiz do código-fonte do seu aplicativo.
+src/app/core: Serviços e componentes que são usados em todo o aplicativo.
+src/app/shared: Componentes, diretivas e pipes reutilizáveis.
+src/app/features: Módulos de recursos. Cada recurso ou área do aplicativo pode ter seu próprio módulo.
+Organização de Recursos:
+
+src/app/features/home: Código relacionado à página inicial.
+src/app/features/user: Código relacionado à gestão de usuários.
