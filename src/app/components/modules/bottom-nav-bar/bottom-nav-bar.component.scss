@@ -14,22 +14,14 @@
     justify-content: center;
     flex: 1;
     padding: 10px 0;
-    cursor: pointer; // Muda o cursor para indicar que o ícone é clicável
-    transition: transform 0.3s ease, box-shadow 0.3s ease; // Suaviza as transformações
-    border-radius: 8px; // Bordas suaves
-
-    // Sombra suave
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-
-    // Efeito de hover
-    &:hover {
-        transform: scale(1.05); // Aumenta a opção inteira em 5%
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Sombra mais escura e mais difundida
-    }
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
 
     // Efeito de clique
     &:active {
-        transform: scale(0.95); // Diminui a opção inteira em 5%
+        transform: scale(0.95);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 }
 
