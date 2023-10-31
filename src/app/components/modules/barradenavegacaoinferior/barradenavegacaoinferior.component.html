@@ -1,0 +1,30 @@
+<mat-toolbar color="primary" class="barradenavegacaoinferior">
+  <ng-container *ngFor="let opcao of opcoesEsquerda">
+    <span class="opcaonavegacao" [routerLink]="opcao.rota">
+      <div class="containericone">
+        <mat-icon>{{ opcao.icone }}</mat-icon>
+      </div>
+      <div class="containerrotulo">
+        {{ opcao.label }}
+      </div>
+    </span>
+  </ng-container>
+
+  <span class="opcaonavegacao opcaonavegacaocentro" [routerLink]="'/home'">
+    <div class="containericone">
+      <mat-icon>home</mat-icon>
+    </div>
+    <div class="containerrotulo">Início</div>
+  </span>
+
+  <ng-container *ngFor="let opcao of opcoesDireita">
+    <span class="opcaonavegacao" [routerLink]="opcao.rota">
+      <div class="containericone">
+        <mat-icon>{{ opcao.icone }}</mat-icon>
+      </div>
+      <div class="containerrotulo">
+        {{ opcao.label }}
+      </div>
+    </span>
+  </ng-container>
+</mat-toolbar>

@@ -1,0 +1,56 @@
+.barradenavegacaoinferior {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1050;
+}
+
+.opcaonavegacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
+
+    // Efeito de clique
+    &:active {
+        transform: scale(0.95);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.opcaonavegacaocentro {
+    flex: 1;
+    max-width: 300px;
+}
+
+.containericone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerrotulo {
+    text-align: center;
+    font-size: 1em;
+}
+
+// Para dispositivos pequenos
+@media (max-width: 600px) {
+    .containerrotulo {
+        font-size: 0.8em;
+    }
+}
+
+// Para dispositivos ainda menores
+@media (max-width: 400px) {
+    .containerrotulo {
+        font-size: 0.6em;
+    }
+}
