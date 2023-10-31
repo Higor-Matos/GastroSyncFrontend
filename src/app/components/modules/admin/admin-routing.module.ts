@@ -1,10 +1,23 @@
+// src/app/components/modules/admin/admin-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { MesasComponent } from './mesas/mesas.component';
+import { CardapioComponent } from '../../shared/cardapio/cardapio.component';
+import { AjudaComponent } from '../../shared/ajuda/ajuda.component';
+import { InicioComponent } from '../../shared/inicio/inicio.component';
+import { CoverComponent } from './cover/cover.component';
+
+const routes: Routes = [
+  { path: 'cardapio', component: CardapioComponent },
+  { path: 'mesas', component: MesasComponent },
+  { path: '', component: InicioComponent, pathMatch: 'full' },
+  { path: 'cover', component: CoverComponent },
+  { path: 'ajuda', component: AjudaComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

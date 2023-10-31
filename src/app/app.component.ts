@@ -32,8 +32,6 @@ export class AppComponent {
   }
 
   openClientOptions(): void {
-    // Aqui, pode ser necessário adaptar a lógica para abrir as opções do cliente, dependendo de como o novo serviço foi projetado
-    // Por enquanto, estou apenas chamando o método para obter opções de navegação
     this.servicoDeNavegacao.obterOpcoesDeNavegacao();
   }
 
