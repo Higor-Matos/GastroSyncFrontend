@@ -1,17 +1,22 @@
-import { NgModule } from '@angular/core';
+// Organizando importações
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
+
+// Importando corretamente os módulos do Angular Material
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { OptionsPanelComponent } from './components/modules/OptionsPanelComponent/options-panel.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+// Componentes e módulos da aplicação
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { OptionsPanelComponent } from './components/modules/OptionsPanelComponent/options-panel.component';
 import { ToggleThemeComponent } from './components/modules/toggle-theme-component/toggle-theme.component';
 import { BottomNavBarComponent } from './components/bottom-nav-bar/bottom-nav-bar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,11 +30,13 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    RouterModule,
+
+    // Angular Material
     MatBottomSheetModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
