@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="bottom-nav">
+  <span
+    *ngFor="let option of navOptions"
+    class="nav-item"
+    [routerLink]="option.route"
+  >
+    {{ option.label }}
+  </span>
+</mat-toolbar>
