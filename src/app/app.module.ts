@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OptionsPanelComponent } from './components/modules/OptionsPanelComponent/options-panel.component';
 import { ToggleThemeComponent } from './components/modules/toggle-theme-component/toggle-theme.component';
-import { BottomNavBarComponent } from './components/bottom-nav-bar/bottom-nav-bar.component';
+import { BottomNavBarComponent } from './components/modules/bottom-nav-bar/bottom-nav-bar.component';
 
 @NgModule({
   declarations: [

@@ -32,15 +32,29 @@ export class BottomNavBarComponent implements OnInit {
   private setNavOptions(): void {
     if (this.userType === 'admin') {
       this.navOptions = [
-        { label: 'Dashboard', icon: 'dashboard' },
-        { label: 'Gerenciar Usuários', icon: 'people' },
-        // ... outras opções para admin
+        {
+          label: 'Cardápio',
+          icon: 'restaurant_menu',
+          route: '/admin/cardapio',
+        },
+        { label: 'Mesas', icon: 'person_pin', route: '/admin/mesas' },
+        { label: 'Cover', icon: 'music_note', route: '/admin/cover' },
+        { label: 'Ajuda', icon: 'help_outline', route: '/admin/ajuda' },
       ];
     } else {
       this.navOptions = [
-        { label: 'Menu', icon: 'restaurant_menu' },
-        { label: 'Pedidos', icon: 'shopping_cart' },
-        // ... outras opções para cliente
+        {
+          label: 'Cardápio',
+          icon: 'restaurant_menu',
+          route: '/cliente/cardapio',
+        },
+        { label: 'Pedidos', icon: 'shopping_cart', route: '/cliente/pedidos' },
+        {
+          label: 'Pagamentos',
+          icon: 'attach_money',
+          route: '/cliente/pagamentos',
+        },
+        { label: 'Ajuda', icon: 'help_outline', route: '/cliente/ajuda' },
       ];
     }
   }
