@@ -14,14 +14,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Componentes e módulos da aplicação
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PainelOpcoesSuperiorComponent } from './components/modules/painelopcoessuperior/painelopcoessuperior.component';
 import { ToggleThemeComponent } from './components/modules/alternartema/alternartema.component';
 import { BarradeNavegacaoInferiorComponent } from './components/modules/barradenavegacaoinferior/barradenavegacaoinferior.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PainelOpcoesSuperiorComponent,
     ToggleThemeComponent,
     BarradeNavegacaoInferiorComponent,
   ],
