@@ -7,22 +7,25 @@ type ThemeType = 'ifood-light-theme' | 'ifood-dark-theme';
   providedIn: 'root',
 })
 export class ThemeService {
-  private themeClass: ThemeType = 'ifood-light-theme';
+  private darkTheme = false;
 
   constructor(private overlayContainer: OverlayContainer) {}
 
-  setTheme(theme: ThemeType): void {
-    this.themeClass = theme;
+  toggleTheme(): void {
+    this.darkTheme = !this.darkTheme;
+    const themeClass = this.darkTheme
+      ? 'ifood-dark-theme'
+      : 'ifood-light-theme';
+    this.setTheme(themeClass);
+  }
+
+  isDarkTheme(): boolean {
+    return this.darkTheme;
+  }
+
+  private setTheme(theme: string) {
     const classList = this.overlayContainer.getContainerElement().classList;
     classList.remove('ifood-light-theme', 'ifood-dark-theme');
     classList.add(theme);
-  }
-
-  toggleTheme(): void {
-    this.setTheme(
-      this.themeClass === 'ifood-light-theme'
-        ? 'ifood-dark-theme'
-        : 'ifood-light-theme'
-    );
   }
 }
