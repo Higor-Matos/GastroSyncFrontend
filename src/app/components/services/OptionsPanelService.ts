@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { OptionsPanelComponent } from '../modules/OptionsPanelComponent/options-panel.component';
+import { PainelOpcoesSuperiorComponent } from '../modules/painelopcoessuperior/painelopcoessuperior.component';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class ClientOptionsPanelService {
   }
 
   openClientOptions(): void {
-    this.bottomSheet.open(OptionsPanelComponent, {
+    this.bottomSheet.open(PainelOpcoesSuperiorComponent, {
       data: { options: this.options },
     });
   }
