@@ -9,9 +9,17 @@ import { OptionsPanelComponent } from './components/modules/OptionsPanelComponen
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { ToggleThemeComponent } from './components/modules/toggle-theme-component/toggle-theme.component';
+import { BottomNavBarComponent } from './components/bottom-nav-bar/bottom-nav-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, OptionsPanelComponent, ToggleThemeComponent],
+  declarations: [
+    AppComponent,
+    OptionsPanelComponent,
+    ToggleThemeComponent,
+    BottomNavBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +28,8 @@ import { ToggleThemeComponent } from './components/modules/toggle-theme-componen
     MatBottomSheetModule,
     MatListModule,
     MatIconModule,
+    MatToolbarModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
