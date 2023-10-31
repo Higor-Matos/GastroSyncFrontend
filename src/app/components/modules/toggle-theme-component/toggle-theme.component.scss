@@ -1,4 +1,10 @@
 .theme-icon-button {
+    display: flex;
+    /* Adicione flexbox */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
     position: fixed;
     top: 16px;
     right: 16px;
@@ -12,6 +18,8 @@
     .mat-icon {
         font-size: 25px;
         line-height: 25px;
+        margin: 0;
+        /* Remove margens que possam descentralizar o ícone */
     }
 
     &:hover {
