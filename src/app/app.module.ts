@@ -7,9 +7,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { OptionsPanelComponent } from './components/modules/OptionsPanelComponent/options-panel.component';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { ToggleThemeComponent } from './components/modules/toggle-theme-component/toggle-theme.component';
 
 @NgModule({
-  declarations: [AppComponent, OptionsPanelComponent],
+  declarations: [AppComponent, OptionsPanelComponent, ToggleThemeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -17,6 +19,7 @@ import { MatListModule } from '@angular/material/list';
     FlexLayoutModule,
     MatBottomSheetModule,
     MatListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

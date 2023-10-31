@@ -9,6 +9,7 @@ import { ClientOptionsPanelService } from './components/services/OptionsPanelSer
 })
 export class AppComponent {
   title = 'GastroSyncFrontend';
+  themeIcon = 'wb_sunny';
 
   constructor(
     private themeService: ThemeService,
@@ -17,6 +18,7 @@ export class AppComponent {
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
+    this.themeIcon = this.themeService.isDarkTheme() ? 'moon' : 'sun';
   }
 
   openClientOptions(): void {
