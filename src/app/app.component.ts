@@ -1,6 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { ThemeService } from './components/services/theme.service';
-import { ClientOptionsPanelService } from './components/services/OptionsPanelService';
+import { ServicoDeNavegacao } from './components/services/servicodenavegacao.service'; // Importe o novo serviço aqui
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(
     private themeService: ThemeService,
-    private clientOptionsPanelService: ClientOptionsPanelService,
+    private servicoDeNavegacao: ServicoDeNavegacao, // Substitua a injeção aqui
     private renderer: Renderer2 // Injeção do Renderer2
   ) {
     // Definir o tema claro como padrão ao iniciar
@@ -32,7 +32,9 @@ export class AppComponent {
   }
 
   openClientOptions(): void {
-    this.clientOptionsPanelService.openClientOptions();
+    // Aqui, pode ser necessário adaptar a lógica para abrir as opções do cliente, dependendo de como o novo serviço foi projetado
+    // Por enquanto, estou apenas chamando o método para obter opções de navegação
+    this.servicoDeNavegacao.obterOpcoesDeNavegacao();
   }
 
   private setTheme(themeClass: string): void {
