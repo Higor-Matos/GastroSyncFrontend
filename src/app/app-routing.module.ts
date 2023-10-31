@@ -6,18 +6,17 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () =>
-      import('./components/modules/AdminPanel/admin/admin.module').then(
+      import('./components/modules/admin/admin.module').then(
         (m) => m.AdminModule
       ),
   },
   {
     path: 'client',
     loadChildren: () =>
-      import('./components/modules/ClientPanel/client/client.module').then(
+      import('./components/modules/client/client.module').then(
         (m) => m.ClientModule
       ),
   },
-  { path: '', redirectTo: '/client', pathMatch: 'full' },
 ];
 
 @NgModule({
