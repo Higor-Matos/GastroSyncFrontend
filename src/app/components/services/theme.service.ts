@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 type ThemeType = 'ifood-light-theme' | 'ifood-dark-theme';
@@ -8,8 +8,14 @@ type ThemeType = 'ifood-light-theme' | 'ifood-dark-theme';
 })
 export class ThemeService {
   private darkTheme = false;
+  private renderer: Renderer2;
 
-  constructor(private overlayContainer: OverlayContainer) {}
+  constructor(
+    private overlayContainer: OverlayContainer,
+    private rendererFactory: RendererFactory2
+  ) {
+    this.renderer = rendererFactory.createRenderer(null, null);
+  }
 
   toggleTheme(): void {
     this.darkTheme = !this.darkTheme;
@@ -25,7 +31,10 @@ export class ThemeService {
 
   private setTheme(theme: string) {
     const classList = this.overlayContainer.getContainerElement().classList;
+    const bodyClassList = document.body.classList;
     classList.remove('ifood-light-theme', 'ifood-dark-theme');
+    bodyClassList.remove('ifood-light-theme', 'ifood-dark-theme');
     classList.add(theme);
+    this.renderer.addClass(document.body, theme);
   }
 }
