@@ -2,7 +2,6 @@
 
 @include mat.core();
 
-// Cores e paleta do iFood para tema claro
 $ifood-primary: mat.define-palette(mat.$red-palette, 600);
 $ifood-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
 $ifood-warn: mat.define-palette(mat.$red-palette, 800);
@@ -17,7 +16,6 @@ $ifood-light-theme: mat.define-light-theme(
   )
 );
 
-// Cores e paleta do iFood para tema escuro
 $ifood-dark-primary: mat.define-palette(mat.$grey-palette, 800);
 $ifood-dark-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
 $ifood-dark-warn: mat.define-palette(mat.$red-palette, 800);
@@ -38,17 +36,47 @@ $ifood-dark-theme: mat.define-dark-theme(
 
 .ifood-dark-theme {
   @include mat.all-component-themes($ifood-dark-theme);
-  background-color: rgba(0, 0, 0, 0.8); // Fundo escuro semi-transparente
-  color: #e0e0e0; // Cor do texto claro
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #e0e0e0;
 }
 
-// Estilos globais e fontes podem ir aqui
 html,
 body {
   height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-body {
-  margin: 0;
+body.ifood-dark-theme {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  height: auto;
+  max-width: 40%;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  img {
+    max-width: 70%;
+  }
 }
