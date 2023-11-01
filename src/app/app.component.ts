@@ -1,6 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { ThemeService } from './components/services/theme.service';
-import { ServicoDeNavegacao } from './components/services/servicodenavegacao.service'; // Importe o novo serviço aqui
+import { ServicoDeNavegacao } from './components/services/servicodenavegacao.service';
 
 @Component({
   selector: 'app-root',
