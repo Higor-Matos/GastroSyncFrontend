@@ -38,7 +38,7 @@ $ifood-dark-theme: mat.define-dark-theme(
 
 .ifood-dark-theme {
   @include mat.all-component-themes($ifood-dark-theme);
-  background-color: #121212; // Cor de fundo escura
+  background-color: rgba(0, 0, 0, 0.8); // Fundo escuro semi-transparente
   color: #e0e0e0; // Cor do texto claro
 }
 
