@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 import { ServicoDeNavegacao } from '../../services/servicodenavegacao.service';
+import { RotaService } from '../../services/rota.service';
 
 @Component({
   selector: 'barradenavegacaoinferior',
@@ -12,24 +12,16 @@ export class BarradeNavegacaoInferiorComponent implements OnInit {
   opcoesDireita: any[] = [];
 
   constructor(
-    private router: Router,
-    private servicodenavegacao: ServicoDeNavegacao
+    private servicodenavegacao: ServicoDeNavegacao,
+    private rotaService: RotaService // Injete o RotaService aqui
   ) {}
 
   ngOnInit(): void {
     // Configuração inicial com base na rota atual
-    this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(this.router.url);
+    this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(
+      this.rotaService.urlAtual()
+    );
     this.atualizarOpcoesDeNavegacao();
-
-    // Adiciona um listener para mudanças de rota
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(
-          event.urlAfterRedirects
-        );
-        this.atualizarOpcoesDeNavegacao();
-      }
-    });
   }
 
   get tipoUsuario(): 'admin' | 'client' {

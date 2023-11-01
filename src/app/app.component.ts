@@ -13,10 +13,9 @@ export class AppComponent {
 
   constructor(
     private themeService: ThemeService,
-    private servicoDeNavegacao: ServicoDeNavegacao, // Substitua a injeção aqui
-    private renderer: Renderer2 // Injeção do Renderer2
+    private servicoDeNavegacao: ServicoDeNavegacao,
+    private renderer: Renderer2
   ) {
-    // Definir o tema claro como padrão ao iniciar
     this.setTheme('ifood-light-theme');
   }
 

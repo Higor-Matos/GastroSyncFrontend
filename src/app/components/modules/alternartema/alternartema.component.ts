@@ -6,7 +6,7 @@ import { ThemeService } from '../../services/theme.service';
   templateUrl: './alternartema.component.html',
   styleUrls: ['./alternartema.component.scss'],
 })
-export class ToggleThemeComponent {
+export class AlterarTemaComponent {
   iconeTema = 'wb_sunny';
 
   constructor(private themeService: ThemeService) {
@@ -22,5 +22,9 @@ export class ToggleThemeComponent {
     this.iconeTema = this.themeService.isDarkTheme()
       ? 'brightness_2'
       : 'wb_sunny';
+  }
+
+  get iconClass(): string {
+    return this.themeService.isDarkTheme() ? 'mat-icon-dark' : '';
   }
 }

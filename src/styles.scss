@@ -1,21 +1,36 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 @include mat.core();
 
-// Cores e paleta do iFood
+// Cores e paleta do iFood para tema claro
 $ifood-primary: mat.define-palette(mat.$red-palette, 600);
 $ifood-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
 $ifood-warn: mat.define-palette(mat.$red-palette, 800);
 
-$ifood-light-theme: mat.define-light-theme((color: (primary: $ifood-primary,
-        accent: $ifood-accent,
-        warn: $ifood-warn,
-      )));
+$ifood-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ifood-primary,
+      accent: $ifood-accent,
+      warn: $ifood-warn,
+    ),
+  )
+);
 
-$ifood-dark-theme: mat.define-dark-theme((color: (primary: $ifood-primary,
-        accent: $ifood-accent,
-        warn: $ifood-warn,
-      )));
+// Cores e paleta do iFood para tema escuro
+$ifood-dark-primary: mat.define-palette(mat.$grey-palette, 800);
+$ifood-dark-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
+$ifood-dark-warn: mat.define-palette(mat.$red-palette, 800);
+
+$ifood-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $ifood-dark-primary,
+      accent: $ifood-dark-accent,
+      warn: $ifood-dark-warn,
+    ),
+  )
+);
 
 .ifood-light-theme {
   @include mat.all-component-themes($ifood-light-theme);
@@ -23,6 +38,8 @@ $ifood-dark-theme: mat.define-dark-theme((color: (primary: $ifood-primary,
 
 .ifood-dark-theme {
   @include mat.all-component-themes($ifood-dark-theme);
+  background-color: #121212; // Cor de fundo escura
+  color: #e0e0e0; // Cor do texto claro
 }
 
 // Estilos globais e fontes podem ir aqui
