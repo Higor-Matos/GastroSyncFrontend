@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - altura_da_barra_inferior_px);
   z-index: -1;
   position: absolute;
   width: 100%;
