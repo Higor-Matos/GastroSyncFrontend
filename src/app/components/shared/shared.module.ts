@@ -1,14 +1,13 @@
-// src/app/components/shared/shared.module.ts
+// src/app/shared/shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CardapioComponent } from './cardapio/cardapio.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { AjudaComponent } from './ajuda/ajuda.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
-  declarations: [CardapioComponent, InicioComponent, AjudaComponent],
+  declarations: [CardapioComponent, AjudaComponent, InicioComponent],
   imports: [CommonModule],
-  exports: [CardapioComponent, InicioComponent, AjudaComponent],
+  exports: [CardapioComponent, AjudaComponent, InicioComponent],
 })
 export class SharedModule {}
