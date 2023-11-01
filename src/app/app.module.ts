@@ -1,4 +1,3 @@
-// Organizando importações
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,18 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToggleThemeComponent } from './components/modules/alternartema/alternartema.component';
 import { BarradeNavegacaoInferiorComponent } from './components/modules/barradenavegacaoinferior/barradenavegacaoinferior.component';
-import { CardapioComponent } from './components/shared/cardapio/cardapio.component';
-import { InicioComponent } from './components/shared/inicio/inicio.component';
-import { AjudaComponent } from './components/shared/ajuda/ajuda.component';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToggleThemeComponent,
     BarradeNavegacaoInferiorComponent,
-    CardapioComponent,
-    InicioComponent,
-    AjudaComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +29,8 @@ import { AjudaComponent } from './components/shared/ajuda/ajuda.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     RouterModule,
+    SharedModule,
 
-    // Angular Material
     MatBottomSheetModule,
     MatListModule,
     MatIconModule,

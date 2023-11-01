@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ServicoDeNavegacao {
-  tipoUsuario: 'admin' | 'cliente' = 'cliente';
+  tipoUsuario: 'admin' | 'client' = 'client';
 
   definirTipoUsuarioComBaseNaRota(url: string): void {
-    this.tipoUsuario = url.includes('admin') ? 'admin' : 'cliente';
+    this.tipoUsuario = url.includes('admin') ? 'admin' : 'client';
   }
 
   obterOpcoesDeNavegacao(): any[] {
@@ -28,15 +28,15 @@ export class ServicoDeNavegacao {
         {
           label: 'Cardápio',
           icone: 'restaurant_menu',
-          rota: '/cliente/cardapio',
+          rota: '/client/cardapio',
         },
-        { label: 'Pedidos', icone: 'shopping_cart', rota: '/cliente/pedidos' },
+        { label: 'Pedidos', icone: 'shopping_cart', rota: '/client/pedidos' },
         {
           label: 'Pagamentos',
           icone: 'attach_money',
-          rota: '/cliente/pagamentos',
+          rota: '/client/pagamentos',
         },
-        { label: 'Ajuda', icone: 'help_outline', rota: '/cliente/ajuda' },
+        { label: 'Ajuda', icone: 'help_outline', rota: '/client/ajuda' },
       ];
     }
     return todasOpcoes;

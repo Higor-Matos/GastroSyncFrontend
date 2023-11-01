@@ -32,6 +32,10 @@ export class BarradeNavegacaoInferiorComponent implements OnInit {
     });
   }
 
+  get tipoUsuario(): 'admin' | 'client' {
+    return this.servicodenavegacao.tipoUsuario;
+  }
+
   private atualizarOpcoesDeNavegacao(): void {
     const todasOpcoes = this.servicodenavegacao.obterOpcoesDeNavegacao();
     this.opcoesEsquerda = todasOpcoes.slice(0, 2);
