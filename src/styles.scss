@@ -1,5 +1,5 @@
+// Importações e Configurações do Angular Material
 @use "@angular/material" as mat;
-
 @include mat.core();
 
 $ifood-primary: mat.define-palette(mat.$red-palette, 600);
@@ -30,6 +30,7 @@ $ifood-dark-theme: mat.define-dark-theme(
   )
 );
 
+// Temas
 .ifood-light-theme {
   @include mat.all-component-themes($ifood-light-theme);
 }
@@ -40,6 +41,7 @@ $ifood-dark-theme: mat.define-dark-theme(
   color: #e0e0e0;
 }
 
+// Estilos globais básicos
 html,
 body {
   height: 100%;
@@ -53,28 +55,13 @@ body.ifood-dark-theme {
   color: #e0e0e0;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  z-index: -1;
-  position: absolute;
-  width: 100%;
-}
-
+// Estilos para elementos incorporados
 iframe {
   max-width: 100%;
   height: auto;
 }
 
-img {
-  height: auto;
-  max-width: 40%;
-  border-radius: 20px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-}
-
+// Estilos para responsividade
 @media (max-width: 768px) {
   img {
     max-width: 70%;

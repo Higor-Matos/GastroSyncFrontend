@@ -9,10 +9,9 @@
       </div>
     </span>
   </ng-container>
-
   <span
     class="opcaonavegacao opcaonavegacaocentro"
-    [routerLink]="tipoUsuario === 'admin' ? '/admin' : '/client'"
+    [routerLink]="tipoUsuario === UserType.Admin ? '/admin' : '/client'"
   >
     <div class="containericone">
       <mat-icon>home</mat-icon>
