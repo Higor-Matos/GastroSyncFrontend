@@ -1,11 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService, ThemeType } from '../../services/theme.service';
 import { BarraInferiorService } from '../../services/barrainferior.service';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
+      transition('void <=> *', animate(500)),
+    ]),
+  ],
 })
 export class InicioComponent implements OnInit {
   isDarkTheme: boolean;
