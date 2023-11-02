@@ -30,7 +30,7 @@ export class ThemeService {
     this.darkTheme = !this.darkTheme;
     const themeClass = this.darkTheme ? ThemeType.Dark : ThemeType.Light;
     this.setTheme(themeClass);
-    this.themeChanged.emit(themeClass);
+    this.themeChanged.emit(this.darkTheme ? ThemeType.Dark : ThemeType.Light);
   }
 
   isDarkTheme(): boolean {
