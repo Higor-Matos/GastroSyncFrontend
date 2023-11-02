@@ -1,4 +1,8 @@
-<div class="container" [ngClass]="{ 'dark-theme': isDarkTheme }">
+<div
+  class="container"
+  [@fadeInOut]="isDarkTheme ? 'dark' : 'light'"
+  [ngClass]="{ 'dark-theme': isDarkTheme }"
+>
   <img
     class="my-image"
     [attr.src]="
@@ -9,7 +13,11 @@
     alt="Imagem centralizada"
   />
 </div>
-<div class="container" [ngClass]="{ 'dark-theme': isDarkTheme }">
+<div
+  class="container"
+  [@fadeInOut]="isDarkTheme ? 'dark' : 'light'"
+  [ngClass]="{ 'dark-theme': isDarkTheme }"
+>
   <img
     class="my-image"
     [attr.src]="
