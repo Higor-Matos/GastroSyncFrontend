@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService, ThemeType } from '../../services/theme.service';
 import { BarraInferiorService } from '../../services/barrainferior.service';
 
 @Component({
@@ -19,9 +19,12 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.themeService.themeChanged.subscribe((newTheme: ThemeType) => {
+      this.isDarkTheme = newTheme === ThemeType.Dark;
+    });
+
     this.barraInferiorService.alturaBarraInferior$.subscribe(
       (altura: number) => {
-        // Inscrição aqui
         this.alturaBarraInferior = altura;
       }
     );
