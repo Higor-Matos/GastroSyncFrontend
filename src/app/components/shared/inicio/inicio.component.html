@@ -13,18 +13,3 @@
     alt="Imagem centralizada"
   />
 </div>
-<div
-  class="container"
-  [@fadeInOut]="isDarkTheme ? 'dark' : 'light'"
-  [ngClass]="{ 'dark-theme': isDarkTheme }"
->
-  <img
-    class="my-image"
-    [attr.src]="
-      isDarkTheme
-        ? 'https://i.imgur.com/iQks2X2.png'
-        : 'https://i.imgur.com/ZWybvrX.png'
-    "
-    alt="Imagem centralizada"
-  />
-</div>

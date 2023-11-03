@@ -1,10 +1,13 @@
 import {
   Component,
+  OnInit,
+  AfterViewInit,
   HostBinding,
   HostListener,
-  OnInit,
+  ViewChild,
   ElementRef,
 } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
 import {
   ServicoDeNavegacao,
   UserType,
@@ -17,10 +20,14 @@ import { BarraInferiorService } from '../../services/barrainferior.service';
   templateUrl: './barradenavegacaoinferior.component.html',
   styleUrls: ['./barradenavegacaoinferior.component.scss'],
 })
-export class BarradeNavegacaoInferiorComponent implements OnInit {
+export class BarradeNavegacaoInferiorComponent
+  implements OnInit, AfterViewInit
+{
   opcoesEsquerda: any[] = [];
   opcoesDireita: any[] = [];
   UserType = UserType;
+
+  @ViewChild(MatToolbar, { static: true }) toolbar!: MatToolbar;
 
   @HostBinding('style.--altura-barra-inferior.px')
   alturaBarraInferior: number = 0;
@@ -28,7 +35,7 @@ export class BarradeNavegacaoInferiorComponent implements OnInit {
   constructor(
     private servicodenavegacao: ServicoDeNavegacao,
     private rotaService: RotaService,
-    private el: ElementRef,
+    private el: ElementRef<HTMLElement>,
     private barraInferiorService: BarraInferiorService
   ) {}
 
@@ -37,10 +44,13 @@ export class BarradeNavegacaoInferiorComponent implements OnInit {
       this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
       this.atualizarOpcoesDeNavegacao();
     });
-    this.calcularAltura();
   }
 
-  get tipoUsuario(): 'admin' | 'client' {
+  ngAfterViewInit(): void {
+    setTimeout(() => this.calcularAltura());
+  }
+
+  get tipoUsuario(): UserType {
     return this.servicodenavegacao.tipoUsuario;
   }
 
@@ -56,7 +66,12 @@ export class BarradeNavegacaoInferiorComponent implements OnInit {
   }
 
   private calcularAltura() {
-    this.alturaBarraInferior = this.el.nativeElement.offsetHeight;
-    this.barraInferiorService.setAltura(this.alturaBarraInferior);
+    const toolbarNativeElement = this.toolbar._elementRef
+      .nativeElement as HTMLElement;
+    if (toolbarNativeElement) {
+      this.alturaBarraInferior = toolbarNativeElement.offsetHeight;
+      console.log('Altura da Barra Inferior:', this.alturaBarraInferior);
+      this.barraInferiorService.setAltura(this.alturaBarraInferior);
+    }
   }
 }
