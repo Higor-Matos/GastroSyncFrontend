@@ -7,6 +7,7 @@ import {
   HostBinding,
   HostListener,
   ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -18,21 +19,15 @@ import {
 import { RotaService } from '../../services/rota.service';
 import { BarraInferiorService } from '../../services/barrainferior.service';
 
-interface NavegacaoOpcao {
-  icone: string;
-  label: string;
-  rota: string;
-}
-
 @Component({
   selector: 'barradenavegacaoinferior',
   templateUrl: './barradenavegacaoinferior.component.html',
   styleUrls: ['./barradenavegacaoinferior.component.scss'],
-  // Optional: Add ViewEncapsulation if needed
+  changeDetection: ChangeDetectionStrategy.OnPush, // Estratégia de detecção de mudanças para OnPush
 })
 export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
-  opcoesEsquerda: NavegacaoOpcao[] = [];
-  opcoesDireita: NavegacaoOpcao[] = [];
+  opcoesEsquerda: OpcaoNavegacao[] = [];
+  opcoesDireita: OpcaoNavegacao[] = [];
   UserType = UserType;
   private routeSubscription!: Subscription;
 
@@ -50,12 +45,22 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // Inicializar opções de navegação com a URL atual
+    this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(
+      this.rotaService.urlAtual()
+    );
+    this.atualizarOpcoesDeNavegacao();
+
+    // Subscrição para mudanças de rota
     this.routeSubscription = this.rotaService.onRouteChange.subscribe(
       (newUrl: string) => {
         this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
         this.atualizarOpcoesDeNavegacao();
       }
     );
+
+    // Calcular a altura inicial da barra de navegação
+    this.setAlturaBarraInferior();
   }
 
   ngOnDestroy(): void {
@@ -65,31 +70,36 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.cdr.detectChanges();
-    this.calcularAltura();
+    // Ajustar altura da barra após a visão estar inicializada
+    this.setAlturaBarraInferior();
   }
 
-  get tipoUsuario(): UserType {
-    return this.servicodenavegacao.tipoUsuario;
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.calcularAltura();
+  @HostListener('window:resize')
+  onResize() {
+    this.setAlturaBarraInferior();
   }
 
   private atualizarOpcoesDeNavegacao(): void {
     const todasOpcoes = this.servicodenavegacao.obterOpcoesDeNavegacao();
     this.opcoesEsquerda = todasOpcoes.slice(0, 2);
     this.opcoesDireita = todasOpcoes.slice(2);
+    this.cdr.markForCheck(); // Necessário para OnPush para garantir que a vista é atualizada
   }
 
-  private calcularAltura() {
-    const toolbarNativeElement = this.toolbar._elementRef
-      .nativeElement as HTMLElement;
-    if (toolbarNativeElement) {
-      this.alturaBarraInferior = toolbarNativeElement.offsetHeight;
-      this.barraInferiorService.setAltura(this.alturaBarraInferior);
+  private setAlturaBarraInferior(): void {
+    const altura = this.getToolbarHeight();
+    if (altura !== this.alturaBarraInferior) {
+      this.alturaBarraInferior = altura;
+      this.barraInferiorService.setAltura(altura);
+      this.cdr.markForCheck(); // Marcar para verificação se usando OnPush
     }
+  }
+
+  private getToolbarHeight(): number {
+    return this.toolbar?._elementRef.nativeElement.offsetHeight || 0;
+  }
+
+  get tipoUsuario(): UserType {
+    return this.servicodenavegacao.tipoUsuario;
   }
 }
