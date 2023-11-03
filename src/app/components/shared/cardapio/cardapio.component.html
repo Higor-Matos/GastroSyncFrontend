@@ -1,1 +1,23 @@
-<p>cardapio works!</p>
+<ng-container *ngIf="produtos.length > 0; else noProdutos">
+  <mat-grid-list cols="4" rowHeight="350px">
+    <mat-grid-tile *ngFor="let produto of produtos">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ produto.nome }}</mat-card-title>
+          <mat-card-subtitle>{{ produto.categoria }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="assets/img/{{ produto.id }}.jpg"
+          alt="{{ produto.nome }}"
+        />
+        <mat-card-content>
+          <p>Preço: R$ {{ produto.preco }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-container>
+<ng-template #noProdutos>
+  <p>Não há produtos disponíveis.</p>
+</ng-template>
