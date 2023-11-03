@@ -1,3 +1,8 @@
-<button mat-icon-button (click)="alternartema()" class="botao-icone-tema">
-  <mat-icon [class]="iconClass">{{ iconeTema }}</mat-icon>
+<button
+  mat-icon-button
+  (click)="alternartema()"
+  [@rotate]="rotateState"
+  class="botao-icone-tema"
+>
+  <mat-icon>{{ iconeTema }}</mat-icon>
 </button>
