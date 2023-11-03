@@ -5,6 +5,12 @@ export enum UserType {
   Client = 'client',
 }
 
+export interface OpcaoNavegacao {
+  label: string;
+  icone: string;
+  rota: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,13 +23,13 @@ export class ServicoDeNavegacao {
       : UserType.Client;
   }
 
-  obterOpcoesDeNavegacao(): any[] {
+  obterOpcoesDeNavegacao(): OpcaoNavegacao[] {
     return this.tipoUsuario === UserType.Admin
       ? this.getAdminOptions()
       : this.getClientOptions();
   }
 
-  private getAdminOptions(): any[] {
+  private getAdminOptions(): OpcaoNavegacao[] {
     return [
       { label: 'Cardápio', icone: 'restaurant_menu', rota: '/admin/cardapio' },
       { label: 'Mesas', icone: 'person_pin', rota: '/admin/mesas' },
@@ -32,7 +38,7 @@ export class ServicoDeNavegacao {
     ];
   }
 
-  private getClientOptions(): any[] {
+  private getClientOptions(): OpcaoNavegacao[] {
     return [
       { label: 'Cardápio', icone: 'restaurant_menu', rota: '/client/cardapio' },
       { label: 'Pedidos', icone: 'shopping_cart', rota: '/client/pedidos' },

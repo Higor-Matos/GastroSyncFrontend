@@ -1,31 +1,40 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
-  HostBinding,
-  HostListener,
+  OnDestroy,
   ViewChild,
   ElementRef,
+  HostBinding,
+  HostListener,
+  ChangeDetectorRef,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MatToolbar } from '@angular/material/toolbar';
 import {
   ServicoDeNavegacao,
   UserType,
+  OpcaoNavegacao,
 } from '../../services/servicodenavegacao.service';
 import { RotaService } from '../../services/rota.service';
 import { BarraInferiorService } from '../../services/barrainferior.service';
+
+interface NavegacaoOpcao {
+  icone: string;
+  label: string;
+  rota: string;
+}
 
 @Component({
   selector: 'barradenavegacaoinferior',
   templateUrl: './barradenavegacaoinferior.component.html',
   styleUrls: ['./barradenavegacaoinferior.component.scss'],
+  // Optional: Add ViewEncapsulation if needed
 })
-export class BarradeNavegacaoInferiorComponent
-  implements OnInit, AfterViewInit
-{
-  opcoesEsquerda: any[] = [];
-  opcoesDireita: any[] = [];
+export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
+  opcoesEsquerda: NavegacaoOpcao[] = [];
+  opcoesDireita: NavegacaoOpcao[] = [];
   UserType = UserType;
+  private routeSubscription!: Subscription;
 
   @ViewChild(MatToolbar, { static: true }) toolbar!: MatToolbar;
 
@@ -36,18 +45,28 @@ export class BarradeNavegacaoInferiorComponent
     private servicodenavegacao: ServicoDeNavegacao,
     private rotaService: RotaService,
     private el: ElementRef<HTMLElement>,
-    private barraInferiorService: BarraInferiorService
+    private barraInferiorService: BarraInferiorService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.rotaService.onRouteChange.subscribe((newUrl: string) => {
-      this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
-      this.atualizarOpcoesDeNavegacao();
-    });
+    this.routeSubscription = this.rotaService.onRouteChange.subscribe(
+      (newUrl: string) => {
+        this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
+        this.atualizarOpcoesDeNavegacao();
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.calcularAltura());
+    this.cdr.detectChanges();
+    this.calcularAltura();
   }
 
   get tipoUsuario(): UserType {
@@ -70,7 +89,6 @@ export class BarradeNavegacaoInferiorComponent
       .nativeElement as HTMLElement;
     if (toolbarNativeElement) {
       this.alturaBarraInferior = toolbarNativeElement.offsetHeight;
-      console.log('Altura da Barra Inferior:', this.alturaBarraInferior);
       this.barraInferiorService.setAltura(this.alturaBarraInferior);
     }
   }
