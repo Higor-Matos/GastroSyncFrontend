@@ -89,9 +89,11 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   private setAlturaBarraInferior(): void {
     const altura = this.getToolbarHeight();
     if (altura !== this.alturaBarraInferior) {
-      this.alturaBarraInferior = altura;
-      this.barraInferiorService.setAltura(altura);
-      this.cdr.markForCheck(); // Marcar para verificação se usando OnPush
+      setTimeout(() => {
+        this.alturaBarraInferior = altura;
+        this.barraInferiorService.setAltura(altura);
+        this.cdr.markForCheck();
+      });
     }
   }
 
