@@ -1,7 +1,7 @@
-<div [style.padding-bottom.px]="alturaBarraInferior">
+<div [style.padding-bottom.px]="alturaBarraInferior$ | async">
   <mat-accordion class="product-accordion" multi>
     <ng-container
-      *ngFor="let categoria of categorias; trackBy: trackByCategory"
+      *ngFor="let categoria of categorias$ | async; trackBy: trackByCategoria"
     >
       <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
