@@ -1,6 +1,8 @@
 <div [style.padding-bottom.px]="alturaBarraInferior">
   <mat-accordion class="product-accordion" multi>
-    <ng-container *ngFor="let categoria of categorias">
+    <ng-container
+      *ngFor="let categoria of categorias; trackBy: trackByCategory"
+    >
       <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
