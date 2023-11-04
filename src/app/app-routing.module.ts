@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'client',
     loadChildren: () =>
-      import('./components/modules/client/client.module').then(
+      import('./components/modules/client/module/client.module').then(
         (m) => m.ClientModule
       ),
   },
