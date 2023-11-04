@@ -131,16 +131,30 @@ mat-card-actions {
 }
 
 button {
-  width: 100%;
+  width: auto; // O botão irá ajustar sua largura ao conteúdo
   align-self: center;
   background-color: $cor-secundaria;
   color: white;
-  border-radius: 4px;
-  @include sombra-box(0, 2px, 4px, rgba(0, 0, 0, 0.24));
+  border: none;
+  border-radius: 20px; // Mantém as bordas arredondadas
+  padding: 8px 30px; // Aumenta o padding horizontal para um botão mais largo
+  font-size: 0.875rem; // Mantém o tamanho da fonte
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
   @include transicao-padrao;
 
   &:hover {
+    background-color: lighten($cor-secundaria, 10%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus {
+    outline: none;
     background-color: darken($cor-secundaria, 10%);
-    @include sombra-box(0, 4px, 8px, rgba(0, 0, 0, 0.24));
   }
 }
