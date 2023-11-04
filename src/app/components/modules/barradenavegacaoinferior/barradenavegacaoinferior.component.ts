@@ -15,9 +15,9 @@ import {
   ServicoDeNavegacao,
   UserType,
   OpcaoNavegacao,
-} from '../../services/servicodenavegacao.service';
-import { RotaService } from '../../services/rota.service';
-import { BarraInferiorService } from '../../services/barrainferior.service';
+} from '../../services/navegacao/servicodenavegacao.service';
+import { RotaService } from '../../services/navegacao/rota.service';
+import { BarraInferiorService } from '../../services/barrainferior/barrainferior.service';
 
 @Component({
   selector: 'barradenavegacaoinferior',

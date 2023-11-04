@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TipoUsuario } from '../../../services/servicodenavegacao.service';
+import { TipoUsuario } from '../../../services/navegacao/servicodenavegacao.service';
 
 @Component({
   selector: 'app-botao-central',

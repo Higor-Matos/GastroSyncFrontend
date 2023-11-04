@@ -6,7 +6,7 @@ import {
   Produto,
   Categoria,
   ProdutoResponse,
-} from '../shared/models/produto.model';
+} from '../../shared/models/produto.model';
 import { ImageService } from './image.service';
 import { IconService } from './icon.service';
 
