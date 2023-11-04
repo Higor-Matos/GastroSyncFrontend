@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categoria } from '../../shared/models/produto.model';
 import { ProdutoService } from '../../services/produto.service';
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./cardapio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardapioComponent implements OnInit {
+export class CardapioComponent {
   categorias$: Observable<Categoria[]> = this.produtoService.getProdutos();
   alturaBarraInferior$: Observable<number> =
     this.barraInferiorService.alturaBarraInferior$;
@@ -22,16 +22,7 @@ export class CardapioComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
-
   trackByCategoria(index: number, categoria: Categoria): string {
     return categoria.nome;
-  }
-  private getCategoriaIcon(categoria: string): string {
-    const icons: { [key: string]: string } = {
-      Comida: 'restaurant_menu',
-      Bebida: 'local_cafe',
-    };
-    return icons[categoria] || 'default_icon';
   }
 }
