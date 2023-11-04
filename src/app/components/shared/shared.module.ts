@@ -6,10 +6,17 @@ import { InicioComponent } from './inicio/inicio.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [CardapioComponent, AjudaComponent, InicioComponent],
-  imports: [CommonModule, MatCardModule, MatGridListModule, MatExpansionModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatIconModule,
+  ],
   exports: [CardapioComponent, AjudaComponent, InicioComponent],
 })
 export class SharedModule {}
