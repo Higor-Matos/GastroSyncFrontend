@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <div [style.padding-bottom.px]="alturaBarraInferior$ | async">
   <mat-accordion class="product-accordion" multi>
     <ng-container
@@ -11,26 +12,64 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="product-grid">
-          <mat-card
-            *ngFor="let produto of categoria.produtos"
-            class="product-card"
+          <ng-container
+            *ngFor="let produto of categoria.produtos; let i = index"
           >
-            <img
-              mat-card-image
-              [src]="produto.imageUrl"
-              alt="{{ produto.nome }}"
-              class="product-image"
-            />
-            <mat-card-content>
-              <h3>{{ produto.nome }}</h3>
-              <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>Pedir</button>
-            </mat-card-actions>
-          </mat-card>
+            <!-- Na versão mobile, cada produto é um mat-expansion-panel -->
+            <ng-container *ngIf="isMobile; else desktopProductCard">
+              <mat-expansion-panel
+                #panelRef="matExpansionPanel"
+                class="product-card-mobile"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <img
+                      mat-card-image
+                      [src]="produto.imageUrl"
+                      alt="{{ produto.nome }}"
+                      class="product-image-mobile"
+                    />
+                    <div class="product-info-mobile">
+                      <h3>{{ produto.nome }}</h3>
+                      <!-- Esta descrição aparece somente quando o painel está contraído -->
+                      <p
+                        *ngIf="!panelRef.expanded"
+                        class="product-short-description"
+                      >
+                        {{ produto.descricaoCurta }}
+                      </p>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="product-content">
+                  <!-- Restante do conteúdo aqui -->
+                </div>
+              </mat-expansion-panel>
+            </ng-container>
+            <ng-template #desktopProductCard>
+              <mat-card class="product-card">
+                <!-- Detalhes do produto, igual ao que você tem para a versão desktop -->
+                <div class="product-content">
+                  <div class="product-info">
+                    <h3>{{ produto.nome }}</h3>
+                    <p class="product-description">{{ produto.descricao }}</p>
+                    <p class="price">
+                      R$ {{ produto.preco | number : "1.2-2" }}
+                    </p>
+                  </div>
+                  <button mat-button>Pedir</button>
+                </div>
+                <img
+                  mat-card-image
+                  [src]="produto.imageUrl"
+                  alt="{{ produto.nome }}"
+                  class="product-image"
+                />
+              </mat-card>
+            </ng-template>
+          </ng-container>
           <p *ngIf="categoria.produtos.length === 0">
-            Não há {{ categoria.nome }} disponíveis.
+            Não há produtos disponíveis em {{ categoria.nome }}.
           </p>
         </div>
       </mat-expansion-panel>

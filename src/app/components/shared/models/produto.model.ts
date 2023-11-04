@@ -10,6 +10,8 @@ export interface Produto {
   categoria: string;
   preco: number;
   imageUrl?: string;
+  descricao: string;
+  descricaoCurta: string;
 }
 
 export interface Categoria {

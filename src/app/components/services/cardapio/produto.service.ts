@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { DescriptionService } from './description.service';
 import {
   Produto,
   Categoria,
@@ -19,7 +20,8 @@ export class ProdutoService {
   constructor(
     private http: HttpClient,
     private imageService: ImageService,
-    private iconService: IconService
+    private iconService: IconService,
+    private descriptionService: DescriptionService
   ) {}
 
   getProdutos(): Observable<Categoria[]> {
@@ -46,6 +48,10 @@ export class ProdutoService {
         categoria.produtos.push({
           ...produto,
           imageUrl: this.imageService.getImageUrl(produto.id),
+          descricao: this.descriptionService.getDescription(produto.id),
+          descricaoCurta: this.descriptionService.getShortDescription(
+            this.descriptionService.getDescription(produto.id)
+          ),
         });
       }
     });
