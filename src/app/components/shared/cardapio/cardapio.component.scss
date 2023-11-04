@@ -41,8 +41,8 @@ $cor-fundo-acoes: #f5f5f5;
 }
 
 .product-accordion {
-  margin-top: 50px !important; // Evitar !important quando possível
-  display: block !important;
+  margin-top: 50px;
+  display: block;
 
   .mat-expansion-panel {
     margin-bottom: 16px;

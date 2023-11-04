@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [CardapioComponent, AjudaComponent, InicioComponent],
@@ -16,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatGridListModule,
     MatExpansionModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   exports: [CardapioComponent, AjudaComponent, InicioComponent],
 })

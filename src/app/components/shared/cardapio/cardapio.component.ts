@@ -1,27 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { ProdutoService } from '../../services/produto.service';
 import { BarraInferiorService } from '../../services/barrainferior.service';
-
-interface ProdutoResponse {
-  success: boolean;
-  message: string;
-  data: Produto[];
-}
-
-interface Produto {
-  id: number;
-  nome: string;
-  categoria: string;
-  preco: number;
-  imageUrl?: string;
-}
-
-interface Categoria {
-  nome: string;
-  icon: string;
-  produtos: Produto[];
-}
+import { Produto, ProdutoResponse, Categoria } from '../models/produto.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cardapio',
@@ -30,41 +13,41 @@ interface Categoria {
 })
 export class CardapioComponent implements OnInit, OnDestroy {
   categorias: Categoria[] = [];
-  private alturaBarraInferiorSubscription!: Subscription;
+  private destroy$ = new Subject<void>();
   alturaBarraInferior: number = 0;
 
   constructor(
     private produtoService: ProdutoService,
-    private barraInferiorService: BarraInferiorService
+    private barraInferiorService: BarraInferiorService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.produtoService.getProdutos().subscribe({
-      next: (resposta: ProdutoResponse) => {
-        if (resposta.success && Array.isArray(resposta.data)) {
-          this.categorias = this.organizarCategorias(resposta.data);
-        } else {
-          console.error(
-            'A resposta recebida não contém um array válido:',
-            resposta
-          );
-        }
-      },
-      error: (err) => {
-        console.error('Ocorreu um erro ao buscar os produtos:', err);
-      },
-    });
+    this.produtoService
+      .getProdutos()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response: ProdutoResponse) => {
+          if (response.success) {
+            this.categorias = this.organizarCategorias(response.data);
+          } else {
+            this.handleError(response.message);
+          }
+        },
+        error: (err) => this.handleError(err),
+      });
 
-    this.alturaBarraInferiorSubscription =
-      this.barraInferiorService.alturaBarraInferior$.subscribe((altura) => {
+    this.barraInferiorService.alturaBarraInferior$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((altura) => {
         this.alturaBarraInferior = altura;
       });
   }
 
   ngOnDestroy(): void {
-    this.alturaBarraInferiorSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-
   private organizarCategorias(produtos: Produto[]): Categoria[] {
     const categoriasMap = new Map<string, Categoria>();
     produtos.forEach((produto) => {
@@ -77,17 +60,34 @@ export class CardapioComponent implements OnInit, OnDestroy {
       }
       categoriasMap.get(produto.categoria)?.produtos.push({
         ...produto,
-        imageUrl: this.produtoService.getImageUrl(produto.id), // Garanta que esta função exista e retorne a URL
+        imageUrl: this.produtoService.getImageUrl(produto.id),
       });
     });
     return Array.from(categoriasMap.values());
+  }
+
+  private handleError(error: any): void {
+    console.error('An error occurred:', error);
+
+    this.snackBar.open(
+      'Desculpe, ocorreu um erro. Tente novamente mais tarde.',
+      'Fechar',
+      {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      }
+    );
+  }
+
+  trackByCategory(index: number, category: Categoria): string {
+    return category.nome;
   }
 
   private getCategoriaIcon(categoria: string): string {
     const icons: { [key: string]: string } = {
       Comida: 'restaurant_menu',
       Bebida: 'local_cafe',
-      // Adicionar mais categorias e ícones conforme necessário
     };
     return icons[categoria] || 'default_icon';
   }
