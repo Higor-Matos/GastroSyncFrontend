@@ -1,55 +1,35 @@
 <mat-accordion class="product-accordion" multi>
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <mat-icon>restaurant_menu</mat-icon>
-        <span>Comidas</span>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="product-grid">
-      <mat-card *ngFor="let produto of comidas" class="product-card">
-        <img
-          mat-card-image
-          [src]="getImageUrl(produto.id)"
-          alt="{{ produto.nome }}"
-          class="product-image"
-        />
-        <mat-card-content>
-          <h3>{{ produto.nome }}</h3>
-          <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Pedir</button>
-        </mat-card-actions>
-      </mat-card>
-      <p *ngIf="comidas.length === 0">Não há comidas disponíveis.</p>
-    </div>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <mat-icon>local_cafe</mat-icon>
-        <span>Bebidas</span>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="product-grid">
-      <mat-card *ngFor="let produto of bebidas" class="product-card">
-        <img
-          mat-card-image
-          [src]="getImageUrl(produto.id)"
-          alt="{{ produto.nome }}"
-          class="product-image"
-        />
-        <mat-card-content>
-          <h3>{{ produto.nome }}</h3>
-          <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Pedir</button>
-        </mat-card-actions>
-      </mat-card>
-      <p *ngIf="bebidas.length === 0">Não há bebidas disponíveis.</p>
-    </div>
-  </mat-expansion-panel>
+  <ng-container *ngFor="let categoria of categorias">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{ categoria.icon }}</mat-icon>
+          <span>{{ categoria.nome }}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="product-grid">
+        <mat-card
+          *ngFor="let produto of categoria.produtos"
+          class="product-card"
+        >
+          <img
+            mat-card-image
+            [src]="produto.imageUrl"
+            alt="{{ produto.nome }}"
+            class="product-image"
+          />
+          <mat-card-content>
+            <h3>{{ produto.nome }}</h3>
+            <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Pedir</button>
+          </mat-card-actions>
+        </mat-card>
+        <p *ngIf="categoria.produtos.length === 0">
+          Não há {{ categoria.nome }} disponíveis.
+        </p>
+      </div>
+    </mat-expansion-panel>
+  </ng-container>
 </mat-accordion>
