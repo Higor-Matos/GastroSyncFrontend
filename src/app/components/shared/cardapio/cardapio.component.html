@@ -1,35 +1,37 @@
-<mat-accordion class="product-accordion" multi>
-  <ng-container *ngFor="let categoria of categorias">
-    <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <mat-icon>{{ categoria.icon }}</mat-icon>
-          <span>{{ categoria.nome }}</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="product-grid">
-        <mat-card
-          *ngFor="let produto of categoria.produtos"
-          class="product-card"
-        >
-          <img
-            mat-card-image
-            [src]="produto.imageUrl"
-            alt="{{ produto.nome }}"
-            class="product-image"
-          />
-          <mat-card-content>
-            <h3>{{ produto.nome }}</h3>
-            <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Pedir</button>
-          </mat-card-actions>
-        </mat-card>
-        <p *ngIf="categoria.produtos.length === 0">
-          Não há {{ categoria.nome }} disponíveis.
-        </p>
-      </div>
-    </mat-expansion-panel>
-  </ng-container>
-</mat-accordion>
+<div [style.padding-bottom.px]="alturaBarraInferior">
+  <mat-accordion class="product-accordion" multi>
+    <ng-container *ngFor="let categoria of categorias">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{ categoria.icon }}</mat-icon>
+            <span>{{ categoria.nome }}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="product-grid">
+          <mat-card
+            *ngFor="let produto of categoria.produtos"
+            class="product-card"
+          >
+            <img
+              mat-card-image
+              [src]="produto.imageUrl"
+              alt="{{ produto.nome }}"
+              class="product-image"
+            />
+            <mat-card-content>
+              <h3>{{ produto.nome }}</h3>
+              <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>Pedir</button>
+            </mat-card-actions>
+          </mat-card>
+          <p *ngIf="categoria.produtos.length === 0">
+            Não há {{ categoria.nome }} disponíveis.
+          </p>
+        </div>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>

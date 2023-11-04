@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProdutoService } from '../../services/produto.service';
+import { BarraInferiorService } from '../../services/barrainferior.service';
 
 interface ProdutoResponse {
   success: boolean;
@@ -12,7 +14,7 @@ interface Produto {
   nome: string;
   categoria: string;
   preco: number;
-  imageUrl?: string; // Opcional, caso você decida gerar a URL aqui
+  imageUrl?: string;
 }
 
 interface Categoria {
@@ -26,10 +28,15 @@ interface Categoria {
   templateUrl: './cardapio.component.html',
   styleUrls: ['./cardapio.component.scss'],
 })
-export class CardapioComponent implements OnInit {
+export class CardapioComponent implements OnInit, OnDestroy {
   categorias: Categoria[] = [];
+  private alturaBarraInferiorSubscription!: Subscription;
+  alturaBarraInferior: number = 0;
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(
+    private produtoService: ProdutoService,
+    private barraInferiorService: BarraInferiorService
+  ) {}
 
   ngOnInit(): void {
     this.produtoService.getProdutos().subscribe({
@@ -43,9 +50,19 @@ export class CardapioComponent implements OnInit {
           );
         }
       },
-      error: (err) =>
-        console.error('Ocorreu um erro ao buscar os produtos:', err),
+      error: (err) => {
+        console.error('Ocorreu um erro ao buscar os produtos:', err);
+      },
     });
+
+    this.alturaBarraInferiorSubscription =
+      this.barraInferiorService.alturaBarraInferior$.subscribe((altura) => {
+        this.alturaBarraInferior = altura;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.alturaBarraInferiorSubscription.unsubscribe();
   }
 
   private organizarCategorias(produtos: Produto[]): Categoria[] {
