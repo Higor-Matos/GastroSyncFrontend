@@ -2,36 +2,6 @@ $cor-primaria: #f44336; // Cor do iFood
 $cor-secundaria: #ff5722; // Cor de botão laranja
 $cor-fundo-acoes: #f5f5f5;
 
-@media (max-width: 768px) {
-  .product-accordion {
-    width: 100%; // Garante que o accordion ocupe todo o espaço horizontal
-    margin: 0; // Remove margens externas
-    .mat-expansion-panel {
-      width: 100%; // Ajusta a largura para ocupar 100%
-      margin: 0; // Remove margens externas
-      border: none; // Remove bordas que possam causar espaçamento extra
-    }
-  }
-
-  .product-grid {
-    margin: 0; // Remove margens externas
-    padding: 0; // Remove paddings internos
-    width: 100%; // Garante que a grade ocupe todo o espaço disponível
-  }
-
-  .product-card-mobile {
-    width: 100%; // Ocupar toda a largura disponível
-    margin: 0; // Remove qualquer margem que possa estar limitando a largura
-    box-sizing: border-box; // Garante que padding e bordas sejam incluídos na largura total
-  }
-
-  .mat-expansion-panel-header {
-    width: 100%; // Ajusta a largura para ocupar 100%
-    margin: 0; // Remove margens externas
-    padding: 0; // Remove paddings internos
-  }
-}
-
 @mixin sombra-box($x, $y, $blur, $cor) {
   box-shadow: $x $y $blur $cor;
 }
