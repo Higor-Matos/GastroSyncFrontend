@@ -1,7 +1,10 @@
 <mat-accordion class="product-accordion" multi>
   <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header class="custom-panel-header">
-      <mat-panel-title> Comidas </mat-panel-title>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>restaurant_menu</mat-icon>
+        <span>Comidas</span>
+      </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="product-grid">
       <mat-card *ngFor="let produto of comidas" class="product-card">
@@ -24,8 +27,11 @@
   </mat-expansion-panel>
 
   <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header class="custom-panel-header">
-      <mat-panel-title> Bebidas </mat-panel-title>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>local_cafe</mat-icon>
+        <span>Bebidas</span>
+      </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="product-grid">
       <mat-card *ngFor="let produto of bebidas" class="product-card">
