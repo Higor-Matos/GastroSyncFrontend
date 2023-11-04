@@ -20,8 +20,36 @@
 
 .product-image {
   width: 100%;
-  object-fit: cover; // This keeps the aspect ratio of the image
-  max-height: 200px; // You can adjust this as per your requirement
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.product-accordion {
+  .mat-expansion-panel-header {
+    background-color: #e1f5fe;
+    border-bottom: 1px solid #b3e5fc;
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    &:not(.mat-expanded) {
+      border-radius: 4px;
+    }
+    &.mat-expanded {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+
+  .custom-panel-header {
+    .mat-panel-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #01579b;
+    }
+  }
+
+  .mat-expansion-panel-body {
+    padding: 16px;
+  }
 }
 
 .price {

@@ -9,6 +9,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // Componentes e módulos da aplicação
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { SharedModule } from './components/shared/shared.module';
     SharedModule,
 
     MatBottomSheetModule,
+    MatExpansionModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
