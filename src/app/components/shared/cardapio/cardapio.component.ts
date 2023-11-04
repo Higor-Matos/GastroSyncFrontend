@@ -21,6 +21,8 @@ interface Produto {
 })
 export class CardapioComponent implements OnInit {
   produtos: Produto[] = [];
+  comidas: Produto[] = [];
+  bebidas: Produto[] = [];
 
   constructor(private produtoService: ProdutoService) {}
 
@@ -28,6 +30,12 @@ export class CardapioComponent implements OnInit {
     this.produtoService.getProdutos().subscribe((response: ProdutoResponse) => {
       if (response.success) {
         this.produtos = response.data;
+        this.comidas = this.produtos.filter(
+          (produto) => produto.categoria === 'Comida'
+        );
+        this.bebidas = this.produtos.filter(
+          (produto) => produto.categoria === 'Bebida'
+        );
       }
     });
   }
