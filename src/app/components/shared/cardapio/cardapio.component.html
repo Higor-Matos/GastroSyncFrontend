@@ -8,7 +8,7 @@
         </mat-card-header>
         <img
           mat-card-image
-          src="assets/img/{{ produto.id }}.jpg"
+          [src]="getImageUrl(produto.id)"
           alt="{{ produto.nome }}"
         />
         <mat-card-content>
