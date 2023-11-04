@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardapioComponent } from './cardapio/cardapio.component';
-import { AjudaComponent } from './ajuda/ajuda.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { CardapioComponent } from '../menu/cardapio/cardapio.component';
+import { AjudaComponent } from '../menu/ajuda/ajuda.component';
+import { InicioComponent } from '../menu/inicio/inicio.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
