@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import {
+  Produto,
+  Categoria,
+  ProdutoResponse,
+} from '../shared/models/produto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +26,45 @@ export class ProdutoService {
 
   constructor(private http: HttpClient) {}
 
-  getProdutos(): Observable<any> {
-    return this.http.get(this.url);
+  getProdutos(): Observable<Categoria[]> {
+    return this.http.get<ProdutoResponse>(this.url).pipe(
+      map((response) =>
+        response.success ? this.organizarCategorias(response.data) : []
+      ),
+      catchError((error) => {
+        console.error('Erro ao obter produtos:', error);
+        return of([]);
+      })
+    );
   }
 
   getImageUrl(id: number): string {
-    return this.imageMap[id] || 'caminho_para_imagem_padrao.jpg';
+    return this.imageMap[id] || 'erro.jpg';
+  }
+
+  private organizarCategorias(produtos: Produto[]): Categoria[] {
+    const categoriasMap = new Map<string, Categoria>();
+    produtos.forEach((produto) => {
+      if (!categoriasMap.has(produto.categoria)) {
+        categoriasMap.set(produto.categoria, {
+          nome: produto.categoria,
+          icon: this.getCategoriaIcon(produto.categoria),
+          produtos: [],
+        });
+      }
+      categoriasMap.get(produto.categoria)?.produtos.push({
+        ...produto,
+        imageUrl: this.getImageUrl(produto.id),
+      });
+    });
+    return Array.from(categoriasMap.values());
+  }
+
+  private getCategoriaIcon(categoria: string): string {
+    const icons: { [key: string]: string } = {
+      Comida: 'restaurant_menu',
+      Bebida: 'local_cafe',
+    };
+    return icons[categoria] || 'default_icon';
   }
 }
