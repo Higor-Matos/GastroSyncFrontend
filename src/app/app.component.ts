@@ -1,6 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
-import { ThemeService } from './components/services/theme.service';
-import { ServicoDeNavegacao } from './components/services/servicodenavegacao.service';
+import { ThemeService } from './components/services/tema/theme.service';
+import { ServicoDeNavegacao } from './components/services/navegacao/servicodenavegacao.service';
 
 @Component({
   selector: 'app-root',
