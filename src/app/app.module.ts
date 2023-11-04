@@ -14,9 +14,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 // Componentes e módulos da aplicação
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlterarTemaComponent } from './components/modules/alternartema/alternartema.component';
-import { BarradeNavegacaoInferiorComponent } from './components/modules/barradenavegacaoinferior/barradenavegacaoinferior.component';
-import { SharedModule } from './components/shared/shared.module';
+import { AlterarTemaComponent } from './components/shared/config/alternartema/alternartema.component';
+import { BarradeNavegacaoInferiorComponent } from './components/shared/config/barradenavegacaoinferior/barradenavegacaoinferior.component';
+import { SharedModule } from './components/shared/module/shared.module';
 @NgModule({
   declarations: [
     AppComponent,

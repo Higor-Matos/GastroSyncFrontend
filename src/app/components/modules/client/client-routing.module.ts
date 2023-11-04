@@ -2,10 +2,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CardapioComponent } from '../../shared/cardapio/cardapio.component';
+import { CardapioComponent } from '../../shared/menu/cardapio/cardapio.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
-import { AjudaComponent } from '../../shared/ajuda/ajuda.component';
-import { InicioComponent } from '../../shared/inicio/inicio.component';
+import { AjudaComponent } from '../../shared/menu/ajuda/ajuda.component';
+import { InicioComponent } from '../../shared/menu/inicio/inicio.component';
 import { PagamentosComponent } from './pagamentos/pagamentos.component';
 
 const routes: Routes = [

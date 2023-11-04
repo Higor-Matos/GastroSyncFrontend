@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
-import { ThemeService, ThemeType } from '../../services/tema/theme.service';
-import { BarraInferiorService } from '../../services/barrainferior/barrainferior.service';
+import { ThemeService, ThemeType } from '../../../services/tema/theme.service';
+import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
 import {
   trigger,
   state,

@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Categoria } from '../../shared/models/produto.model';
-import { ProdutoService } from '../../services/cardapio/produto.service';
-import { BarraInferiorService } from '../../services/barrainferior/barrainferior.service';
+import { Categoria } from '../../models/produto.model';
+import { ProdutoService } from '../../../services/cardapio/produto.service';
+import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
