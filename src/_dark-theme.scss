@@ -1,0 +1,22 @@
+// _dark-theme.scss
+@use "@angular/material" as mat;
+
+$ifood-dark-primary: mat.define-palette(mat.$grey-palette, 800);
+$ifood-dark-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
+$ifood-dark-warn: mat.define-palette(mat.$red-palette, 800);
+
+$ifood-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $ifood-dark-primary,
+      accent: $ifood-dark-accent,
+      warn: $ifood-dark-warn,
+    ),
+  )
+);
+
+.ifood-dark-theme {
+  @include mat.all-component-themes($ifood-dark-theme);
+  background-color: #d6d6d6;
+  color: #e0e0e0;
+}

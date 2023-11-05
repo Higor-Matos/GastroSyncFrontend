@@ -1,8 +1,11 @@
-// styles.scss
+// cardapio.component.scss
 
 $cor-primaria: #f44336;
 $cor-secundaria: #ff5722;
 $cor-fundo-acoes: #f5f5f5;
+$cor-fundo-escuro: #d6d6d6;
+$cor-texto-escuro: #333;
+$cor-texto-claro: #666;
 
 @mixin sombra-box($x, $y, $blur, $cor) {
   box-shadow: $x $y $blur $cor;
@@ -31,10 +34,34 @@ $cor-fundo-acoes: #f5f5f5;
   overflow: hidden;
   @include sombra-box(0, 6px, 20px, rgba(0, 0, 0, 0.15));
   height: auto;
+  background-color: white; // Cor padrão para o tema claro
 
   &:hover {
     transform: translateY(-5px);
     @include sombra-box(0, 12px, 24px, rgba(0, 0, 0, 0.18));
+  }
+}
+
+// Estilos específicos para o tema escuro
+body.ifood-dark-theme {
+  .product-card {
+    background-color: $cor-fundo-escuro;
+  }
+
+  .product-description,
+  .price {
+    color: $cor-texto-escuro;
+  }
+}
+
+// Estilos específicos para o tema claro
+body.ifood-light-theme {
+  .product-card {
+    background-color: white; // Defina a cor de fundo para o tema claro
+  }
+
+  .product-description {
+    color: $cor-texto-claro;
   }
 }
 
@@ -66,7 +93,7 @@ $cor-fundo-acoes: #f5f5f5;
 
 .product-description {
   font-size: 0.9rem;
-  color: #666;
+  color: $cor-texto-claro;
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
@@ -135,10 +162,6 @@ button {
   width: auto;
   align-self: center;
   background-color: $cor-secundaria;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 30px;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;
