@@ -5,8 +5,8 @@
 @include mat.core();
 
 // Importação dos temas
-@import "light-theme";
-@import "dark-theme";
+@import "./styles/themes/light-theme";
+@import "./styles/themes/dark-theme";
 
 // Estilos base
 .base-font {
