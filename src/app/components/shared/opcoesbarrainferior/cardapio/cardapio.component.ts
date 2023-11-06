@@ -5,6 +5,8 @@ import {
   OnInit,
   OnDestroy,
   ChangeDetectionStrategy,
+  Renderer2,
+  ElementRef,
 } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Categoria } from '../../models/produto.model';
@@ -30,13 +32,16 @@ export class CardapioComponent implements OnInit, OnDestroy {
     private produtoService: ProdutoService,
     private barraInferiorService: BarraInferiorService,
     private snackBar: MatSnackBar,
-    private themeService: ThemeService // Injetar o ThemeService
+    private themeService: ThemeService, // Injetar o ThemeService
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {
     console.log('CardapioComponent construído');
   }
 
   ngOnInit(): void {
     console.log('CardapioComponent inicializado');
+    this.logAppliedStyles();
 
     // Inscrever-se para mudanças de tema.
     this.themeSubscription = this.themeService.themeChanged.subscribe(
@@ -59,5 +64,14 @@ export class CardapioComponent implements OnInit, OnDestroy {
   trackByCategoria(index: number, categoria: Categoria): string {
     console.log(`Rastreando categoria: ${categoria.nome} no índice: ${index}`);
     return categoria.nome;
+  }
+
+  private logAppliedStyles() {
+    // Esta função tenta registrar os estilos computados do componente
+    // Isto só funcionará se a view já estiver inicializada e os estilos aplicados
+    setTimeout(() => {
+      const componentStyles = getComputedStyle(this.el.nativeElement);
+      console.log('Estilos computados do CardapioComponent:', componentStyles);
+    }, 0);
   }
 }

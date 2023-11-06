@@ -1,8 +1,5 @@
-<div
-  class="container"
-  [@fadeInOut]="isDarkTheme ? 'dark' : 'light'"
-  [ngClass]="{ 'dark-theme': isDarkTheme }"
->
+<!-- component.html -->
+<div class="container" [ngClass]="{ 'dark-theme': isDarkTheme }">
   <img
     class="my-image"
     [attr.src]="

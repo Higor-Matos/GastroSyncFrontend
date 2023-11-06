@@ -1,10 +1,6 @@
 <!-- cardapio.component.html -->
 
-<div
-  [class.ifood-dark-theme]="isDarkTheme"
-  [class.ifood-light-theme]="!isDarkTheme"
-  [style.padding-bottom.px]="alturaBarraInferior$ | async"
->
+<div [style.padding-bottom.px]="alturaBarraInferior$ | async">
   <mat-accordion class="product-accordion" multi>
     <ng-container
       *ngFor="let categoria of categorias$ | async; trackBy: trackByCategoria"
@@ -20,7 +16,7 @@
           <ng-container
             *ngFor="let produto of categoria.produtos; let i = index"
           >
-            <mat-card class="product-card" [class.dark-theme]="isDarkTheme">
+            <mat-card class="product-card">
               <div class="product-content">
                 <div class="product-info">
                   <h3>{{ produto.nome }}</h3>

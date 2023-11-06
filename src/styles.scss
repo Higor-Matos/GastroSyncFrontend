@@ -9,8 +9,8 @@
 @import "./styles/themes/dark-theme";
 
 // Estilos base
-.base-font {
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+*:not(mat-icon) {
+  font-family: "Roboto", "Helvetica Neue", sans-serif !important;
 }
 
 // Estilos globais básicos
@@ -18,17 +18,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-}
-
-body {
-  @extend .base-font;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-// Tema escuro aplicado ao corpo
-body.ifood-dark-theme {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #e0e0e0;
 }
 
 // Estilos para elementos de mídia
@@ -41,15 +30,6 @@ body.ifood-dark-theme {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-// Sobrescrevendo a cor do mat-toolbar para os temas
-.ifood-light-theme .barradenavegacaoinferior {
-  background-color: #e53935 !important; // Cor da barra de navegação para tema claro
-}
-
-.ifood-dark-theme .barradenavegacaoinferior {
-  background-color: #424242 !important; // Cor da barra de navegação para tema escuro
 }
 
 // Estilos para responsividade
