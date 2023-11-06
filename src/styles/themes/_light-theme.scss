@@ -1,4 +1,3 @@
-// _light-theme.scss
 @use "@angular/material" as mat;
 
 $ifood-primary: mat.define-palette(mat.$red-palette, 600);
@@ -15,6 +14,4 @@ $ifood-light-theme: mat.define-light-theme(
   )
 );
 
-.ifood-light-theme {
-  @include mat.all-component-themes($ifood-light-theme);
-}
+@include mat.all-component-themes($ifood-light-theme);
