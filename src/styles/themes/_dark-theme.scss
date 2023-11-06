@@ -1,14 +1,11 @@
-// styles.scss
-
 @use "@angular/material" as mat;
 
-// Definição das paletas de cores personalizadas com valor hexadecimal para o fundo
 $ifood-dark-primary: mat.define-palette(mat.$grey-palette, 800);
 $ifood-dark-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
 $ifood-dark-warn: mat.define-palette(mat.$red-palette, 800);
 $custom-background: #d6d6d6;
+$custom-text: #000000; // cor preta para o texto
 
-// Criação do tema escuro personalizado com valor hexadecimal para o fundo
 $ifood-dark-theme: mat.define-dark-theme(
   (
     color: (
@@ -16,20 +13,24 @@ $ifood-dark-theme: mat.define-dark-theme(
       accent: $ifood-dark-accent,
       warn: $ifood-dark-warn,
       background: $custom-background,
+      text: $custom-text,
     ),
   )
 );
 
-// Inclusão dos temas dos componentes
 @include mat.all-component-themes($ifood-dark-theme);
 
-// Aplicação da cor de fundo personalizada para os elementos quando o tema escuro está ativo
-.mat-expansion-panel,
-.mat-expansion-panel-header,
-.mat-card,
-.mat-expansion-panel-content .mat-expansion-panel-body,
-.product-grid,
-.product-content,
-.mat-expansion-panel-body {
-  background-color: $custom-background;
+.ifood-dark-theme {
+  .mat-expansion-panel,
+  .mat-expansion-panel-header,
+  .mat-card,
+  .mat-expansion-panel-content .mat-expansion-panel-body,
+  .product-grid,
+  .product-content,
+  .mat-expansion-panel-body,
+  .mat-expansion-panel-header-title {
+    // incluído o título do painel de expansão
+    background-color: $custom-background;
+    color: $custom-text; // aplicação da cor do texto
+  }
 }

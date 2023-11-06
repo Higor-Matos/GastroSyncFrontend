@@ -32,7 +32,7 @@ export class CardapioComponent implements OnInit, OnDestroy {
     private produtoService: ProdutoService,
     private barraInferiorService: BarraInferiorService,
     private snackBar: MatSnackBar,
-    private themeService: ThemeService, // Injetar o ThemeService
+    public themeService: ThemeService, // Injetar o ThemeService
     private renderer: Renderer2,
     private el: ElementRef
   ) {
@@ -50,8 +50,6 @@ export class CardapioComponent implements OnInit, OnDestroy {
         console.log('Tema alterado para:', themeType);
       }
     );
-
-    // Subscrição para categorias e altura da barra inferior pode ser feita aqui
   }
 
   ngOnDestroy(): void {
