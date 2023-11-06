@@ -26,6 +26,10 @@ export class ThemeService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  getCurrentThemeClass(): ThemeType {
+    return this.darkTheme ? ThemeType.Dark : ThemeType.Light;
+  }
+
   toggleTheme(): void {
     this.darkTheme = !this.darkTheme;
     const themeClass = this.darkTheme ? ThemeType.Dark : ThemeType.Light;

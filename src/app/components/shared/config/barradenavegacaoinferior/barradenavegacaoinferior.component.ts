@@ -23,7 +23,7 @@ import { BarraInferiorService } from '../../../services/barrainferior/barrainfer
   selector: 'barradenavegacaoinferior',
   templateUrl: './barradenavegacaoinferior.component.html',
   styleUrls: ['./barradenavegacaoinferior.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush, // Estratégia de detecção de mudanças para OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   opcoesEsquerda: OpcaoNavegacao[] = [];
@@ -45,13 +45,11 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Inicializar opções de navegação com a URL atual
     this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(
       this.rotaService.urlAtual()
     );
     this.atualizarOpcoesDeNavegacao();
 
-    // Subscrição para mudanças de rota
     this.routeSubscription = this.rotaService.onRouteChange.subscribe(
       (newUrl: string) => {
         this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
@@ -59,7 +57,6 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
       }
     );
 
-    // Calcular a altura inicial da barra de navegação
     this.setAlturaBarraInferior();
   }
 
@@ -70,7 +67,6 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    // Ajustar altura da barra após a visão estar inicializada
     this.setAlturaBarraInferior();
   }
 
@@ -83,7 +79,7 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
     const todasOpcoes = this.servicodenavegacao.obterOpcoesDeNavegacao();
     this.opcoesEsquerda = todasOpcoes.slice(0, 2);
     this.opcoesDireita = todasOpcoes.slice(2);
-    this.cdr.markForCheck(); // Necessário para OnPush para garantir que a vista é atualizada
+    this.cdr.markForCheck();
   }
 
   private setAlturaBarraInferior(): void {

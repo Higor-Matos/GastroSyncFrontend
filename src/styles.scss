@@ -43,6 +43,15 @@ body.ifood-dark-theme {
   height: auto;
 }
 
+// Sobrescrevendo a cor do mat-toolbar para os temas
+.ifood-light-theme .barradenavegacaoinferior {
+  background-color: #e53935 !important; // Cor da barra de navegação para tema claro
+}
+
+.ifood-dark-theme .barradenavegacaoinferior {
+  background-color: #424242 !important; // Cor da barra de navegação para tema escuro
+}
+
 // Estilos para responsividade
 @media (max-width: 768px) {
   .media-img-small-device {
