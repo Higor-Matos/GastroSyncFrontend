@@ -1,9 +1,12 @@
+// _light-theme.scss
+
 @use "@angular/material" as mat;
 
 $ifood-primary: mat.define-palette(mat.$red-palette, 600);
 $ifood-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
 $ifood-warn: mat.define-palette(mat.$red-palette, 800);
 $custom-background: #f5f5f5;
+$custom-text: #333333; // cor preta para o texto
 
 $ifood-light-theme: mat.define-light-theme(
   (
@@ -11,16 +14,30 @@ $ifood-light-theme: mat.define-light-theme(
       primary: $ifood-primary,
       accent: $ifood-accent,
       warn: $ifood-warn,
+      background: $custom-background,
+      // Assegura que o fundo está incluído
     ),
   )
 );
 
-// Sobrescrevendo a cor do mat-toolbar para os temas
+// Aplicação dos estilos de componentes conforme o tema claro
+@include mat.all-component-themes($ifood-light-theme);
+
+// Estilos adicionais para elementos específicos no tema claro, mantendo a consistência com o tema escuro
 .ifood-light-theme {
-  .barradenavegacaoinferior {
-    background-color: #e53935 !important;
+  .mat-expansion-panel,
+  .mat-expansion-panel-header,
+  .mat-card,
+  .mat-expansion-panel-content .mat-expansion-panel-body,
+  .product-grid,
+  .product-content,
+  .mat-expansion-panel-body,
+  .mat-expansion-panel-header-title {
+    background-color: $custom-background;
+    color: $custom-text; // aplicação da cor do texto
+  }
+  .mat-toolbar {
+    background-color: mat.get-color-from-palette($ifood-primary, 600);
   }
   background-color: $custom-background;
 }
-
-@include mat.all-component-themes($ifood-light-theme);

@@ -1,6 +1,8 @@
 <!-- cardapio.component.html -->
-
-<div [style.padding-bottom.px]="alturaBarraInferior$ | async">
+<div
+  [class]="themeService.getCurrentThemeClass()"
+  [style.padding-bottom.px]="alturaBarraInferior$ | async"
+>
   <mat-accordion class="product-accordion" multi>
     <ng-container
       *ngFor="let categoria of categorias$ | async; trackBy: trackByCategoria"
