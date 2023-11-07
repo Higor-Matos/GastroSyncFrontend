@@ -1,7 +1,4 @@
 // cardapio.component.scss
-@mixin transicao-padrao {
-  transition: transform 0.3s ease;
-}
 
 .product-section {
   margin: 20px;
@@ -14,17 +11,11 @@
 }
 
 .product-card {
-  @include transicao-padrao;
+  // Propriedades removidas pois já definidas globalmente
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  border-radius: 8px;
-  overflow: hidden;
   height: auto;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 }
 
 .product-image {
@@ -71,7 +62,6 @@
   }
 
   .mat-expansion-panel-header {
-    @include transicao-padrao;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,23 +91,4 @@ mat-card-actions {
   justify-content: center;
   padding: 16px;
   margin-top: auto;
-}
-
-button {
-  width: auto;
-  align-self: center;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  @include transicao-padrao;
-
-  &:active {
-    transform: translateY(1px);
-  }
-
-  &:focus {
-    outline: none;
-  }
 }
