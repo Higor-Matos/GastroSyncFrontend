@@ -10,8 +10,8 @@ import {
 
 @Component({
   selector: 'alternartema',
-  templateUrl: './alternartema.component.html',
-  styleUrls: ['./alternartema.component.scss'],
+  templateUrl: './menusuperior.component.html',
+  styleUrls: ['./menusuperior.component.scss'],
   animations: [
     trigger('rotate', [
       state('default', style({ transform: 'rotate(0)' })),
