@@ -1,3 +1,15 @@
+/* inicio.component.scss */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -5,6 +17,7 @@
   min-height: calc(100vh - var(--altura-barra-inferior, 0px));
   position: absolute;
   width: 100%;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
 .my-image {
@@ -13,6 +26,7 @@
   border-radius: 20px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
   z-index: 2;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 @media (max-width: 768px) {
