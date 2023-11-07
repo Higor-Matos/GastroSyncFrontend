@@ -1,5 +1,4 @@
 // cardapio.component.scss
-
 @mixin transicao-padrao {
   transition: transform 0.3s ease;
 }
@@ -95,11 +94,6 @@
   .mat-expansion-panel-body {
     padding: 16px;
   }
-}
-
-.price {
-  font-weight: bold;
-  margin-top: auto;
 }
 
 mat-card-actions {

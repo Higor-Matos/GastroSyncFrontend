@@ -1,13 +1,13 @@
 <!-- cardapio.component.html -->
-<div
-  [class]="themeService.getCurrentThemeClass()"
-  [style.padding-bottom.px]="alturaBarraInferior$ | async"
->
+<div [style.padding-bottom.px]="alturaBarraInferior$ | async">
   <mat-accordion class="product-accordion" multi>
     <ng-container
       *ngFor="let categoria of categorias$ | async; trackBy: trackByCategoria"
     >
-      <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel
+        [class]="themeService.getCurrentThemeClass()"
+        [expanded]="true"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon>{{ categoria.icon }}</mat-icon>
@@ -25,7 +25,7 @@
                   <p class="product-description">{{ produto.descricao }}</p>
                   <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
                 </div>
-                <button mat-button>Pedir</button>
+                <button class="food-order-button">Pedir</button>
               </div>
               <img
                 mat-card-image
