@@ -1,4 +1,7 @@
+// ServicoDeNavegacao.service.ts
+
 import { Injectable } from '@angular/core';
+import { MesaService } from '../mesa/mesa.service'; // Importe MesaService para acessar o número da mesa
 
 export enum UserType {
   Admin = 'admin',
@@ -17,16 +20,41 @@ export interface OpcaoNavegacao {
 export class ServicoDeNavegacao {
   tipoUsuario: UserType = UserType.Client;
 
+  constructor(private mesaService: MesaService) {}
+
   definirTipoUsuarioComBaseNaRota(url: string): void {
-    this.tipoUsuario = url.includes(UserType.Admin)
+    this.tipoUsuario = url.includes('/admin')
       ? UserType.Admin
       : UserType.Client;
   }
 
   obterOpcoesDeNavegacao(): OpcaoNavegacao[] {
+    const numeroDaMesa =
+      this.tipoUsuario === UserType.Client
+        ? this.mesaService.obterNumeroDaMesa()
+        : null;
+    const baseRoute = numeroDaMesa ? `/client/mesa${numeroDaMesa}` : '/client';
+
     return this.tipoUsuario === UserType.Admin
       ? this.getAdminOptions()
-      : this.getClientOptions();
+      : [
+          {
+            label: 'Cardápio',
+            icone: 'restaurant_menu',
+            rota: `${baseRoute}/cardapio`,
+          },
+          {
+            label: 'Pedidos',
+            icone: 'shopping_cart',
+            rota: `${baseRoute}/pedidos`,
+          },
+          {
+            label: 'Pagamentos',
+            icone: 'attach_money',
+            rota: `${baseRoute}/pagamentos`,
+          },
+          { label: 'Ajuda', icone: 'help_outline', rota: `${baseRoute}/ajuda` },
+        ];
   }
 
   private getAdminOptions(): OpcaoNavegacao[] {
@@ -35,19 +63,6 @@ export class ServicoDeNavegacao {
       { label: 'Mesas', icone: 'person_pin', rota: '/admin/mesas' },
       { label: 'Cover', icone: 'music_note', rota: '/admin/cover' },
       { label: 'Ajuda', icone: 'help_outline', rota: '/admin/ajuda' },
-    ];
-  }
-
-  private getClientOptions(): OpcaoNavegacao[] {
-    return [
-      { label: 'Cardápio', icone: 'restaurant_menu', rota: '/client/cardapio' },
-      { label: 'Pedidos', icone: 'shopping_cart', rota: '/client/pedidos' },
-      {
-        label: 'Pagamentos',
-        icone: 'attach_money',
-        rota: '/client/pagamentos',
-      },
-      { label: 'Ajuda', icone: 'help_outline', rota: '/client/ajuda' },
     ];
   }
 }
