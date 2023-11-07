@@ -29,4 +29,15 @@ export class RotaService {
       }
     });
   }
+
+  irPara(url: string): void {
+    console.log(`Navegando para: ${url}`);
+    this.router.navigateByUrl(url).then((success) => {
+      if (success) {
+        console.log(`Navegação para ${url} bem-sucedida.`);
+      } else {
+        console.error(`Falha ao navegar para ${url}.`);
+      }
+    });
+  }
 }
