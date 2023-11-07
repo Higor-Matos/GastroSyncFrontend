@@ -1,18 +1,9 @@
-// ServicoDeNavegacao.service.ts
+// servicodenavegacao.service.ts
 
 import { Injectable } from '@angular/core';
-import { MesaService } from '../mesa/mesa.service'; // Importe MesaService para acessar o número da mesa
-
-export enum UserType {
-  Admin = 'admin',
-  Client = 'client',
-}
-
-export interface OpcaoNavegacao {
-  label: string;
-  icone: string;
-  rota: string;
-}
+import { MesaService } from '../mesa/mesa.service';
+import { RotaService } from './rota.service';
+import { UserType, OpcaoNavegacao } from './tipos.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,9 +11,16 @@ export interface OpcaoNavegacao {
 export class ServicoDeNavegacao {
   tipoUsuario: UserType = UserType.Client;
 
-  constructor(private mesaService: MesaService) {}
+  constructor(
+    private mesaService: MesaService,
+    private rotaService: RotaService
+  ) {
+    this.rotaService.onRouteChange.subscribe((url) => {
+      this.definirTipoUsuarioComBaseNaRota(url);
+    });
+  }
 
-  definirTipoUsuarioComBaseNaRota(url: string): void {
+  private definirTipoUsuarioComBaseNaRota(url: string): void {
     this.tipoUsuario = url.includes('/admin')
       ? UserType.Admin
       : UserType.Client;

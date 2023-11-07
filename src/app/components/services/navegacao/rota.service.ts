@@ -2,30 +2,31 @@
 
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { ServicoDeNavegacao } from './servicodenavegacao.service';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RotaService {
-  private _urlAtual: string = '';
-  public onRouteChange = new Subject<string>();
+  private urlAtualSource = new BehaviorSubject<string>('');
 
-  constructor(
-    private router: Router,
-    private servicodenavegacao: ServicoDeNavegacao
-  ) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this._urlAtual = event.urlAfterRedirects;
-        this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(this._urlAtual);
-        this.onRouteChange.next(this._urlAtual);
-      }
-    });
+  constructor(private router: Router) {
+    this.monitorarMudancasDeRota();
   }
 
-  urlAtual(): string {
-    return this._urlAtual;
+  get urlAtual(): string {
+    return this.urlAtualSource.value;
+  }
+
+  get onRouteChange() {
+    return this.urlAtualSource.asObservable();
+  }
+
+  private monitorarMudancasDeRota(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.urlAtualSource.next(event.urlAfterRedirects);
+      }
+    });
   }
 }

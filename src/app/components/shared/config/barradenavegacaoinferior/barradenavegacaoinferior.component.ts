@@ -11,11 +11,11 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatToolbar } from '@angular/material/toolbar';
+import { ServicoDeNavegacao } from '../../../services/navegacao/servicodenavegacao.service';
 import {
-  ServicoDeNavegacao,
   UserType,
   OpcaoNavegacao,
-} from '../../../services/navegacao/servicodenavegacao.service';
+} from '../../../services/navegacao/tipos.service';
 import { RotaService } from '../../../services/navegacao/rota.service';
 import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
 
@@ -45,14 +45,10 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(
-      this.rotaService.urlAtual()
-    );
     this.atualizarOpcoesDeNavegacao();
 
     this.routeSubscription = this.rotaService.onRouteChange.subscribe(
       (newUrl: string) => {
-        this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(newUrl);
         this.atualizarOpcoesDeNavegacao();
       }
     );
