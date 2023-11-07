@@ -1,3 +1,5 @@
+// rota.service.ts
+
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ServicoDeNavegacao } from './servicodenavegacao.service';
@@ -17,8 +19,8 @@ export class RotaService {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._urlAtual = event.urlAfterRedirects;
-        this.onRouteChange.next(this._urlAtual);
         this.servicodenavegacao.definirTipoUsuarioComBaseNaRota(this._urlAtual);
+        this.onRouteChange.next(this._urlAtual);
       }
     });
   }
