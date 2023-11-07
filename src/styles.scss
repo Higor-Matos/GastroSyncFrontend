@@ -1,12 +1,10 @@
 // styles.scss
-
 // Importações e Configurações do Angular Material
 @use "@angular/material" as mat;
-@include mat.core();
 
 // Importação dos temas
-@import "./styles/themes/_light-theme";
-@import "./styles/themes/_dark-theme";
+@import "./styles/themes/light-theme";
+@import "./styles/themes/dark-theme";
 
 // Estilos base
 *:not(mat-icon) {
@@ -36,5 +34,65 @@ body {
 @media (max-width: 768px) {
   .media-img-small-device {
     max-width: 70%;
+  }
+}
+
+// Estilos comuns entre temas
+.ifood-common-theme {
+  .mat-expansion-panel,
+  .mat-expansion-panel-header,
+  .mat-card,
+  .mat-expansion-panel-content .mat-expansion-panel-body,
+  .product-grid,
+  .product-content,
+  .product-accordion,
+  .mat-expansion-panel-body,
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel,
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-body,
+  .mat-expansion-panel-header,
+  .product-grid {
+    box-shadow: none;
+    border: none;
+  }
+
+  .product-card {
+    box-shadow: 0 2px 10px $custom-shadow;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px $custom-shadow;
+    }
+  }
+
+  .food-order-button {
+    padding: 6px 18px;
+    align-self: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

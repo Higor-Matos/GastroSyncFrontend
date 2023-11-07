@@ -1,51 +1,17 @@
-// _light-theme.scss
-
-$ifood-primary: #e53935; // Vermelho 600
-$ifood-accent: #ff5252; // Vermelho A200
-$ifood-warn: #d32f2f; // Vermelho 800
+// Variáveis de tema claro
+$ifood-primary: #e53935;
+$ifood-accent: #ff5252;
+$ifood-warn: #d32f2f;
 $custom-background: #f5f5f5;
 $custom-text: #333333;
 $custom-shadow: rgba(0, 0, 0, 0.24);
-$custom-border: #333333; // Cor preta para as bordas
 
+// Tema claro
 .ifood-light-theme {
+  @extend .ifood-common-theme;
+
   background-color: $custom-background;
   color: $custom-text;
-
-  .mat-expansion-panel,
-  .mat-expansion-panel-header,
-  .mat-card,
-  .mat-expansion-panel-content .mat-expansion-panel-body,
-  .product-grid,
-  .product-content,
-  .mat-expansion-panel-body,
-  .mat-expansion-panel-header-title {
-    background-color: $custom-background;
-    color: $custom-text;
-  }
-
-  .mat-expansion-panel,
-  .mat-expansion-panel-header-title,
-  .mat-expansion-panel-body,
-  .mat-expansion-panel-header,
-  .product-grid {
-    box-shadow: none;
-    border: none;
-  }
-
-  .product-card {
-    background-color: $custom-background;
-    box-shadow: 0 2px 10px $custom-shadow;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px $custom-shadow;
-    }
-  }
 
   .mat-toolbar {
     background-color: $ifood-primary;
@@ -59,32 +25,13 @@ $custom-border: #333333; // Cor preta para as bordas
   }
 
   .food-order-button {
-    padding: 6px 18px;
-    align-self: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
     background-color: $ifood-accent;
     color: #fff;
     box-shadow: 0 2px 3px $custom-shadow;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
 
     &:hover {
       background-color: darken($ifood-accent, 15%);
       box-shadow: 0 3px 5px $custom-shadow;
-    }
-
-    &:active {
-      transform: translateY(1px);
-      box-shadow: 0 1px 1px $custom-shadow;
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 }
