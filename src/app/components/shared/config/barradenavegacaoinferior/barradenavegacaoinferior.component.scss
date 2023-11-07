@@ -1,3 +1,4 @@
+/* barradenavegacaoinferior.component.scss */
 :host {
   --altura-barra-inferior: 0px;
   display: flex;
@@ -28,12 +29,16 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-radius: 8px;
+}
 
-  // Efeito de clique
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+.opcaonavegacao:hover {
+  /* Adicionando animação de aumento suave ao passar o cursor */
+  transform: scale(1.05);
+}
+
+.opcaonavegacao:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .opcaonavegacaocentro {
@@ -52,14 +57,12 @@
   font-size: 1em;
 }
 
-// Para dispositivos pequenos
 @media (max-width: 600px) {
   .containerrotulo {
     font-size: 0.8em;
   }
 }
 
-// Para dispositivos ainda menores
 @media (max-width: 400px) {
   .containerrotulo {
     font-size: 0.6em;
