@@ -1,93 +1,40 @@
-// _dark-theme.scss
+// Variáveis de tema escuro
+$ifood-dark-primary: #424242;
+$ifood-dark-accent: #ff5252;
+$ifood-dark-warn: #d32f2f;
+$custom-background-dark: #d6d6d6;
+$custom-text-dark: #000000;
+$custom-shadow-dark: rgba(0, 0, 0, 0.24);
 
-$ifood-dark-primary: #424242; // Cinza 800
-$ifood-dark-accent: #ff5252; // Vermelho A200
-$ifood-dark-warn: #d32f2f; // Vermelho 800
-$custom-background-dark: #d6d6d6; // Fundo para tema escuro
-$custom-text-dark: #000000; // Texto claro para o tema escuro
-$custom-shadow-dark: rgba(0, 0, 0, 0.24); // Sombra personalizada
-
-// Tema escuro para componentes do Angular Material
+// Tema escuro
 .ifood-dark-theme {
+  @extend .ifood-common-theme;
+
   background-color: $custom-background-dark;
   color: $custom-text-dark;
-
-  .mat-expansion-panel,
-  .mat-expansion-panel-header,
-  .mat-card,
-  .mat-expansion-panel-content .mat-expansion-panel-body,
-  .product-grid,
-  .product-content,
-  .product-accordion,
-  .mat-expansion-panel-body,
-  .mat-expansion-panel-header-title {
-    box-shadow: 0px 4px 6px $custom-shadow-dark;
-    color: $custom-text-dark;
-    background-color: $custom-background-dark; // Define a cor de fundo personalizada para painéis expansíveis
-  }
-
-  .mat-expansion-panel,
-  .mat-expansion-panel-header-title,
-  .mat-expansion-panel-body,
-  .mat-expansion-panel-header,
-  .product-grid {
-    box-shadow: none;
-    border: none;
-  }
-
-  .product-card {
-    background-color: $custom-background-dark;
-    box-shadow: 0 2px 10px $custom-shadow-dark;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px $custom-shadow-dark;
-    }
-  }
-
-  .price {
-    font-weight: bold;
-    margin-top: auto;
-    color: #0279eb; // Mantém a cor azul para o preço
-  }
 
   .mat-toolbar {
     background-color: darken($ifood-dark-primary, 10%);
     color: #ffffff;
   }
 
+  .price {
+    font-weight: bold;
+    margin-top: auto;
+    color: #0279eb;
+  }
+
   .food-order-button {
-    padding: 6px 18px;
-    align-self: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
     background-color: #0279eb;
     color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
 
     &:hover {
       background-color: #0266cc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     &:active {
-      transform: translateY(1px);
       background-color: #0259b7;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 }
