@@ -10,10 +10,10 @@ import { AjudaComponent } from '../../../shared/opcoesbarrainferior/ajuda/ajuda.
 import { InicioComponent } from '../../../shared/opcoesbarrainferior/inicio/inicio.component';
 import { PagamentosComponent } from '../pagamentos/pagamentos.component';
 
-// client-routing.module.ts
 const routes: Routes = [
   {
     path: '',
+    canActivate: [MesaResolverGuard], // Adicionado o Guard aqui para a rota base
     children: [
       { path: 'cardapio', component: CardapioComponent },
       { path: 'pedidos', component: PedidosComponent },

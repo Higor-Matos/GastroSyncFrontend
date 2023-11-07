@@ -21,15 +21,14 @@ export class MesaService {
     const local = this.localMesaService.obterLocal(numeroDaMesa);
     if (!local) {
       console.error('Local não encontrado para o número da mesa fornecido.');
-      return of(null); // Tratar o valor nulo onde você se inscreve
+      return of(null);
     }
     const url = `${
       this.baseUrl
     }?numeromesa=${numeroDaMesa}&local=${encodeURIComponent(local)}`;
-    // Se a API não requerer cabeçalhos específicos, você pode omitir o objeto 'options'
     const options = {
       headers: new HttpHeaders({
-        // Se houver cabeçalhos específicos, como tokens, adicione-os aqui
+        // Adicione cabeçalhos específicos se necessário
       }),
     };
 
@@ -39,17 +38,25 @@ export class MesaService {
   }
 
   armazenarNumeroDaMesa(numeroDaMesa: number): void {
-    sessionStorage.setItem('numeroDaMesa', numeroDaMesa.toString());
+    console.log(`Armazenando número da mesa: ${numeroDaMesa}`);
+    localStorage.setItem('numeroDaMesa', numeroDaMesa.toString());
   }
 
-  obterNumeroDaMesa(): number {
-    return Number(sessionStorage.getItem('numeroDaMesa'));
+  obterNumeroDaMesa(): number | null {
+    const numeroDaMesa = localStorage.getItem('numeroDaMesa');
+    if (numeroDaMesa) {
+      console.log(`Número da mesa obtido: ${numeroDaMesa}`);
+      return Number(numeroDaMesa);
+    } else {
+      console.log('Número da mesa não encontrado no armazenamento local.');
+      return null;
+    }
   }
 
   private handleError(operation = 'operation') {
     return (error: any): Observable<null> => {
       console.error(`${operation} failed: ${error.message}`);
-      return of(null); // Retornar um Observable nulo em caso de erro
+      return of(null);
     };
   }
 }
