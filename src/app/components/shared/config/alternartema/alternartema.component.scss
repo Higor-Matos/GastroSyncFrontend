@@ -13,7 +13,7 @@
   justify-content: center; // Alinha horizontalmente ao centro
 
   .botao-icone-tema .mat-icon {
-    color: black; // Isso vai definir a cor do ícone para preto
+    color: black !important; // Isso vai definir a cor do ícone para preto
   }
 
   &:hover {

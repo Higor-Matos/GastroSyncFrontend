@@ -1,6 +1,8 @@
-// src/app/components/modules/client/client-routing.module.ts
+//client-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MesaResolverGuard } from '../../../services/mesa/mesaresolverguard.service';
 
 import { CardapioComponent } from '../../../shared/opcoesbarrainferior/cardapio/cardapio.component';
 import { PedidosComponent } from '../pedidos/pedidos.component';
@@ -9,13 +11,18 @@ import { InicioComponent } from '../../../shared/opcoesbarrainferior/inicio/inic
 import { PagamentosComponent } from '../pagamentos/pagamentos.component';
 
 const routes: Routes = [
-  { path: 'cardapio', component: CardapioComponent },
-  { path: 'pedidos', component: PedidosComponent },
-  { path: '', component: InicioComponent, pathMatch: 'full' },
-  { path: 'pagamentos', component: PagamentosComponent },
-  { path: 'ajuda', component: AjudaComponent },
+  {
+    path: ':mesa',
+    canActivate: [MesaResolverGuard],
+    children: [
+      { path: 'cardapio', component: CardapioComponent },
+      { path: 'pedidos', component: PedidosComponent },
+      { path: 'pagamentos', component: PagamentosComponent },
+      { path: 'ajuda', component: AjudaComponent },
+      { path: '', component: InicioComponent, pathMatch: 'full' },
+    ],
+  },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
