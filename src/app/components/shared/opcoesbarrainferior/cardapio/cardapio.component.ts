@@ -32,22 +32,18 @@ export class CardapioComponent implements OnInit, OnDestroy {
     private produtoService: ProdutoService,
     private barraInferiorService: BarraInferiorService,
     private snackBar: MatSnackBar,
-    public themeService: ThemeService, // Injetar o ThemeService
+    public themeService: ThemeService,
     private renderer: Renderer2,
     private el: ElementRef
-  ) {
-    console.log('CardapioComponent construído');
-  }
+  ) {}
 
   ngOnInit(): void {
-    console.log('CardapioComponent inicializado');
     this.logAppliedStyles();
 
     // Inscrever-se para mudanças de tema.
     this.themeSubscription = this.themeService.themeChanged.subscribe(
       (themeType: ThemeType) => {
         this.isDarkTheme = themeType === ThemeType.Dark;
-        console.log('Tema alterado para:', themeType);
       }
     );
   }
@@ -60,7 +56,6 @@ export class CardapioComponent implements OnInit, OnDestroy {
   }
 
   trackByCategoria(index: number, categoria: Categoria): string {
-    console.log(`Rastreando categoria: ${categoria.nome} no índice: ${index}`);
     return categoria.nome;
   }
 
@@ -69,7 +64,6 @@ export class CardapioComponent implements OnInit, OnDestroy {
     // Isto só funcionará se a view já estiver inicializada e os estilos aplicados
     setTimeout(() => {
       const componentStyles = getComputedStyle(this.el.nativeElement);
-      console.log('Estilos computados do CardapioComponent:', componentStyles);
     }, 0);
   }
 }

@@ -1,3 +1,4 @@
+<!-- barradenavegacaoinferior.component.html -->
 <mat-toolbar color="primary" class="barradenavegacaoinferior">
   <ng-container *ngFor="let opcao of opcoesEsquerda">
     <span class="opcaonavegacao" [routerLink]="opcao.rota">
@@ -9,10 +10,9 @@
       </div>
     </span>
   </ng-container>
-  <span
-    class="opcaonavegacao opcaonavegacaocentro"
-    [routerLink]="tipoUsuario === UserType.Admin ? '/admin' : '/client'"
-  >
+
+  <!-- Link de início atualizado para chamar irParaInicio() -->
+  <span class="opcaonavegacao opcaonavegacaocentro" (click)="irParaInicio()">
     <div class="containericone">
       <mat-icon>home</mat-icon>
     </div>

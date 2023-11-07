@@ -18,6 +18,7 @@ import {
 } from '../../../services/navegacao/tipos.service';
 import { RotaService } from '../../../services/navegacao/rota.service';
 import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
+import { MesaService } from '../../../services/mesa/mesa.service';
 
 @Component({
   selector: 'barradenavegacaoinferior',
@@ -39,6 +40,7 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
   constructor(
     private servicodenavegacao: ServicoDeNavegacao,
     private rotaService: RotaService,
+    private mesaService: MesaService,
     private el: ElementRef<HTMLElement>,
     private barraInferiorService: BarraInferiorService,
     private cdr: ChangeDetectorRef
@@ -54,6 +56,22 @@ export class BarradeNavegacaoInferiorComponent implements OnInit, OnDestroy {
     );
 
     this.setAlturaBarraInferior();
+  }
+
+  irParaInicio(): void {
+    console.log('BarradeNavegacaoInferiorComponent: irParaInicio');
+    if (this.servicodenavegacao.tipoUsuario === UserType.Admin) {
+      console.log('Redirecionando para admin');
+      this.rotaService.irPara('/admin');
+    } else {
+      const numeroDaMesa = this.mesaService.obterNumeroDaMesa();
+      console.log('Número da mesa obtido:', numeroDaMesa);
+      const rotaInicio = numeroDaMesa
+        ? `/client/mesa${numeroDaMesa}`
+        : '/client';
+      console.log('Redirecionando para:', rotaInicio);
+      this.rotaService.irPara(rotaInicio);
+    }
   }
 
   ngOnDestroy(): void {
