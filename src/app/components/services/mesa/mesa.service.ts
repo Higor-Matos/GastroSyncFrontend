@@ -27,9 +27,7 @@ export class MesaService {
       this.baseUrl
     }?numeromesa=${numeroDaMesa}&local=${encodeURIComponent(local)}`;
     const options = {
-      headers: new HttpHeaders({
-        // Adicione cabeçalhos específicos se necessário
-      }),
+      headers: new HttpHeaders({}),
     };
 
     return this.http
