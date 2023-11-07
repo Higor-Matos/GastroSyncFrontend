@@ -5,8 +5,8 @@
 @include mat.core();
 
 // Importação dos temas
-@import "./styles/themes/light-theme";
-@import "./styles/themes/dark-theme";
+@import "./styles/themes/_light-theme";
+@import "./styles/themes/_dark-theme";
 
 // Estilos base
 *:not(mat-icon) {

@@ -1,25 +1,17 @@
-@use "@angular/material" as mat;
+// _dark-theme.scss
 
-$ifood-dark-primary: mat.define-palette(mat.$grey-palette, 800);
-$ifood-dark-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
-$ifood-dark-warn: mat.define-palette(mat.$red-palette, 800);
-$custom-background: #d6d6d6;
-$custom-text: #000000; // cor preta para o texto
-$custom-shadow: rgba(0, 0, 0, 0.24); // Sombra personalizada
+$ifood-dark-primary: #424242; // Cinza 800
+$ifood-dark-accent: #ff5252; // Vermelho A200
+$ifood-dark-warn: #d32f2f; // Vermelho 800
+$custom-background-dark: #d6d6d6; // Fundo para tema escuro
+$custom-text-dark: #000000; // Texto claro para o tema escuro
+$custom-shadow-dark: rgba(0, 0, 0, 0.24); // Sombra personalizada
 
-$ifood-dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $ifood-dark-primary,
-      accent: $ifood-dark-accent,
-      warn: $ifood-dark-warn,
-      text: $custom-text,
-      background: $custom-background,
-    ),
-  )
-);
-
+// Tema escuro para componentes do Angular Material
 .ifood-dark-theme {
+  background-color: $custom-background-dark;
+  color: $custom-text-dark;
+
   .mat-expansion-panel,
   .mat-expansion-panel-header,
   .mat-card,
@@ -29,9 +21,9 @@ $ifood-dark-theme: mat.define-dark-theme(
   .product-accordion,
   .mat-expansion-panel-body,
   .mat-expansion-panel-header-title {
-    box-shadow: 0px 4px 6px $custom-shadow;
-    color: $custom-text;
-    background-color: $custom-background; // Set the custom background color for expansion panels
+    box-shadow: 0px 4px 6px $custom-shadow-dark;
+    color: $custom-text-dark;
+    background-color: $custom-background-dark; // Define a cor de fundo personalizada para painéis expansíveis
   }
 
   .mat-expansion-panel,
@@ -44,27 +36,28 @@ $ifood-dark-theme: mat.define-dark-theme(
   }
 
   .product-card {
-    background-color: $custom-background;
-    box-shadow: 0 2px 10px $custom-shadow;
+    background-color: $custom-background-dark;
+    box-shadow: 0 2px 10px $custom-shadow-dark;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px 10px 10px 0px;
+    margin: 10px;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 12px $custom-shadow;
+      box-shadow: 0 4px 12px $custom-shadow-dark;
     }
   }
 
   .price {
     font-weight: bold;
     margin-top: auto;
-    color: #0279eb;
+    color: #0279eb; // Mantém a cor azul para o preço
   }
 
   .mat-toolbar {
-    background-color: mat.get-color-from-palette($ifood-dark-primary, 900);
+    background-color: darken($ifood-dark-primary, 10%);
+    color: #ffffff;
   }
 
   .food-order-button {
@@ -97,6 +90,4 @@ $ifood-dark-theme: mat.define-dark-theme(
       outline: none;
     }
   }
-
-  background-color: $custom-background;
 }
