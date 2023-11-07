@@ -39,7 +39,7 @@ export class InicioComponent implements OnInit {
 
     this.barraInferiorService.alturaBarraInferior$.subscribe(
       (altura: number) => {
-        console.log('Altura recebida do serviço:', altura); // Log para depuração
+        console.log('Altura recebida do serviço:', altura);
         this.updateContainerStyle(altura);
       }
     );
@@ -47,7 +47,7 @@ export class InicioComponent implements OnInit {
 
   private updateContainerStyle(alturaBarraInferior: number): void {
     const alturaDisponivel = window.innerHeight - alturaBarraInferior;
-    console.log('Altura disponível:', alturaDisponivel); // Log para depuração
+    console.log('Altura disponível:', alturaDisponivel);
     const container = this.el.nativeElement.querySelector('.container');
     if (container) {
       this.renderer.setStyle(
