@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LocalMesaService } from './localmesa.service';
 
@@ -35,9 +36,15 @@ export class MesaService {
       .pipe(catchError(this.handleError('criarMesa')));
   }
 
+  private numeroDaMesaSource = new BehaviorSubject<number | null>(
+    this.obterNumeroDaMesa()
+  );
+  numeroDaMesaAtual$ = this.numeroDaMesaSource.asObservable(); // $ é uma convenção para Observable
+
   armazenarNumeroDaMesa(numeroDaMesa: number): void {
     console.log(`Armazenando número da mesa: ${numeroDaMesa}`);
     localStorage.setItem('numeroDaMesa', numeroDaMesa.toString());
+    this.numeroDaMesaSource.next(numeroDaMesa); // Atualiza o BehaviorSubject com o novo número
   }
 
   obterNumeroDaMesa(): number | null {
