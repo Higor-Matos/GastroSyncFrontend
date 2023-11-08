@@ -1,0 +1,55 @@
+/* Nome do arquivo: ajuda.component.scss */
+.info-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--altura-barra-inferior, 0px));
+  width: 100%;
+  animation: fadeInUp 0.5s ease-out forwards;
+  flex-direction: column;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 650px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Garante que o texto não sairá do card principal */
+
+  .info-gif {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .developer-info {
+    width: 93.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px; /* Reduzi o espaçamento interno para 10px */
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+
+    p,
+    div,
+    ul,
+    li {
+      margin: 0;
+      padding: 2px 0; /* Reduzi o espaçamento interno para 4px verticalmente */
+      list-style: none;
+    }
+
+    p {
+      margin-bottom: 5px; /* Reduzi a margem inferior para 5px */
+    }
+
+    div {
+      margin-bottom: 10px; /* Reduzi a margem inferior para 10px */
+    }
+
+    ul {
+      margin-top: 3px; /* Reduzi a margem superior para 3px */
+    }
+
+    li {
+      margin-bottom: 3px; /* Reduzi a margem inferior para 3px */
+    }
+  }
+}
