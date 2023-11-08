@@ -52,9 +52,10 @@ export class MesaResolverGuard implements CanActivate {
     }
 
     // Se não houver mesa na sessão, redireciona para o caminho padrão
-    console.log('Nenhuma mesa salva encontrada, redirecionando para /client');
-    const urlTree = this.router.createUrlTree(['/client']);
-    return of(urlTree);
+    console.log(
+      'Nenhum número de mesa fornecido, ativando a rota padrão /client'
+    );
+    return of(true);
   }
 
   // Método para tratar erros e redirecionar conforme necessário
