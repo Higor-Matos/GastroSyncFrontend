@@ -3,13 +3,16 @@
   class="gs-menu-flutuante"
   [ngClass]="{ claro: temaClaro, escuro: !temaClaro }"
 >
-  <!-- Botão para alternar o tema com nova classe aplicada -->
-  <button class="gs-menu-button" mat-icon-button (click)="alternarTema()">
+  <!-- Botão para alternar o tema com classe específica 'tema' aplicada -->
+  <button class="gs-menu-button tema" mat-icon-button (click)="alternarTema()">
     <mat-icon>{{ iconeTema }}</mat-icon>
   </button>
-  <!-- Exibe o número da mesa com nova classe aplicada -->
-  <button class="gs-menu-button" mat-icon-button *ngIf="numeroMesa">
-    <mat-icon>restaurant</mat-icon>
-    <span>Mesa {{ numeroMesa }}</span>
+  <!-- Exibe o número da mesa com classe específica 'mesa' aplicada -->
+  <button class="gs-menu-button mesa" mat-icon-button *ngIf="numeroMesa">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3437/3437521.png"
+      class="icone-mesa"
+    />
+    <span class="texto-mesa">{{ numeroMesa }}</span>
   </button>
 </div>
