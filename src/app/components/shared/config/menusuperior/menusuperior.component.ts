@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ThemeService, ThemeType } from '../../../services/tema/theme.service';
 import { MesaService } from '../../../services/mesa/mesa.service';
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-menu-superior',
   templateUrl: './menusuperior.component.html',
   styleUrls: ['./menusuperior.component.scss'],
 })
-export class MenuSuperiorComponent implements OnInit {
+export class MenuSuperiorComponent implements OnInit, OnDestroy {
   iconeTema = 'wb_sunny';
   numeroMesa: number | null = null;
   temaClaro = true; // Inicialmente definido como tema claro
+  private mesaSubscription!: Subscription;
 
   constructor(
     private themeService: ThemeService,
@@ -18,12 +19,21 @@ export class MenuSuperiorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.mesaSubscription = this.mesaService.numeroDaMesaAtual$.subscribe(
+      (numeroMesa: number | null) => {
+        this.numeroMesa = numeroMesa;
+      }
+    );
     this.obterNumeroMesa();
     this.atualizarEstadoTema();
     this.themeService.themeChanged.subscribe((theme: ThemeType) => {
       this.temaClaro = theme === ThemeType.Light;
       this.atualizarIconeTema();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.mesaSubscription.unsubscribe();
   }
 
   alternarTema(): void {
