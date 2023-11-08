@@ -1,8 +1,15 @@
-<button
-  mat-icon-button
-  (click)="alternartema()"
-  [@rotate]="rotateState"
-  class="botao-icone-tema"
+<!-- menusuperior.component.html -->
+<div
+  class="gs-menu-flutuante"
+  [ngClass]="{ claro: temaClaro, escuro: !temaClaro }"
 >
-  <mat-icon>{{ iconeTema }}</mat-icon>
-</button>
+  <!-- Botão para alternar o tema com nova classe aplicada -->
+  <button class="gs-menu-button" mat-icon-button (click)="alternarTema()">
+    <mat-icon>{{ iconeTema }}</mat-icon>
+  </button>
+  <!-- Exibe o número da mesa com nova classe aplicada -->
+  <button class="gs-menu-button" mat-icon-button *ngIf="numeroMesa">
+    <mat-icon>restaurant</mat-icon>
+    <span>Mesa {{ numeroMesa }}</span>
+  </button>
+</div>

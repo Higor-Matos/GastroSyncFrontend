@@ -8,7 +8,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [CardapioComponent, AjudaComponent, InicioComponent],
   imports: [
@@ -18,7 +18,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatExpansionModule,
     MatIconModule,
     MatSnackBarModule,
+    MatMenuModule,
   ],
-  exports: [CardapioComponent, AjudaComponent, InicioComponent],
+  exports: [CardapioComponent, AjudaComponent, InicioComponent, MatMenuModule],
 })
 export class SharedModule {}

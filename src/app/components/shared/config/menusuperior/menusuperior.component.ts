@@ -1,42 +1,48 @@
-import { Component } from '@angular/core';
-import { ThemeService } from '../../../services/tema/theme.service';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-} from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { ThemeService, ThemeType } from '../../../services/tema/theme.service';
+import { MesaService } from '../../../services/mesa/mesa.service';
 
 @Component({
-  selector: 'alternartema',
+  selector: 'app-menu-superior',
   templateUrl: './menusuperior.component.html',
   styleUrls: ['./menusuperior.component.scss'],
-  animations: [
-    trigger('rotate', [
-      state('default', style({ transform: 'rotate(0)' })),
-      state('rotated', style({ transform: 'rotate(360deg)' })),
-      transition('default <=> rotated', animate('400ms ease-out')),
-    ]),
-  ],
 })
-export class AlterarTemaComponent {
+export class MenuSuperiorComponent implements OnInit {
   iconeTema = 'wb_sunny';
-  rotateState: string = 'default';
+  numeroMesa: number | null = null;
+  temaClaro = true; // Inicialmente definido como tema claro
 
-  constructor(private themeService: ThemeService) {
-    this.updateIcon();
+  constructor(
+    private themeService: ThemeService,
+    private mesaService: MesaService
+  ) {}
+
+  ngOnInit(): void {
+    this.obterNumeroMesa();
+    this.atualizarEstadoTema();
+    this.themeService.themeChanged.subscribe((theme: ThemeType) => {
+      this.temaClaro = theme === ThemeType.Light;
+      this.atualizarIconeTema();
+    });
   }
 
-  alternartema(): void {
+  alternarTema(): void {
     this.themeService.toggleTheme();
-    this.updateIcon();
-    this.rotateState = this.rotateState === 'default' ? 'rotated' : 'default';
   }
 
-  private updateIcon(): void {
+  private atualizarIconeTema(): void {
     this.iconeTema = this.themeService.isDarkTheme()
       ? 'brightness_2'
       : 'wb_sunny';
+  }
+
+  obterNumeroMesa(): void {
+    this.numeroMesa = this.mesaService.obterNumeroDaMesa();
+  }
+
+  private atualizarEstadoTema(): void {
+    this.temaClaro =
+      this.themeService.getCurrentThemeClass() === ThemeType.Light;
+    this.atualizarIconeTema();
   }
 }
