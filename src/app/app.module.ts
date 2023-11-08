@@ -14,13 +14,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
 // Componentes e módulos da aplicação
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlterarTemaComponent } from './components/shared/config/menusuperior/menusuperior.component';
+import { MenuSuperiorComponent } from './components/shared/config/menusuperior/menusuperior.component';
 import { BarradeNavegacaoInferiorComponent } from './components/shared/config/barradenavegacaoinferior/barradenavegacaoinferior.component';
 import { SharedModule } from './components/shared/module/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    AlterarTemaComponent,
+    MenuSuperiorComponent,
     BarradeNavegacaoInferiorComponent,
   ],
   imports: [

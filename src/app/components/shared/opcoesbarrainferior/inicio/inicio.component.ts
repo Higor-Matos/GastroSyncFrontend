@@ -34,7 +34,7 @@ export class InicioComponent implements OnInit {
     private barraInferiorService: BarraInferiorService,
     private renderer: Renderer2,
     private el: ElementRef,
-    private cdRef: ChangeDetectorRef // Adicionando ChangeDetectorRef
+    private cdRef: ChangeDetectorRef
   ) {
     this.isDarkTheme = this.themeService.isDarkTheme();
   }

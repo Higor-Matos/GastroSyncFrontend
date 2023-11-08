@@ -1,31 +1,51 @@
-.botao-icone-tema {
+/* menu-superior.component.scss */
+
+.gs-menu-flutuante {
   position: fixed;
   top: 10px;
-  right: 10px; // Posição padrão
-  border-radius: 70%;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-  z-index: 1100;
-  display: flex; // Para alinhamento do ícone
-  align-items: center; // Alinha verticalmente ao centro
-  justify-content: center; // Alinha horizontalmente ao centro
+  left: 10px;
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  background-color: transparent; /* Define o fundo como transparente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para efeito flutuante */
+}
 
-  .botao-icone-tema .mat-icon {
-    color: black !important; // Isso vai definir a cor do ícone para preto
-  }
+/* Estilos para o tema claro */
+.gs-menu-flutuante.claro {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.87);
+}
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+/* Estilos para o tema escuro */
+.gs-menu-flutuante.escuro {
+  background-color: #d6d6d6;
+  color: #fff;
+}
+/* menu-superior.component.scss */
 
-  // Estilos específicos para dispositivos móveis ou telas pequenas
-  @media (max-width: 480px) {
-    right: 20px; // Ajuste o posicionamento para dispositivos móveis
+.gs-menu-button {
+  background-color: transparent; /* Fundo transparente */
+  border: none; /* Remove a borda */
+  box-shadow: none; /* Remove sombra */
+  outline: none; /* Remove o contorno ao focar */
+  // Adicione outras propriedades conforme necessário
+}
 
-    .mat-icon {
-      font-size: 20px; // Reduza o tamanho do ícone para dispositivos móveis
-    }
-  }
+/* Estilos para botões dentro do menu flutuante */
+.gs-menu-flutuante .mat-icon-button {
+  color: inherit;
+  margin-right: 10px;
+  background-color: transparent; /* Remove o fundo padrão */
+  border: none; /* Remove bordas */
+  outline: none; /* Remove contornos quando o botão é focado */
+  box-shadow: none; /* Remove sombras internas do botão */
+  border-radius: 0; /* Remove o raio da borda para torná-lo completamente quadrado, se desejado */
+}
+
+/* Estilos para ícones dentro do menu flutuante */
+.gs-menu-flutuante .mat-icon {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para os ícones */
 }
