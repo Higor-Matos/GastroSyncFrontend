@@ -13,9 +13,19 @@ $custom-shadow-dark: rgba(0, 0, 0, 0.24);
   background-color: $custom-background-dark;
   color: $custom-text-dark;
 
+  .toast {
+    background: #424242;
+    color: #f5f5f5;
+  }
+
   .mat-toolbar {
     background-color: darken($ifood-dark-primary, 10%);
     color: #ffffff;
+  }
+
+  .dark-theme-snackbar {
+    color: white;
+    background: #292929;
   }
 
   .price {

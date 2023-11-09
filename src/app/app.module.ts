@@ -17,11 +17,14 @@ import { AppComponent } from './app.component';
 import { MenuSuperiorComponent } from './components/shared/config/menusuperior/menusuperior.component';
 import { BarradeNavegacaoInferiorComponent } from './components/shared/config/barradenavegacaoinferior/barradenavegacaoinferior.component';
 import { SharedModule } from './components/shared/module/shared.module';
+import { ToastComponent } from './components/shared/config/toast/toast.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MenuSuperiorComponent,
     BarradeNavegacaoInferiorComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,6 @@ import { SharedModule } from './components/shared/module/shared.module';
     MatIconModule,
     MatToolbarModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

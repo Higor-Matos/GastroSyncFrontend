@@ -42,11 +42,20 @@ export class ThemeService {
   }
 
   private setTheme(theme: ThemeType): void {
-    const classList = this.overlayContainer.getContainerElement().classList;
+    const overlayContainerElement = this.overlayContainer.getContainerElement();
+    const classList = overlayContainerElement.classList;
     const bodyClassList = document.body.classList;
+
+    // Limpar os temas existentes
     classList.remove(ThemeType.Light, ThemeType.Dark);
     bodyClassList.remove(ThemeType.Light, ThemeType.Dark);
+
+    // Aplicar o novo tema
     classList.add(theme);
+    bodyClassList.add(theme);
+
+    // Este passo é crítico para garantir que o tema seja aplicado corretamente
+    this.renderer.addClass(overlayContainerElement, theme);
     this.renderer.addClass(document.body, theme);
   }
 }

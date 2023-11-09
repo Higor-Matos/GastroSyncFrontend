@@ -13,9 +13,19 @@ $custom-shadow: rgba(0, 0, 0, 0.24);
   background-color: $custom-background;
   color: $custom-text;
 
+  .toast {
+    background: #e53935;
+    color: #f5f5f5;
+  }
+
   .mat-toolbar {
     background-color: $ifood-primary;
-    color: #fff;
+    color: $custom-background;
+  }
+
+  .light-theme-snackbar {
+    color: $custom-background;
+    background: $ifood-primary;
   }
 
   .price {

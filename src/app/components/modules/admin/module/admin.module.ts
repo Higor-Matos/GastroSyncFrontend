@@ -4,10 +4,11 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../../../shared/module/shared.module';
 import { CoverComponent } from '../cover/cover.component';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms'; // Importe FormsModule
-import { MatFormFieldModule } from '@angular/material/form-field'; // Importe MatFormFieldModule
-import { MatInputModule } from '@angular/material/input'; // Importe MatInputModule
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // Importe MatSlideToggleModule
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [CoverComponent],
@@ -17,10 +18,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // Import
     SharedModule,
     MatCardModule,
     CommonModule,
-    FormsModule, // Adicione FormsModule aqui
-    MatFormFieldModule, // Adicione MatFormFieldModule aqui
+    FormsModule,
+    MatFormFieldModule,
     MatInputModule,
-    MatSlideToggleModule, // Importe MatSlideToggleModule aqui
+    MatSlideToggleModule,
+    MatSnackBarModule,
   ],
 })
 export class AdminModule {}
