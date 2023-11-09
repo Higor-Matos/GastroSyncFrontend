@@ -24,6 +24,12 @@
   border-radius: 10px;
 }
 
+.minimalist-divider {
+  width: 60%; // Largura do traço
+  margin: 8px auto; // Centraliza e adiciona um espaçamento vertical
+  border-top: 1px solid #080808;
+}
+
 // Animação de "pulse" para o GIF de informação
 .info-gif {
   // A animação será executada apenas uma vez

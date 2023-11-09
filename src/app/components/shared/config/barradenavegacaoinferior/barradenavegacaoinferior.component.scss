@@ -15,6 +15,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 1050;
 }
 
 .opcaonavegacao {
@@ -30,6 +31,7 @@
 }
 
 .opcaonavegacao:hover {
+  /* Adicionando animação de aumento suave ao passar o cursor */
   transform: scale(1.05);
 }
 

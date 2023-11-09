@@ -43,7 +43,7 @@ export class CoverComponent implements OnInit, OnDestroy {
         this.renderer.removeClass(this.el.nativeElement, ThemeType.Light);
         this.renderer.removeClass(this.el.nativeElement, ThemeType.Dark);
         this.renderer.addClass(this.el.nativeElement, theme);
-        console.log('CoverComponent inicializado.'); // Log no início do ngOnInit
+        console.log('CoverComponent inicializado.');
       }
     );
 
@@ -57,29 +57,21 @@ export class CoverComponent implements OnInit, OnDestroy {
     this.coverService.getStatusCover().subscribe((response) => {
       this.coverActive = response.data.isCoverAtivo;
       this.valorCover = response.data.valorCover;
-      console.log('Status do cover recebido:', response.data); // Log após receber a resposta
+      console.log('Status do cover recebido:', response.data);
     });
   }
 
   ngOnDestroy() {
     if (this.themeSubscription) {
       this.themeSubscription.unsubscribe();
-      console.log('CoverComponent sendo destruído.'); // Log no início do ngOnDestroy
     }
   }
 
   toggleCoverStatus() {
     this.coverService.toggleCoverStatus(!this.coverActive).subscribe(() => {
       this.coverActive = !this.coverActive;
-      const message = this.coverActive
-        ? 'Cover ativado com sucesso.'
-        : 'Cover desativado com sucesso.';
-
-      // Chama o serviço de toast para exibir a mensagem
-      // Observe que não estamos mais passando 'this.viewContainerRef'
+      const message = this.coverActive ? 'Cover ativado.' : 'Cover desativado.';
       this.toastService.showToast(message);
-
-      console.log(message); // Log da mensagem de ativação/desativação
     });
   }
 }
