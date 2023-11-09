@@ -1,9 +1,10 @@
 /* Nome do arquivo: cover.component.scss */
+
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - var(--altura-barra-inferior, 0px));
   padding: 15px;
   box-sizing: border-box;
 }
@@ -12,14 +13,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; // Isso garante que o contêiner ocupe todo o espaço disponível
+  width: 100%;
 }
 
 .title-divider {
   height: 2px;
   background-color: #bdbdbd;
-  width: 100%; // Você pode ajustar para menos que 100% se quiser que a linha seja mais curta que o contêiner
-  margin: 1px 0; // Espaçamento acima e abaixo da linha
+  width: 100%;
+  margin: 1px 0;
 }
 
 .cover-card {
@@ -64,102 +65,8 @@
 
     .cover-status-text {
       font-size: 16px;
-      line-height: 36px; // Altura da linha para alinhar com o switch
-      margin-right: 8px; // Espaçamento entre o texto e o switch
-      // Remover estilos desnecessários se estiverem causando problemas
-    }
-
-    .toggler {
-      width: 72px;
-      margin: 20px 0;
-    }
-
-    .toggler input {
-      display: none;
-    }
-
-    .toggler label {
-      display: block;
-      position: relative;
-      width: 36px;
-      height: 18px;
-      border: 1px solid #d6d6d6;
-      border-radius: 18px;
-      background: #e4e8e8;
-      cursor: pointer;
-    }
-
-    .toggler label::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 25%;
-      width: 16px;
-      height: 16px;
-      border-radius: 100%;
-      background-color: #d7062a;
-      transform: translateY(-50%) translateX(-50%);
-      transition: left 0.15s ease-in-out, background-color 0.2s ease-out,
-        width 0.15s ease-in-out, height 0.15s ease-in-out,
-        opacity 0.15s ease-in-out;
-      z-index: 1;
-    }
-
-    .toggler label .toggler-on,
-    .toggler label .toggler-off {
-      position: absolute;
-      top: 50%;
-      left: 25%;
-      transform: translateY(-50%) translateX(-50%);
-      transition: opacity 0.15s ease-in-out;
-      z-index: 2;
-    }
-
-    .toggler input:checked + label::after {
-      left: 75%;
-      background-color: #50ac5d;
-    }
-
-    .toggler input:checked + label .toggler-off,
-    .toggler input:not(:checked) + label .toggler-on {
-      opacity: 0;
-    }
-
-    .toggler input:not(:checked) + label .toggler-off,
-    .toggler input:checked + label .toggler-on {
-      opacity: 1;
-    }
-
-    .toggler .path {
-      fill: none;
-      stroke: #fefefe;
-      stroke-width: 7px;
-      stroke-linecap: round;
-      stroke-miterlimit: 10;
-    }
-
-    @keyframes toggler-size {
-      0%,
-      100% {
-        width: 26px;
-        height: 26px;
-      }
-      50% {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    @keyframes toggler-size2 {
-      0%,
-      100% {
-        width: 26px;
-        height: 26px;
-      }
-      50% {
-        width: 20px;
-        height: 20px;
-      }
+      line-height: 36px;
+      margin-right: 8px;
     }
   }
 }
