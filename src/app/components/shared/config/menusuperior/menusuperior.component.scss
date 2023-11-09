@@ -1,6 +1,7 @@
 /* menu-superior.component.scss */
 
 .gs-menu-flutuante {
+  animation: slideInTop 0.5s ease-out forwards;
   height: 18px;
   position: fixed;
   top: 15px;
@@ -70,4 +71,14 @@
   display: block;
   font-size: 0.9rem;
   font-weight: 500;
+}
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
