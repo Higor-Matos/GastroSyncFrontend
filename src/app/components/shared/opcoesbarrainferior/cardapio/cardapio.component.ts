@@ -27,6 +27,7 @@ export class CardapioComponent implements OnInit, OnDestroy {
     this.barraInferiorService.alturaBarraInferior$;
   isDarkTheme: boolean = false;
   private themeSubscription!: Subscription;
+  exibirOpcoesPedido: boolean = false;
 
   constructor(
     private produtoService: ProdutoService,
@@ -57,6 +58,10 @@ export class CardapioComponent implements OnInit, OnDestroy {
 
   trackByCategoria(index: number, categoria: Categoria): string {
     return categoria.nome;
+  }
+
+  mostrarOpcoesPedido() {
+    this.exibirOpcoesPedido = true;
   }
 
   private logAppliedStyles() {

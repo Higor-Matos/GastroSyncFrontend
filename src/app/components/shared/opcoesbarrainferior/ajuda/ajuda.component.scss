@@ -1,5 +1,4 @@
 /* Nome do arquivo: ajuda.component.scss */
-
 // Animação de "fade-in" para o componente ao ser carregado
 :host {
   animation: fadeIn ease 1s;
@@ -10,8 +9,7 @@
   overflow: hidden;
 }
 
-// Animação de "float" para o card de informações
-.info-card {
+.gs-info-card {
   animation: float 5s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -24,15 +22,13 @@
   border-radius: 10px;
 }
 
-.minimalist-divider {
-  width: 60%; // Largura do traço
-  margin: 8px auto; // Centraliza e adiciona um espaçamento vertical
+.gs-minimalist-divider {
+  width: 60%;
+  margin: 8px auto;
   border-top: 1px solid #080808;
 }
 
-// Animação de "pulse" para o GIF de informação
-.info-gif {
-  // A animação será executada apenas uma vez
+.gs-info-gif {
   animation: pulse 2s forwards;
   max-width: 100%;
   height: auto;
@@ -40,7 +36,7 @@
   box-shadow: none;
 }
 
-.developer-info {
+.gs-developer-info {
   width: 100%;
   border-radius: 10px;
   padding: 10px;
@@ -49,7 +45,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-// Keyframes para a animação de "fade-in"
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -59,7 +54,6 @@
   }
 }
 
-// Keyframes para a animação de "float"
 @keyframes float {
   0%,
   100% {
@@ -70,7 +64,6 @@
   }
 }
 
-// Keyframes para a animação de "pulse"
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -80,5 +73,35 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 320px) {
+  :host {
+    padding-top: var(--altura-segura-topo, 20px);
+    padding-bottom: var(--altura-barra-inferior, 10px);
+    overflow: auto;
+  }
+
+  .gs-info-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    display: block;
+  }
+
+  .gs-info-gif {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .gs-minimalist-divider {
+    width: 100%;
   }
 }
