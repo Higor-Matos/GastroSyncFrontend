@@ -1,0 +1,20 @@
+<mat-expansion-panel
+  [class]="themeService.getCurrentThemeClass()"
+  [expanded]="true"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon>{{ categoria.icon }}</mat-icon>
+      <span>{{ categoria.nome }}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="product-grid">
+    <app-produto
+      *ngFor="let produto of categoria.produtos; let i = index"
+      [produto]="produto"
+    ></app-produto>
+    <p *ngIf="categoria.produtos.length === 0">
+      Não há produtos disponíveis em {{ categoria.nome }}.
+    </p>
+  </div>
+</mat-expansion-panel>
