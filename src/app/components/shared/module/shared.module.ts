@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [CardapioComponent, AjudaComponent, InicioComponent],
@@ -20,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatDividerModule,
   ],
   exports: [CardapioComponent, AjudaComponent, InicioComponent, MatMenuModule],
 })
