@@ -1,1 +1,60 @@
-<p>cover works!</p>
+<mat-card class="cover-card">
+  <mat-card-header>
+    <div class="header-content">
+      <mat-card-title>Cover do Dia</mat-card-title>
+      <div class="title-divider"></div>
+      <!-- Linha divisória abaixo do título -->
+    </div>
+  </mat-card-header>
+  <mat-card-content class="cover-display">
+    <h2>{{ coverName }}</h2>
+    <img mat-card-image [src]="coverImageUrl" alt="Cover Image" />
+  </mat-card-content>
+
+  <mat-card-actions class="cover-status">
+    <span class="cover-status-text"><b>Cobrança cover:</b></span>
+    <div class="toggler">
+      <input
+        id="toggler-1"
+        name="toggler-1"
+        type="checkbox"
+        [checked]="coverActive"
+        (change)="toggleCoverStatus()"
+      />
+      <label for="toggler-1">
+        <svg
+          class="toggler-on"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 130.2 130.2"
+        >
+          <polyline
+            class="path check"
+            points="100.2,40.2 51.5,88.8 29.8,67.5"
+          ></polyline>
+        </svg>
+        <svg
+          class="toggler-off"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 130.2 130.2"
+        >
+          <line
+            class="path line"
+            x1="34.4"
+            y1="34.4"
+            x2="95.8"
+            y2="95.8"
+          ></line>
+          <line
+            class="path line"
+            x1="95.8"
+            y1="34.4"
+            x2="34.4"
+            y2="95.8"
+          ></line>
+        </svg>
+      </label>
+    </div>
+  </mat-card-actions>
+</mat-card>
