@@ -1,0 +1,44 @@
+/* produto.component.scss */
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 230px;
+  width: 100%;
+}
+
+.product-image {
+  object-fit: cover;
+  height: 100%;
+  width: 50%;
+  order: -1;
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.food-order-button {
+  margin-top: auto;
+}

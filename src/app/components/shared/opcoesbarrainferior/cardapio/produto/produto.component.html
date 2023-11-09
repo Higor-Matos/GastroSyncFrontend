@@ -1,0 +1,16 @@
+<mat-card class="product-card">
+  <div class="product-content">
+    <div class="product-info">
+      <h3>{{ produto.nome }}</h3>
+      <p class="product-description">{{ produto.descricao }}</p>
+      <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
+    </div>
+    <button class="food-order-button">Pedir</button>
+  </div>
+  <img
+    mat-card-image
+    [src]="produto.imageUrl"
+    alt="{{ produto.nome }}"
+    class="product-image"
+  />
+</mat-card>

@@ -1,45 +1,8 @@
-<!-- cardapio.component.html -->
 <div [style.padding-bottom.px]="alturaBarraInferior$ | async">
   <mat-accordion class="product-accordion" multi>
-    <ng-container
+    <app-categoria
       *ngFor="let categoria of categorias$ | async; trackBy: trackByCategoria"
-    >
-      <mat-expansion-panel
-        [class]="themeService.getCurrentThemeClass()"
-        [expanded]="true"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon>{{ categoria.icon }}</mat-icon>
-            <span>{{ categoria.nome }}</span>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="product-grid">
-          <ng-container
-            *ngFor="let produto of categoria.produtos; let i = index"
-          >
-            <mat-card class="product-card">
-              <div class="product-content">
-                <div class="product-info">
-                  <h3>{{ produto.nome }}</h3>
-                  <p class="product-description">{{ produto.descricao }}</p>
-                  <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
-                </div>
-                <button class="food-order-button">Pedir</button>
-              </div>
-              <img
-                mat-card-image
-                [src]="produto.imageUrl"
-                alt="{{ produto.nome }}"
-                class="product-image"
-              />
-            </mat-card>
-          </ng-container>
-          <p *ngIf="categoria.produtos.length === 0">
-            Não há produtos disponíveis em {{ categoria.nome }}.
-          </p>
-        </div>
-      </mat-expansion-panel>
-    </ng-container>
+      [categoria]="categoria"
+    ></app-categoria>
   </mat-accordion>
 </div>
