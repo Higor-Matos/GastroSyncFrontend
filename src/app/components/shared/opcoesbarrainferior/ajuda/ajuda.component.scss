@@ -1,55 +1,78 @@
 /* Nome do arquivo: ajuda.component.scss */
-.info-card {
+
+// Animação de "fade-in" para o componente ao ser carregado
+:host {
+  animation: fadeIn ease 1s;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--altura-barra-inferior, 0px));
-  width: 100%;
-  animation: fadeInUp 0.5s ease-out forwards;
+  height: calc(100vh - var(--altura-barra-inferior, 0px));
+  overflow: hidden;
+}
+
+// Animação de "float" para o card de informações
+.info-card {
+  animation: float 5s ease-in-out;
+  display: flex;
   flex-direction: column;
-  padding: 20px;
-  margin: 20px auto;
+  align-items: center;
   max-width: 650px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  overflow: hidden; /* Garante que o texto não sairá do card principal */
+  border-radius: 10px;
+}
 
-  .info-gif {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+// Animação de "pulse" para o GIF de informação
+.info-gif {
+  // A animação será executada apenas uma vez
+  animation: pulse 2s forwards;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  box-shadow: none;
+}
+
+.developer-info {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  background: inherit;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+// Keyframes para a animação de "fade-in"
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
-  .developer-info {
-    width: 93.5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 10px; /* Reduzi o espaçamento interno para 10px */
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
+// Keyframes para a animação de "float"
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
 
-    p,
-    div,
-    ul,
-    li {
-      margin: 0;
-      padding: 2px 0; /* Reduzi o espaçamento interno para 4px verticalmente */
-      list-style: none;
-    }
-
-    p {
-      margin-bottom: 5px; /* Reduzi a margem inferior para 5px */
-    }
-
-    div {
-      margin-bottom: 10px; /* Reduzi a margem inferior para 10px */
-    }
-
-    ul {
-      margin-top: 3px; /* Reduzi a margem superior para 3px */
-    }
-
-    li {
-      margin-bottom: 3px; /* Reduzi a margem inferior para 3px */
-    }
+// Keyframes para a animação de "pulse"
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
