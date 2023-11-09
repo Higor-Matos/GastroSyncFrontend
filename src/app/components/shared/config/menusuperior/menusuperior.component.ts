@@ -3,6 +3,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ThemeService, ThemeType } from '../../../services/tema/theme.service';
 import { MesaService } from '../../../services/mesa/mesa.service';
+import { RotaService } from '../../../services/navegacao/rota.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,20 +13,25 @@ import { Subscription } from 'rxjs';
 })
 export class MenuSuperiorComponent implements OnInit, OnDestroy {
   iconeTema = 'wb_sunny';
-  numeroMesa: number | null = null;
+  numeroMesa: number | string | null = null;
   temaClaro = true;
   private subscriptions = new Subscription();
 
   constructor(
     private themeService: ThemeService,
-    private mesaService: MesaService
+    private mesaService: MesaService,
+    private rotaService: RotaService
   ) {}
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.mesaService.numeroDaMesaAtual$.subscribe(
-        (numeroMesa) => (this.numeroMesa = numeroMesa)
-      )
+      this.rotaService.onRouteChange.subscribe((url: string) => {
+        if (url.includes('/admin')) {
+          this.numeroMesa = 'Adm';
+        } else {
+          this.obterNumeroMesa();
+        }
+      })
     );
 
     this.subscriptions.add(
@@ -34,8 +40,6 @@ export class MenuSuperiorComponent implements OnInit, OnDestroy {
         this.iconeTema = this.temaClaro ? 'wb_sunny' : 'brightness_2';
       })
     );
-
-    this.obterNumeroMesa();
   }
 
   ngOnDestroy(): void {
