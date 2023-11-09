@@ -1,3 +1,4 @@
+<!-- produto.component.html -->
 <mat-card class="product-card">
   <div class="product-content">
     <div class="product-info">
@@ -5,7 +6,9 @@
       <p class="product-description">{{ produto.descricao }}</p>
       <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
     </div>
-    <button class="food-order-button">Pedir</button>
+    <button class="food-order-button" (click)="mostrarOpcoesPedido()">
+      Pedir
+    </button>
   </div>
   <img
     mat-card-image
@@ -14,3 +17,6 @@
     class="product-image"
   />
 </mat-card>
+
+<!-- Adicione a tag do componente "opcoespedido" com uma diretiva *ngIf para exibi-lo quando necessário -->
+<app-opcoespedido *ngIf="exibirOpcoesPedido"></app-opcoespedido>

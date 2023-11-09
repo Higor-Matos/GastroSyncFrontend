@@ -1,3 +1,4 @@
+// shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardapioComponent } from '../opcoesbarrainferior/cardapio/cardapio.component';
@@ -5,6 +6,7 @@ import { CategoriaComponent } from '../opcoesbarrainferior/cardapio/categoria/ca
 import { ProdutoComponent } from '../opcoesbarrainferior/cardapio/produto/produto.component';
 import { AjudaComponent } from '../opcoesbarrainferior/ajuda/ajuda.component';
 import { InicioComponent } from '../opcoesbarrainferior/inicio/inicio.component';
+import { OpcoespedidoComponent } from '../opcoesbarrainferior/cardapio/opcoespedido/opcoespedido.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -21,6 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ProdutoComponent,
     AjudaComponent,
     InicioComponent,
+    OpcoespedidoComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +43,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AjudaComponent,
     InicioComponent,
     MatMenuModule,
+    OpcoespedidoComponent,
   ],
 })
 export class SharedModule {}

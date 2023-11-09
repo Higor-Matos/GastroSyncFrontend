@@ -1,4 +1,3 @@
-// produto.component.ts
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Produto } from '../../../models/produto.model';
 
@@ -10,4 +9,9 @@ import { Produto } from '../../../models/produto.model';
 })
 export class ProdutoComponent {
   @Input() produto!: Produto;
+  exibirOpcoesPedido: boolean = false;
+
+  mostrarOpcoesPedido() {
+    this.exibirOpcoesPedido = true;
+  }
 }
