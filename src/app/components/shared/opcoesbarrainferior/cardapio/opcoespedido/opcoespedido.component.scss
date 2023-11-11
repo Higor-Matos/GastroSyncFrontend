@@ -1,1 +1,37 @@
-/* opcoespedido.component.scss */
+.cdk-overlay-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999 !important;
+}
+
+.mat-mdc-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-mdc-dialog-surface {
+  width: 300px; /* Tamanho padrão para dispositivos móveis */
+  height: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media query para telas maiores (ex: desktop) */
+@media (min-width: 768px) {
+  .mat-mdc-dialog-surface {
+    width: 900px; /* Tamanho maior para telas de desktop */
+    height: 600px;
+  }
+}

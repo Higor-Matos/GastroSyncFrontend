@@ -2,18 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "ng serve with Docker",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "docker-compose-up",
       "url": "http://localhost:4200/"
     },
     {
-      "name": "ng test",
+      "name": "ng test with Docker",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: test",
+      "preLaunchTask": "docker-compose-up",
       "url": "http://localhost:9876/debug.html"
-    }F
+    }
   ]
 }

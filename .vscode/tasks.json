@@ -3,6 +3,20 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "docker-compose-up",
+      "type": "shell",
+      "command": "docker-compose up",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
       "type": "npm",
       "script": "start",
       "isBackground": true,
