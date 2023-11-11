@@ -25,8 +25,8 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
   z-index: 1200;
 }
 
@@ -43,7 +43,7 @@
 
 @media (min-width: 768px) {
   .mat-mdc-dialog-surface {
-    width: 700px;
+    width: 500px;
     height: 400px;
   }
 }

@@ -1,0 +1,93 @@
+// consumidor.component.scss
+
+.gsc-card-consumidores {
+  max-width: 400px; // Garante que não ultrapasse o container pai
+  max-height: 100%; // Define a altura máxima para 100% do container pai
+  overflow-x: auto; // Habilita a rolagem horizontal se necessário
+  overflow-y: hidden; // Evita a rolagem vertical
+  flex-wrap: nowrap; // Itens em uma única linha
+
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  border-radius: 10px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.consumidor-item {
+  flex: 0 0 auto;
+  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.gsc-avatar-icon {
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.nome {
+  text-align: center;
+}
+
+.adicionar-consumidor .nome {
+  font-size: 12px;
+}
+
+.adicionar-consumidor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .gsc-card-consumidores {
+    max-width: 270px; // Ajusta para a largura total em dispositivos móveis
+    white-space: nowrap;
+    overflow-x: auto; // Scroll horizontal
+    overflow-y: hidden; // Sem scroll vertical
+    flex-wrap: nowrap; // Itens em uma única linha
+  }
+
+  .consumidor-item {
+    margin-right: 10px; // Reduz o espaçamento entre itens
+    display: inline-flex;
+  }
+
+  .avatar,
+  .gsc-avatar-icon {
+    width: 50px; // Reduz o tamanho dos avatares
+    height: 50px;
+    font-size: 50px;
+  }
+
+  .nome {
+    font-size: 13px; // Reduz o tamanho da fonte para os nomes
+  }
+
+  .adicionar-consumidor .nome {
+    font-size: 10px; // Tamanho da fonte para o ícone de adicionar
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
