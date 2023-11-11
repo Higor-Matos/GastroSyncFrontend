@@ -52,8 +52,13 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  @HostListener('click', ['$event'])
-  onOverlayClick(event: MouseEvent): void {
-    console.log('Clique no overlay detectado:', event);
+  acaoBotao1(): void {
+    console.log('Ação do botão 1');
+    // Implemente a lógica necessária aqui
+  }
+
+  acaoBotao2(): void {
+    console.log('Ação do botão 2');
+    // Implemente a lógica necessária aqui
   }
 }
