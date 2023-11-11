@@ -1,1 +1,18 @@
-<p>consumidor works!</p>
+<!-- consumidor.component.html -->
+
+<div class="gsc-card-consumidores">
+  <!-- Ícone para Adicionar Consumidor -->
+  <div
+    class="consumidor-item adicionar-consumidor"
+    (click)="adicionarConsumidor()"
+  >
+    <mat-icon class="gsc-avatar-icon">person_add</mat-icon>
+    <div class="nome">Adicionar Consumidor</div>
+  </div>
+
+  <!-- Avatares dos consumidores -->
+  <div *ngFor="let consumidor of consumidores" class="consumidor-item">
+    <img [src]="consumidor.avatar" class="avatar" alt="Avatar do Consumidor" />
+    <div class="nome">{{ consumidor.nome }}</div>
+  </div>
+</div>
