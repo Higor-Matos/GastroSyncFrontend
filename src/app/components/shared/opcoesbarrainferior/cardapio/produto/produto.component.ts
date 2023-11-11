@@ -79,6 +79,16 @@ export class ProdutoComponent {
       console.log('Diálogo fechado com resultado:', result);
       document.body.removeEventListener('click', clickListener);
       this.blurBackgroundService.disableBlur();
+      this.cdr.detectChanges();
+      this.subscribeToThemeChanges();
     });
+  }
+
+  private subscribeToThemeChanges() {
+    this.themeSubscription = this.themeService.themeChanged.subscribe(
+      (newTheme: ThemeType) => {
+        this.cdr.detectChanges();
+      }
+    );
   }
 }

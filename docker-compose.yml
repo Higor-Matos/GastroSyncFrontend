@@ -13,11 +13,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1'   
-          memory: 800M  
+          cpus: '2'   
+          memory: 1024M  
         reservations:
-          cpus: '0.5'     
-          memory: 400M    
+          cpus: '1'     
+          memory: 500M    
 
 networks:
   gastrosyncfrontend_elk_network:
