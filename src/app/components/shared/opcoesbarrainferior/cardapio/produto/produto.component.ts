@@ -15,10 +15,46 @@ export class ProdutoComponent {
 
   constructor(public dialog: MatDialog) {}
 
+  // produto.component.ts
+  // produto.component.ts
   abrirOpcoesPedido() {
-    this.dialog.open(OpcoespedidoComponent, {
-      width: '300px', // Ajuste conforme necessário
-      data: { produto: this.produto }, // Passe os dados que você precisa
+    console.log('Abrindo diálogo para o produto:', this.produto);
+
+    let dialogJustOpened = true;
+
+    const dialogRef = this.dialog.open(OpcoespedidoComponent, {
+      data: { produto: this.produto },
+      disableClose: false,
+      hasBackdrop: true,
+    });
+
+    dialogRef.afterOpened().subscribe(() => {
+      // Muda a flag para false após a abertura do diálogo
+      dialogJustOpened = false;
+    });
+
+    const clickListener = (event: MouseEvent) => {
+      if (dialogJustOpened) {
+        return;
+      }
+
+      const target = event.target as Element;
+      if (target?.closest('.cdk-overlay-container')) {
+        return;
+      }
+
+      dialogRef.close();
+      document.body.removeEventListener('click', clickListener);
+    };
+
+    // Adiciona o listener depois que o diálogo é aberto
+    setTimeout(() => {
+      document.body.addEventListener('click', clickListener);
+    }, 0);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Diálogo fechado com resultado:', result);
+      document.body.removeEventListener('click', clickListener);
     });
   }
 }

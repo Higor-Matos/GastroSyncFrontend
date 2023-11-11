@@ -11,7 +11,7 @@ import { LocalMesaService } from './localmesa.service';
   providedIn: 'root',
 })
 export class MesaService {
-  private baseUrl = 'https://localhost:8443/api/Mesa/CriarMesa';
+  private baseUrl = 'http://localhost:8080/api/Mesa/CriarMesa';
 
   constructor(
     private http: HttpClient,
