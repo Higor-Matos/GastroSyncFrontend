@@ -15,7 +15,7 @@ import { IconService } from './icon.service';
   providedIn: 'root',
 })
 export class ProdutoService {
-  private url = 'https://localhost:8443/api/Produto/RecuperarTodosProdutos';
+  private url = 'http://localhost:8080/api/Produto/RecuperarTodosProdutos';
 
   constructor(
     private http: HttpClient,

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CoverService {
-  private apiUrl: string = 'https://localhost:8443/api/Estabelecimento';
+  private apiUrl: string = 'http://localhost:8080/api/Estabelecimento';
 
   constructor(private http: HttpClient) {}
 

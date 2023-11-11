@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
     OpcoespedidoComponent,
   ],
   imports: [
+    MatDialogModule,
     CommonModule,
     MatCardModule,
     MatGridListModule,

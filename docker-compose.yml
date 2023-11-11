@@ -10,65 +10,14 @@ services:
       - ./:/app
     networks:
       - gastrosyncfrontend_elk_network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'   
+          memory: 800M  
+        reservations:
+          cpus: '0.5'     
+          memory: 400M    
 
-  #elasticsearch:
-    #container_name: elasticsearch-gastrosyncfrontend
-    #image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
-    #environment:
-      #- discovery.type=single-node
-      #- "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      #- ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-      #- xpack.security.enabled=true
-    #ports:
-      #- "9202:9200" 
-    #volumes:
-      #- esdata:/usr/share/elasticsearch/data
-    #networks:
-      #- gastrosyncfrontend_elk_network
-    #healthcheck:
-      #test: ["CMD-SHELL", "curl -sSL http://localhost:9200/_cluster/health?pretty || exit 1"]
-      #interval: 30s
-      #timeout: 30s
-      #retries: 3
-
-  #kibana:
-    #container_name: kibana-gastrosyncfrontend
-    #image: docker.elastic.co/kibana/kibana:7.15.0
-    #environment:
-      #- ELASTICSEARCH_URL=http://elasticsearch:9200
-      #- ELASTICSEARCH_USERNAME=elastic
-      #- ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
-    #ports:
-      #- "5603:5601" 
-    #volumes:
-      #- kbdata:/usr/share/kibana/data
-    #depends_on:
-      #- elasticsearch
-    #networks:
-      #- gastrosyncfrontend_elk_network
-    #healthcheck:
-      #test: ["CMD-SHELL", "curl -sSL http://localhost:5601 || exit 1"]
-      #interval: 30s
-      #timeout: 30s
-      #retries: 3
-
-  #apm-server:
-    #container_name: apm-server-gastrosyncfrontend
-    #image: docker.elastic.co/apm/apm-server:7.15.0
-    #depends_on:
-      #- elasticsearch
-    #environment:
-      #- output.elasticsearch.hosts=["http://elasticsearch:9200"]
-      #- output.elasticsearch.username=elastic
-      #- output.elasticsearch.password=${ELASTIC_PASSWORD}
-    #ports:
-      #- "8202:8200"
-    #networks:
-      #- gastrosyncfrontend_elk_network
-        
-#volumes:
-  #esdata:
-  #kbdata:
-    
 networks:
   gastrosyncfrontend_elk_network:

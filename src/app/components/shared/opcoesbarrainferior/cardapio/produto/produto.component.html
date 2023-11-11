@@ -6,7 +6,7 @@
       <p class="product-description">{{ produto.descricao }}</p>
       <p class="price">R$ {{ produto.preco | number : "1.2-2" }}</p>
     </div>
-    <button class="food-order-button" (click)="mostrarOpcoesPedido()">
+    <button class="food-order-button" (click)="abrirOpcoesPedido()">
       Pedir
     </button>
   </div>
@@ -17,6 +17,3 @@
     class="product-image"
   />
 </mat-card>
-
-<!-- Adicione a tag do componente "opcoespedido" com uma diretiva *ngIf para exibi-lo quando necessário -->
-<app-opcoespedido *ngIf="exibirOpcoesPedido"></app-opcoespedido>
