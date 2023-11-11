@@ -19,7 +19,7 @@
 
 .mat-mdc-dialog-surface {
   width: 300px;
-  height: 400px;
+  height: 500px;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -43,8 +43,8 @@
 
 @media (min-width: 768px) {
   .mat-mdc-dialog-surface {
-    width: 900px;
-    height: 600px;
+    width: 700px;
+    height: 400px;
   }
 }
 @keyframes fadeIn {
@@ -54,4 +54,71 @@
   to {
     opacity: 1;
   }
+}
+
+.custom-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.button-text {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.button-caption {
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.product-details {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.select-option-text {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  font-weight: 500;
+  text-align: center;
 }
