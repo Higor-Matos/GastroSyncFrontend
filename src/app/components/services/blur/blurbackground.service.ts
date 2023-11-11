@@ -15,9 +15,11 @@ export class BlurBackgroundService {
 
   enableBlur() {
     document.body.appendChild(this.blurElement);
+    setTimeout(() => (this.blurElement.style.opacity = '1'), 0); // Torna visível
   }
 
   disableBlur() {
-    document.body.removeChild(this.blurElement);
+    this.blurElement.style.opacity = '0'; // Torna invisível
+    setTimeout(() => document.body.removeChild(this.blurElement), 500); // Espera a animação terminar
   }
 }
