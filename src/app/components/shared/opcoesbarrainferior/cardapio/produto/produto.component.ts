@@ -1,9 +1,19 @@
 // produto.component.ts
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Produto } from '../../../models/produto.model';
 import { MatDialog } from '@angular/material/dialog';
 import { OpcoespedidoComponent } from '../opcoespedido/opcoespedido.component';
 import { BlurBackgroundService } from '../../../../services/blur/blurbackground.service';
+import {
+  ThemeService,
+  ThemeType,
+} from '../../../../services/tema/theme.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-produto',
@@ -13,11 +23,24 @@ import { BlurBackgroundService } from '../../../../services/blur/blurbackground.
 })
 export class ProdutoComponent {
   @Input() produto!: Produto;
+  private themeSubscription: Subscription | undefined;
 
   constructor(
     public dialog: MatDialog,
-    private blurBackgroundService: BlurBackgroundService
+    private blurBackgroundService: BlurBackgroundService,
+    private themeService: ThemeService,
+    private cdr: ChangeDetectorRef
   ) {}
+
+  ngOnInit(): void {
+    this.themeSubscription = this.themeService.themeChanged.subscribe(
+      (newTheme: ThemeType) => {
+        // Forçar a verificação de mudanças
+        this.cdr.detectChanges();
+        console.log('Tema alterado para:', newTheme);
+      }
+    );
+  }
 
   abrirOpcoesPedido() {
     console.log('Abrindo diálogo para o produto:', this.produto);

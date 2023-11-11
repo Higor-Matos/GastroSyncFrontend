@@ -1,11 +1,5 @@
 // opcoespedido.component.ts
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  Inject,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Produto } from '../../../models/produto.model';
 import {
@@ -50,15 +44,5 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
 
   closeDialog(): void {
     this.dialogRef.close();
-  }
-
-  acaoBotao1(): void {
-    console.log('Ação do botão 1');
-    // Implemente a lógica necessária aqui
-  }
-
-  acaoBotao2(): void {
-    console.log('Ação do botão 2');
-    // Implemente a lógica necessária aqui
   }
 }

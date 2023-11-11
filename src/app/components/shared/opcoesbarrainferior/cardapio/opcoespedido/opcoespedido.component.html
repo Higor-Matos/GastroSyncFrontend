@@ -9,38 +9,12 @@
         <div class="mat-mdc-dialog-surface">
           <!-- Botão de fechar -->
           <button class="close-button" (click)="closeDialog()">&times;</button>
-          <div class="product-details">
-            <h2>{{ data.produto.nome }}</h2>
-            <p class="product-description">{{ data.produto.descricaoCurta }}</p>
-            <p class="product-price">
-              R$ {{ data.produto.preco | number : "1.2-2" }}
-            </p>
-            <p class="select-option-text">Selecione uma opção:</p>
-          </div>
 
-          <div class="button-group">
-            <button class="custom-button" (click)="acaoBotao1()">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2335/2335114.png"
-                alt="Icone 1"
-              />
-              <span class="button-text">Esse pedido é pra mim</span>
-              <span class="button-caption"
-                >Pedido para pagamento individual</span
-              >
-            </button>
+          <!-- Componente de Detalhes do Produto -->
+          <app-product-details [produto]="data.produto"></app-product-details>
 
-            <button class="custom-button" (click)="acaoBotao2()">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/4807/4807598.png"
-                alt="Icone 2"
-              />
-              <span class="button-text">Vou dividir esse pedido</span>
-              <span class="button-caption"
-                >Pedido para divisão de pagamento</span
-              >
-            </button>
-          </div>
+          <!-- Componente de Grupo de Botões -->
+          <app-button-group [produto]="data.produto"></app-button-group>
         </div>
       </div>
     </div>
