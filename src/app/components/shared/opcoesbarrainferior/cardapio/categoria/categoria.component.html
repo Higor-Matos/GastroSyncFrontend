@@ -13,6 +13,7 @@
     <app-produto
       *ngFor="let produto of categoria.produtos; let i = index"
       [produto]="produto"
+      (dialogoFechado)="atualizarAposDialogoFechado()"
     ></app-produto>
     <p *ngIf="categoria.produtos.length === 0">
       Não há produtos disponíveis em {{ categoria.nome }}.
