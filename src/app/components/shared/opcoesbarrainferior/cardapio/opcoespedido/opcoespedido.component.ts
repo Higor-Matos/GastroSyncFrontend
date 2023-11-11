@@ -7,20 +7,20 @@ import {
   HostListener,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Produto } from '../../../models/produto.model'; // Ajuste o caminho conforme necessário
+import { Produto } from '../../../models/produto.model';
 import {
   ThemeService,
   ThemeType,
-} from '../../../../services/tema/theme.service'; // Ajuste o caminho para ThemeServices
+} from '../../../../services/tema/theme.service';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-opcoes-pedido',
   templateUrl: './opcoespedido.component.html',
-  styleUrls: ['./opcoespedido.component.scss'], // Ajuste conforme necessário
+  styleUrls: ['./opcoespedido.component.scss'],
 })
 export class OpcoespedidoComponent implements OnInit, OnDestroy {
-  themeClass: string = ''; // Inicializando com uma string vazia
+  themeClass: string = '';
   private themeSubscription: Subscription = new Subscription();
 
   constructor(

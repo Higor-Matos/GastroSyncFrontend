@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 }
 
 .mat-mdc-dialog-container {
@@ -15,12 +16,11 @@
 }
 
 .mat-mdc-dialog-surface {
-  width: 300px; /* Tamanho padrão para dispositivos móveis */
+  width: 300px;
   height: 400px;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,10 +37,19 @@
   cursor: pointer;
 }
 
-/* Media query para telas maiores (ex: desktop) */
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
 @media (min-width: 768px) {
   .mat-mdc-dialog-surface {
-    width: 900px; /* Tamanho maior para telas de desktop */
+    width: 900px;
     height: 600px;
   }
 }
