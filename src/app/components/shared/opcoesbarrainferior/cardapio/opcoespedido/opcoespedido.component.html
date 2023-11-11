@@ -6,6 +6,9 @@
     <div class="cdk-overlay-pane">
       <div class="mat-mdc-dialog-container">
         <div class="mat-mdc-dialog-surface">
+          <!-- Botão de fechar -->
+          <button class="close-button" (click)="closeDialog()">&times;</button>
+
           <!-- Seu conteúdo do diálogo vai aqui -->
           teste
           <h2>{{ data.produto.nome }}</h2>
