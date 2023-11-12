@@ -1,6 +1,10 @@
 <!-- productdetails.component.html -->
 <div class="product-details">
-  <h2>{{ produto.nome }}</h2>
-  <p class="product-description">{{ produto.descricaoCurta }}</p>
-  <p class="product-price">R$ {{ produto.preco | number : "1.2-2" }}</p>
+  <h2 class="underline-minimalist">{{ produto.nome }}</h2>
+  <p class="product-description underline-minimalist">
+    {{ produto.descricaoCurta }}
+  </p>
+  <p class="product-price underline-minimalist">
+    R$ {{ produto.preco | number : "1.2-2" }}
+  </p>
 </div>
