@@ -1,12 +1,12 @@
 .cdk-overlay-container {
   animation: fadeIn 0.8s;
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
   transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
   z-index: 1200;
 }
 
@@ -28,6 +28,7 @@
   align-items: center;
   justify-content: space-around;
   z-index: 1200;
+  animation: scaleIn 0.5s ease-out;
 }
 
 .close-button {
@@ -39,12 +40,23 @@
   font-size: 24px;
   cursor: pointer;
   z-index: 1200;
+  color: #999;
+  &:hover {
+    color: #333;
+  }
+  transition: transform 0.3s ease, color 0.2s;
+
+  &:hover {
+    transform: rotate(90deg);
+    color: #333;
+  }
 }
 
 @media (min-width: 768px) {
   .mat-mdc-dialog-surface {
     width: 500px;
     height: 400px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -80,4 +92,48 @@
   margin: 5px 0;
   font-weight: 500;
   text-align: center;
+}
+
+.select-consumer-text {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.select-consumer-text,
+.select-option-text {
+  line-height: 1.4;
+}
+
+.order-button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

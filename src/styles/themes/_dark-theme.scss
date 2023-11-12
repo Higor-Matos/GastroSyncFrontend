@@ -17,6 +17,19 @@ $custom-shadow-dark: rgba(0, 0, 0, 0.24);
     background-color: $custom-background-dark;
   }
 
+  .order-button {
+    background: #0266cc;
+    color: #f5f5f5;
+
+    &:hover {
+      background-color: darken(#0266cc, 15%);
+    }
+
+    &:active {
+      background-color: #0259b7;
+    }
+  }
+
   .toast {
     background: #424242;
     color: #f5f5f5;

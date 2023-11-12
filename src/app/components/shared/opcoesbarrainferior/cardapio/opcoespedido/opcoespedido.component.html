@@ -12,8 +12,18 @@
 
           <!-- Componente de Detalhes do Produto -->
           <app-product-details [produto]="data.produto"></app-product-details>
+          <!-- Texto de instrução para seleção de consumidores -->
+          <p class="select-consumer-text">
+            Escolha os consumidores consumirão este pedido.
+          </p>
+
           <!-- Componente Consumidor -->
           <app-consumidor></app-consumidor>
+
+          <!-- Botão para realizar o pedido -->
+          <button class="order-button" (click)="fazerPedido()">
+            Fazer Pedido
+          </button>
         </div>
       </div>
     </div>
