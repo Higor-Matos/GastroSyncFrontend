@@ -13,6 +13,7 @@ import { DialogAdicionarConsumidorComponent } from '../consumidor/dialogadiciona
 export class ConsumidorComponent implements OnInit {
   consumidores: any[] = [];
   isDialogOpen: boolean = false;
+  avataresPorConsumidor: { [key: string]: string } = {};
 
   constructor(
     private mesaService: MesaService,
@@ -39,6 +40,24 @@ export class ConsumidorComponent implements OnInit {
         console.error('Erro ao obter mesas:', err);
       },
     });
+    this.mesaService.consumidoresAtualizados$.subscribe(
+      (consumidoresAtualizados) => {
+        this.atualizarListaDeConsumidores(consumidoresAtualizados);
+      }
+    );
+  }
+  atualizarListaDeConsumidores(novosConsumidores: any[]) {
+    novosConsumidores.forEach((consumidor) => {
+      if (!this.avataresPorConsumidor[consumidor.nome]) {
+        // Atribua um avatar apenas se o consumidor for novo
+        this.avataresPorConsumidor[consumidor.nome] =
+          this.avatarService.obterAvatarAleatorio();
+      }
+    });
+    this.consumidores = novosConsumidores.map((consumidor) => ({
+      ...consumidor,
+      avatar: this.avataresPorConsumidor[consumidor.nome],
+    }));
   }
 
   adicionarConsumidor() {

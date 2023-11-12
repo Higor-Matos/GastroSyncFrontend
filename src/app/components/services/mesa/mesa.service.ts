@@ -25,6 +25,13 @@ export class MesaService {
     private localMesaService: LocalMesaService
   ) {}
 
+  private consumidoresAtualizadosSource = new BehaviorSubject<any[]>([]);
+  consumidoresAtualizados$ = this.consumidoresAtualizadosSource.asObservable();
+
+  atualizarConsumidores(consumidores: any[]) {
+    this.consumidoresAtualizadosSource.next(consumidores);
+  }
+
   criarMesa(numeroDaMesa: number): Observable<any> {
     const local = this.localMesaService.obterLocal(numeroDaMesa);
     if (!local) {
