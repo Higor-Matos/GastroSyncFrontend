@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { MesaService } from './mesa/mesa.service';
+import { MesaService } from '../mesa/mesa.service';
 
 @Injectable({
   providedIn: 'root',

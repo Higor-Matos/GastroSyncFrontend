@@ -26,6 +26,43 @@ $custom-shadow: rgba(0, 0, 0, 0.24);
     }
   }
 
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: $custom-background !important;
+  }
+  .mat-mdc-dialog-surface {
+    background-color: $custom-background;
+  }
+  .mdc-dialog__surface {
+    background-color: $custom-background;
+  }
+  .mdc-dialog__container {
+    background-color: $custom-background;
+  }
+  .cdk-global-overlay-wrapper {
+    background-color: $custom-background;
+  }
+  .cdk-overlay-container {
+    background-color: $custom-background;
+  }
+
+  .cdk-overlay-pane {
+    background-color: $custom-background;
+  }
+
+  .novo-consumidor-card {
+    background-color: $custom-background;
+  }
+
+  .novo-consumidor-card button {
+    background: #e53935;
+    color: #f5f5f5;
+
+    &:hover {
+      background-color: darken($ifood-accent, 15%);
+      box-shadow: 0 3px 5px $custom-shadow;
+    }
+  }
+
   .toast {
     background: #e53935;
     color: #f5f5f5;
