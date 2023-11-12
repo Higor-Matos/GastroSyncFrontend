@@ -1,0 +1,27 @@
+.novo-consumidor-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.novo-consumidor-card input {
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.novo-consumidor-card button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.novo-consumidor-card button:hover {
+  background-color: #eee;
+}
