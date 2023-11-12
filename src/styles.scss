@@ -140,3 +140,25 @@ body {
     opacity: 1;
   }
 }
+
+// toast.component.scss
+.toast-success {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
+  animation: fadeInOut 3s forwards !important;
+  z-index: 999999 !important;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+}

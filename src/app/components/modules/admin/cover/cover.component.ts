@@ -10,8 +10,8 @@ import {
 
 import { ThemeService, ThemeType } from '../../../services/tema/theme.service';
 import { CoverService } from '../../../services/cover/cover.service';
-import { ToastService } from '../../../services/toast/toast.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cover',
@@ -30,7 +30,7 @@ export class CoverComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private el: ElementRef,
     private coverService: CoverService,
-    private toastService: ToastService,
+    private toastr: ToastrService,
     private viewContainerRef: ViewContainerRef
   ) {
     this.themeSubscription = new Subscription();
@@ -71,7 +71,7 @@ export class CoverComponent implements OnInit, OnDestroy {
     this.coverService.toggleCoverStatus(!this.coverActive).subscribe(() => {
       this.coverActive = !this.coverActive;
       const message = this.coverActive ? 'Cover ativado.' : 'Cover desativado.';
-      this.toastService.showToast(message);
+      this.toastr.success(message);
     });
   }
 }
