@@ -17,14 +17,13 @@ import { AppComponent } from './app.component';
 import { MenuSuperiorComponent } from './components/shared/config/menusuperior/menusuperior.component';
 import { BarradeNavegacaoInferiorComponent } from './components/shared/config/barradenavegacaoinferior/barradenavegacaoinferior.component';
 import { SharedModule } from './components/shared/module/shared.module';
-import { ToastComponent } from './components/shared/config/toast/toast.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuSuperiorComponent,
     BarradeNavegacaoInferiorComponent,
-    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,12 @@ import { ToastComponent } from './components/shared/config/toast/toast.component
     FlexLayoutModule,
     RouterModule,
     SharedModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: true,
+      preventDuplicates: true,
+    }),
 
     MatBottomSheetModule,
     MatExpansionModule,
