@@ -32,7 +32,7 @@ export class ConsumidorComponent implements OnInit {
           console.log('Consumidores da mesa:', this.consumidores);
         } else {
           console.log(
-            'Nenhuma mesa correspondente encontrada ou sem consumidores'
+            'Nenhuma mesa correspondente encontrada ou sem consumidore'
           );
         }
       },
