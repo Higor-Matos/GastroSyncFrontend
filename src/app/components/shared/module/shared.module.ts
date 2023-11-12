@@ -19,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ButtonGroupComponent } from '../opcoesbarrainferior/cardapio/opcoespedido/buttongroup/buttongroup.component';
 import { ProductDetailsComponent } from '../opcoesbarrainferior/cardapio/opcoespedido/productdetails/productdetails.component';
 import { ConsumidorComponent } from '../opcoesbarrainferior/cardapio/opcoespedido/consumidor/consumidor.component';
+import { DialogAdicionarConsumidorComponent } from '../opcoesbarrainferior/cardapio/opcoespedido/consumidor/dialogadicionarconsumidor/dialogadicionarconsumidor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ConsumidorComponent } from '../opcoesbarrainferior/cardapio/opcoespedid
     ButtonGroupComponent,
     ProductDetailsComponent,
     ConsumidorComponent,
+    DialogAdicionarConsumidorComponent,
   ],
   imports: [
     MatDialogModule,
@@ -43,6 +46,7 @@ import { ConsumidorComponent } from '../opcoesbarrainferior/cardapio/opcoespedid
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
+    FormsModule,
   ],
   exports: [
     CardapioComponent,
@@ -55,6 +59,7 @@ import { ConsumidorComponent } from '../opcoesbarrainferior/cardapio/opcoespedid
     ButtonGroupComponent,
     ProductDetailsComponent,
     ConsumidorComponent,
+    DialogAdicionarConsumidorComponent,
   ],
 })
 export class SharedModule {}
