@@ -45,4 +45,10 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
   closeDialog(): void {
     this.dialogRef.close();
   }
+
+  fazerPedido(): void {
+  // Lógica para realizar o pedido
+  console.log('Pedido realizado!');
+}
+
 }
