@@ -6,6 +6,7 @@ import {
   ThemeService,
   ThemeType,
 } from '../../../../services/tema/theme.service';
+import { DialogService } from '../../../../services/dialog/dialog.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,7 +21,8 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { produto: Produto },
     private dialogRef: MatDialogRef<OpcoespedidoComponent>,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -44,11 +46,11 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
 
   closeDialog(): void {
     this.dialogRef.close();
+    this.dialogService.setDialogOpen(false);
   }
 
   fazerPedido(): void {
-  // Lógica para realizar o pedido
-  console.log('Pedido realizado!');
-}
-
+    // Lógica para realizar o pedido
+    console.log('Pedido realizado!');
+  }
 }

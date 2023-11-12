@@ -29,6 +29,45 @@ $custom-shadow-dark: rgba(0, 0, 0, 0.24);
       background-color: #0259b7;
     }
   }
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: $custom-background-dark !important;
+  }
+  .mat-mdc-dialog-surface {
+    background-color: $custom-background-dark;
+  }
+  .mdc-dialog__surface {
+    background-color: $custom-background-dark;
+  }
+  .mdc-dialog__container {
+    background-color: $custom-background-dark;
+  }
+  .cdk-global-overlay-wrapper {
+    background-color: $custom-background-dark;
+  }
+  .cdk-overlay-container {
+    background-color: $custom-background-dark;
+  }
+
+  .cdk-overlay-pane {
+    background-color: $custom-background-dark;
+  }
+
+  .novo-consumidor-card {
+    background-color: $custom-background-dark;
+  }
+
+  .novo-consumidor-card button {
+    background: #0266cc;
+    color: #f5f5f5;
+
+    &:hover {
+      background-color: darken(#0266cc, 15%);
+    }
+
+    &:active {
+      background-color: #0259b7;
+    }
+  }
 
   .toast {
     background: #424242;

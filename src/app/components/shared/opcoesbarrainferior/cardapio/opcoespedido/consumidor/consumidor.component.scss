@@ -1,11 +1,11 @@
 // consumidor.component.scss
 
 .gsc-card-consumidores {
-  max-width: 400px; // Garante que não ultrapasse o container pai
-  max-height: 100%; // Define a altura máxima para 100% do container pai
-  overflow-x: auto; // Habilita a rolagem horizontal se necessário
-  overflow-y: hidden; // Evita a rolagem vertical
-  flex-wrap: nowrap; // Itens em uma única linha
+  max-width: 400px;
+  max-height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
 
   display: flex;
   padding: 10px;
@@ -61,31 +61,42 @@
 
 @media (max-width: 768px) {
   .gsc-card-consumidores {
-    max-width: 270px; // Ajusta para a largura total em dispositivos móveis
+    max-width: 270px;
     white-space: nowrap;
-    overflow-x: auto; // Scroll horizontal
-    overflow-y: hidden; // Sem scroll vertical
-    flex-wrap: nowrap; // Itens em uma única linha
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+  }
+
+  .gsc-avatar-icon {
+    font-size: 40px !important;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
   }
 
   .consumidor-item {
-    margin-right: 10px; // Reduz o espaçamento entre itens
+    margin-right: 10px;
     display: inline-flex;
   }
 
   .avatar,
   .gsc-avatar-icon {
-    width: 50px; // Reduz o tamanho dos avatares
+    width: 50px;
     height: 50px;
     font-size: 50px;
   }
 
   .nome {
-    font-size: 13px; // Reduz o tamanho da fonte para os nomes
+    font-size: 13px;
   }
 
   .adicionar-consumidor .nome {
-    font-size: 10px; // Tamanho da fonte para o ícone de adicionar
+    font-size: 10px;
   }
   ::-webkit-scrollbar {
     display: none;

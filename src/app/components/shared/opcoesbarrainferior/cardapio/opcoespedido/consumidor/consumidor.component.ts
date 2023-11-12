@@ -12,6 +12,7 @@ import { DialogAdicionarConsumidorComponent } from '../consumidor/dialogadiciona
 })
 export class ConsumidorComponent implements OnInit {
   consumidores: any[] = [];
+  isDialogOpen: boolean = false;
 
   constructor(
     private mesaService: MesaService,
@@ -41,15 +42,40 @@ export class ConsumidorComponent implements OnInit {
   }
 
   adicionarConsumidor() {
+    if (this.isDialogOpen) {
+      return; // Não abrir o diálogo se já estiver aberto
+    }
+
+    this.isDialogOpen = true;
+    let dialogJustOpened = true;
     const dialogRef = this.dialog.open(DialogAdicionarConsumidorComponent, {});
 
-    dialogRef.afterClosed().subscribe((nome: string) => {
-      // Especificando o tipo de 'nome'
-      if (nome) {
-        // Lógica para adicionar um novo consumidor
-        console.log('Nome do novo consumidor:', nome);
-        // Exemplo: this.consumidores.push({ nome, avatar: ... });
+    dialogRef.afterOpened().subscribe(() => {
+      dialogJustOpened = false;
+    });
+
+    const clickListener = (event: MouseEvent) => {
+      if (dialogJustOpened) {
+        return;
       }
+
+      const target = event.target as Element;
+      if (target?.closest('.cdk-overlay-container')) {
+        return;
+      }
+
+      dialogRef.close();
+      document.body.removeEventListener('click', clickListener);
+    };
+
+    setTimeout(() => {
+      document.body.addEventListener('click', clickListener);
+    }, 0);
+
+    dialogRef.afterClosed().subscribe((nome: string) => {
+      document.body.removeEventListener('click', clickListener);
+      this.isDialogOpen = false; // Atualizar o estado para indicar que o diálogo está fechado
+      // ... lógica após fechar o diálogo, como adicionar um novo consumidor
     });
   }
 }

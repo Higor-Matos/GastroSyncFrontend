@@ -1,10 +1,18 @@
 .novo-consumidor-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 5px !important;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 1px;
+  position: relative;
+}
+
+.novo-consumidor-card h2 {
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .novo-consumidor-card input {
@@ -22,6 +30,25 @@
   cursor: pointer;
 }
 
-.novo-consumidor-card button:hover {
-  background-color: #eee;
+.dialoggs-close-button {
+  position: absolute;
+  top: 1px !important;
+  right: 1px !important;
+  border: none;
+  background: none !important;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 1200;
+  color: #999 !important;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+    background-color: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.mat-mdc-dialog-container .mdc-dialog__container {
+  position: relative;
 }
