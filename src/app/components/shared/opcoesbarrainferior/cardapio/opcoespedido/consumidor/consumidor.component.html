@@ -12,8 +12,13 @@
 
   <!-- Mostrar a lista de consumidores apenas se houver consumidores -->
   <div *ngIf="consumidores.length > 0">
-    <!-- Avatares dos consumidores -->
-    <div *ngFor="let consumidor of consumidores" class="consumidor-item">
+    <!-- Avatares dos consumidores com opção de seleção -->
+    <div
+      *ngFor="let consumidor of consumidores"
+      class="consumidor-item"
+      [ngClass]="{ selecionado: consumidor.selecionado }"
+      (click)="selecionarConsumidor(consumidor)"
+    >
       <img
         [src]="consumidor.avatar"
         class="avatar"

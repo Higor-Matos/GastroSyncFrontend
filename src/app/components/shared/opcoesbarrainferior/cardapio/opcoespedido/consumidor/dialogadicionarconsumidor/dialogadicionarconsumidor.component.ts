@@ -42,6 +42,11 @@ export class DialogAdicionarConsumidorComponent implements OnInit, OnDestroy {
   }
 
   confirmarAdicao(): void {
+    if (!this.nome.trim()) {
+      this.toastr.error('Nome do consumidor não pode ser vazio.');
+      return;
+    }
+
     this.consumidorService.adicionarConsumidoresMesa([this.nome]).subscribe({
       next: (response) => {
         console.log('Consumidor adicionado:', response);
