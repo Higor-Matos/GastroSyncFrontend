@@ -5,6 +5,7 @@ import { MesaService } from '../../../../../services/mesa/mesa.service';
 import { AvatarService } from '../../../../../services/avatar/avatar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAdicionarConsumidorComponent } from '../consumidor/dialogadicionarconsumidor/dialogadicionarconsumidor.component';
+import { ConsumidorService } from '../../../../../services/consumidor/consumidor.service';
 @Component({
   selector: 'app-consumidor',
   templateUrl: './consumidor.component.html',
@@ -19,7 +20,8 @@ export class ConsumidorComponent implements OnInit, OnDestroy {
   constructor(
     private mesaService: MesaService,
     private avatarService: AvatarService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private consumidorService: ConsumidorService
   ) {}
 
   ngOnInit() {
@@ -52,10 +54,9 @@ export class ConsumidorComponent implements OnInit, OnDestroy {
     this.limparSelecao();
   }
 
-  limparSelecao() {
+  limparSelecao(): void {
     this.consumidores.forEach((c) => (c.selecionado = false));
-    this.idsSelecionados = [];
-    console.log('Seleção de consumidores limpa');
+    this.consumidorService.limparSelecao();
   }
 
   atualizarListaDeConsumidores(novosConsumidores: any[]) {
@@ -72,16 +73,9 @@ export class ConsumidorComponent implements OnInit, OnDestroy {
     }));
   }
 
-  selecionarConsumidor(consumidor: any) {
+  selecionarConsumidor(consumidor: any): void {
     consumidor.selecionado = !consumidor.selecionado;
-    if (consumidor.selecionado) {
-      this.idsSelecionados.push(consumidor.id);
-    } else {
-      this.idsSelecionados = this.idsSelecionados.filter(
-        (id) => id !== consumidor.id
-      );
-    }
-    console.log('IDs dos consumidores selecionados:', this.idsSelecionados);
+    this.consumidorService.selecionarConsumidor(consumidor.id);
   }
 
   adicionarConsumidor() {

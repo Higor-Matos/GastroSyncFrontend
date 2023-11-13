@@ -24,6 +24,8 @@
           <button class="order-button" (click)="fazerPedido()">
             Fazer Pedido
           </button>
+          <!-- Elemento de Animação de Sucesso -->
+          <div *ngIf="pedidoSucesso" class="animacao-sucesso">✔</div>
         </div>
       </div>
     </div>
