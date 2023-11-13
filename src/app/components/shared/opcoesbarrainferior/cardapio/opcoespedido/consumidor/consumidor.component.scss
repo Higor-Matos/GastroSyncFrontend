@@ -81,7 +81,11 @@
 
   .consumidor-item {
     margin-right: 10px;
-    display: inline-flex;
+    border: 2px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    &:hover {
+      transform: scale(1.05) !important;
+    }
   }
 
   .avatar,
@@ -100,5 +104,18 @@
   }
   ::-webkit-scrollbar {
     display: none;
+  }
+}
+
+.consumidor-item.selecionado {
+  background-color: #e0e0e0;
+  transform: scale(1.1);
+  border-radius: 5px;
+}
+
+// Aplica o efeito de zoom ao passar o mouse, especificamente para dispositivos não-touch (como desktops)
+@media (hover: hover) {
+  .consumidor-item:hover {
+    transform: scale(1.05); // Efeito de zoom leve ao passar o mouse
   }
 }

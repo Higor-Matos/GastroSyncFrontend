@@ -3,6 +3,11 @@
   align-items: center;
   justify-content: center;
   z-index: 1200;
+  border-radius: 20px;
+}
+
+.cdk-overlay-pane {
+  border-radius: 20px;
 }
 
 .mat-mdc-dialog-surface {
@@ -10,7 +15,7 @@
   height: 500px;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
