@@ -8,6 +8,8 @@ import {
 } from '../../../../services/tema/theme.service';
 import { DialogService } from '../../../../services/dialog/dialog.service';
 import { Subscription } from 'rxjs';
+import { PedidoService } from '../../../../services//pedido/pedido.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-opcoes-pedido',
@@ -17,12 +19,15 @@ import { Subscription } from 'rxjs';
 export class OpcoespedidoComponent implements OnInit, OnDestroy {
   themeClass: string = '';
   private themeSubscription: Subscription = new Subscription();
+  pedidoSucesso: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { produto: Produto },
     private dialogRef: MatDialogRef<OpcoespedidoComponent>,
     private themeService: ThemeService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private toastr: ToastrService,
+    private pedidoService: PedidoService
   ) {}
 
   ngOnInit(): void {
@@ -44,13 +49,24 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
     }
   }
 
+  fazerPedido(): void {
+    const produtoId = this.data.produto.id;
+    this.pedidoService.fazerPedido(
+      produtoId,
+      () => {
+        this.toastr.success('Pedido realizado com sucesso!');
+        this.pedidoSucesso = true; // Ativa a animação de sucesso
+        setTimeout(() => {
+          this.pedidoSucesso = false; // Desativa a animação após um tempo
+          this.closeDialog(); // Fecha o diálogo
+        }, 3000); // Tempo em milissegundos
+      },
+      () => this.toastr.error('Erro ao realizar pedido!')
+    );
+  }
+
   closeDialog(): void {
     this.dialogRef.close();
     this.dialogService.setDialogOpen(false);
-  }
-
-  fazerPedido(): void {
-    // Lógica para realizar o pedido
-    console.log('Pedido realizado!');
   }
 }
