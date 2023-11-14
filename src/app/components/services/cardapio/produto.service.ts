@@ -10,12 +10,13 @@ import {
 } from '../../shared/models/produto.model';
 import { ImageService } from './image.service';
 import { IconService } from './icon.service';
+import { environment } from '../../../../app/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
-  private url = 'http://localhost:8080/api/Produto/RecuperarTodosProdutos';
+  private url = `${environment.apiUrl}/Produto/RecuperarTodosProdutos`;
 
   constructor(
     private http: HttpClient,
