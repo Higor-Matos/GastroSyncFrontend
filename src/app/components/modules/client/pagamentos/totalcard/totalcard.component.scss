@@ -1,0 +1,45 @@
+/* pagamentos.component.scss */
+.total-card {
+  max-width: 250px; /* Largura máxima desejada para o card */
+  max-height: 35px; /* Largura máxima desejada para o card */
+  margin: 20px auto; /* Centralize horizontalmente e adicione espaçamento superior */
+  border: 1px solid #ccc; /* Adicione uma borda */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adicione uma sombra suave */
+  border-radius: 20px; /* Deixe as bordas mais redondas */
+  text-align: center; /* Centralize o texto horizontalmente */
+  display: flex; /* Use flexbox para centralizar verticalmente */
+  flex-direction: column; /* Alinhe os itens verticalmente em uma coluna */
+  justify-content: center; /* Centralize verticalmente */
+  padding: 10px; /* Espaçamento interno */
+  animation: fadeIn 0.5s ease-in-out; /* Adicione uma animação de fade-in */
+
+  mat-card-title {
+    font-size: 1em; /* Tamanho do título */
+    color: #333; /* Cor escura para o título */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    font-weight: bold; /* Deixe o texto mais forte */
+  }
+
+  mat-card-content {
+    p {
+      color: #555; /* Cor mais suave para o texto */
+      font-size: 0.8em; /* Tamanho do texto */
+      white-space: nowrap; /* Evite que o texto quebre em várias linhas */
+      overflow: hidden; /* Oculte qualquer texto excedente */
+      text-overflow: ellipsis; /* Adicione reticências (...) quando o texto estiver muito longo */
+      margin: 5px 0; /* Espaçamento superior e inferior */
+      font-weight: bold; /* Deixe o texto mais forte */
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
