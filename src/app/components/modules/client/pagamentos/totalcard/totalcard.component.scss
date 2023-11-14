@@ -12,6 +12,7 @@
   justify-content: center; /* Centralize verticalmente */
   padding: 10px; /* Espaçamento interno */
   animation: fadeIn 0.5s ease-in-out; /* Adicione uma animação de fade-in */
+  transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transição suave para o hover */
 
   mat-card-title {
     font-size: 1em; /* Tamanho do título */

@@ -17,6 +17,12 @@ $custom-shadow-dark: rgba(0, 0, 0, 0.24);
     background-color: $custom-background-dark;
   }
 
+  .total-card {
+    &:hover {
+      border: #0266cc 2px solid;
+    }
+  }
+
   .order-button {
     background: #0266cc;
     color: #f5f5f5;
