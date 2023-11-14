@@ -35,7 +35,6 @@ export class ProdutoComponent {
   ngOnInit(): void {
     this.themeSubscription = this.themeService.themeChanged.subscribe(
       (newTheme: ThemeType) => {
-        // Forçar a verificação de mudanças
         this.cdr.detectChanges();
         console.log('Tema alterado para:', newTheme);
       }

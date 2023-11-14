@@ -20,6 +20,7 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
   themeClass: string = '';
   private themeSubscription: Subscription = new Subscription();
   pedidoSucesso: boolean = false;
+  isPedidoEmAndamento: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { produto: Produto },
@@ -50,23 +51,33 @@ export class OpcoespedidoComponent implements OnInit, OnDestroy {
   }
 
   fazerPedido(): void {
+    if (this.isPedidoEmAndamento) {
+      return;
+    }
+
+    this.isPedidoEmAndamento = true;
+
     const produtoId = this.data.produto.id;
     this.pedidoService.fazerPedido(
       produtoId,
       () => {
         this.toastr.success('Pedido realizado com sucesso!');
-        this.pedidoSucesso = true; // Ativa a animação de sucesso
+        this.pedidoSucesso = true;
         setTimeout(() => {
-          this.pedidoSucesso = false; // Desativa a animação após um tempo
-          this.closeDialog(); // Fecha o diálogo
-        }, 3000); // Tempo em milissegundos
+          this.pedidoSucesso = false;
+          this.closeDialog();
+        }, 3000);
       },
-      () => this.toastr.error('Erro ao realizar pedido!')
+      () => {
+        this.toastr.error('Erro ao realizar pedido!');
+        this.isPedidoEmAndamento = false;
+      }
     );
   }
 
   closeDialog(): void {
     this.dialogRef.close();
     this.dialogService.setDialogOpen(false);
+    this.isPedidoEmAndamento = false;
   }
 }
