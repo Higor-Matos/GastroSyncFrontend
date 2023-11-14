@@ -1,14 +1,14 @@
-// pedido.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MesaService } from '../mesa/mesa.service';
 import { ConsumidorService } from '../consumidor/consumidor.service';
+import { environment } from '../../../../app/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PedidoService {
-  private readonly baseUrl = 'http://localhost:8080/api/Pedido';
+  private readonly baseUrl = `${environment.apiUrl}/Pedido`;
 
   constructor(
     private http: HttpClient,
@@ -21,9 +21,9 @@ export class PedidoService {
     onSuccess: () => void,
     onError: () => void
   ): void {
-    const mesaId = this.mesaService.obterNumeroDaMesa(); // Supõe que esta função exista no MesaService
+    const mesaId = this.mesaService.obterNumeroDaMesa();
     const consumidoresIds =
-      this.consumidorService.getIdsConsumidoresSelecionados(); // Supõe que esta função exista no ConsumidorService
+      this.consumidorService.getIdsConsumidoresSelecionados();
 
     if (consumidoresIds.length === 0) {
       console.error('Nenhum consumidor selecionado.');
@@ -48,7 +48,6 @@ export class PedidoService {
         },
       });
     } else {
-      // Caso de múltiplos consumidores
       const url = `${this.baseUrl}/${mesaId}/Dividido`;
       const body = {
         produtoId: produtoId,

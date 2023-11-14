@@ -1,11 +1,10 @@
-// MesaService.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LocalMesaService } from './localmesa.service';
+import { environment } from '../../../../app/environment/environment';
+
 interface Mesa {
   id: number;
   numeroMesa: number;
@@ -18,7 +17,7 @@ interface Mesa {
   providedIn: 'root',
 })
 export class MesaService {
-  private baseUrl = 'http://localhost:8080/api/Mesa';
+  private baseUrl = `${environment.apiUrl}/Mesa`;
 
   constructor(
     private http: HttpClient,
@@ -79,7 +78,6 @@ export class MesaService {
       map((res) => {
         if (res && res.success && res.data) {
           const numeroDaMesaAtual = this.obterNumeroDaMesa();
-          // Retorna null se a mesa não for encontrada
           return (
             res.data.find(
               (mesa: Mesa) => mesa.numeroMesa === numeroDaMesaAtual

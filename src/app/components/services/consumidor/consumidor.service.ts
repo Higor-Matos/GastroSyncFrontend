@@ -1,16 +1,15 @@
-// ConsumidorService.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { MesaService } from '../mesa/mesa.service';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../../app/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConsumidorService {
-  private baseUrl = 'http://localhost:8080/api/Consumidor';
+  private baseUrl = environment.apiUrl + '/consumidor';
   private idsSelecionadosSource = new BehaviorSubject<number[]>([]);
   public idsSelecionados$ = this.idsSelecionadosSource.asObservable();
 
