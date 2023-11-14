@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+// book.component.ts
+
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-pedidos',
+  selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
 })
-export class BookComponent {}
+export class BookComponent {
+  @Input() nomeConsumidor: string = '';
+}
