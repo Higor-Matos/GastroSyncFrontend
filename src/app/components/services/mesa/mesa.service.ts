@@ -4,8 +4,8 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LocalMesaService } from './localmesa.service';
 import { environment } from '../../../../app/environment/environment';
-
-interface Mesa {
+import { MesaProcessorService } from '../mesaprocessor/mesaprocessor.service';
+export interface Mesa {
   id: number;
   numeroMesa: number;
   local: string;
@@ -21,7 +21,8 @@ export class MesaService {
 
   constructor(
     private http: HttpClient,
-    private localMesaService: LocalMesaService
+    private localMesaService: LocalMesaService,
+    private mesaProcessorService: MesaProcessorService
   ) {}
 
   private consumidoresAtualizadosSource = new BehaviorSubject<any[]>([]);
@@ -85,6 +86,37 @@ export class MesaService {
           );
         }
         return null;
+      })
+    );
+  }
+
+  // mesa.service.ts
+
+  obterMesaEspecifica(): Observable<Mesa | null> {
+    return this.obterTodasAsMesas().pipe(
+      map((resposta: Mesa | null) => {
+        if (!resposta) {
+          console.error('Nenhuma mesa foi retornada pela API.');
+          return null;
+        }
+
+        // Supondo que 'resposta' seja do tipo 'Mesa | null'
+        const mesas: Mesa[] = Array.isArray(resposta) ? resposta : [resposta];
+
+        const numeroDaMesa = this.obterNumeroDaMesa();
+        if (numeroDaMesa === null) {
+          console.error('Número da mesa não definido.');
+          return null;
+        }
+
+        const mesaEncontrada = mesas.find(
+          (mesa: Mesa) => mesa.numeroMesa === numeroDaMesa
+        );
+        if (!mesaEncontrada) {
+          console.error(`Mesa número ${numeroDaMesa} não encontrada.`);
+          return null;
+        }
+        return mesaEncontrada;
       })
     );
   }
