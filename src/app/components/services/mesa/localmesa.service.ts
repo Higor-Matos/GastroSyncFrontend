@@ -29,8 +29,6 @@ export class LocalMesaService {
     20: 'Área de Churrasco',
   };
 
-  constructor() {}
-
   obterLocal(numeroDaMesa: number): string | undefined {
     return this.locais[numeroDaMesa];
   }
