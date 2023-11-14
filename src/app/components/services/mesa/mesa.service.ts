@@ -76,12 +76,12 @@ export class MesaService {
     return this.http.get<{ success: boolean; data: Mesa[] }>(url).pipe(
       catchError(this.handleError('obterTodasAsMesas')),
       map((res) => {
-        if (res && res.success && res.data) {
+        if (res?.success && res?.data) {
           const numeroDaMesaAtual = this.obterNumeroDaMesa();
           return (
             res.data.find(
               (mesa: Mesa) => mesa.numeroMesa === numeroDaMesaAtual
-            ) || null
+            ) ?? null
           );
         }
         return null;
