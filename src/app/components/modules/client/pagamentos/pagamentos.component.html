@@ -1,1 +1,20 @@
-<p>pagamentos works!</p>
+<!-- pagamentos.component.html -->
+
+<div *ngIf="detalhesDaMesa">
+  <h3>Detalhes da Mesa {{ detalhesDaMesa.numeroMesa }}</h3>
+  <p>Total da Mesa: {{ detalhesDaMesa.totalMesa | currency }}</p>
+
+  <div *ngFor="let consumidor of detalhesDaMesa.consumidores">
+    <h4>Nome do Consumidor: {{ consumidor.nome }}</h4>
+    <p>Total Consumido: {{ consumidor.totalConsumido | currency }}</p>
+
+    <ul>
+      <li *ngFor="let pedido of consumidor.pedidos">
+        Produto Consumido: {{ pedido.nomeProduto }}
+        <span *ngIf="pedido.detalhesDivisao">
+          - {{ pedido.detalhesDivisao }}</span
+        >
+      </li>
+    </ul>
+  </div>
+</div>
