@@ -1,12 +1,14 @@
 // pagamentos.component.scss
 
 .card {
-  width: 100%;
+  width: calc(100% - 20px);
   max-width: 400px;
+  height: 300px;
   margin-bottom: 20px;
   border-radius: 10px;
-  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .shadow {
@@ -14,32 +16,50 @@
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
-.lista-produtos {
-  max-height: calc(
-    3 * 2.5em
-  ); /* Altura baseada no número de itens (3) e na altura estimada de cada item */
+.card-content {
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
-.card-content {
-  h4 {
-    margin-top: 0;
-  }
+.lista-produtos {
+  max-height: calc(3 * 2.5em);
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
 .btn-pagar {
-  display: block;
   width: 100%;
   padding: 10px;
-  margin-top: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  margin-top: auto;
 }
-
 .avatar {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   margin-bottom: 5px;
+}
+
+.container-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 60px; // Espaço extra no fundo
+  padding-left: 10px; // Adiciona padding nas laterais
+  padding-right: 10px; // Adiciona padding nas laterais
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0; // Remove o padding lateral para telas maiores
+    padding-right: 0; // Remove o padding lateral para telas maiores
+  }
 }
