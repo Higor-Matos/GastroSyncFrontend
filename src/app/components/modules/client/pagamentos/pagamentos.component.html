@@ -28,12 +28,24 @@
           <div *ngFor="let categoria of consumidor.categorias | keyvalue">
             <strong>{{ categoria.key }}:</strong>
             <ul>
-              <li *ngFor="let produto of categoria.value | keyvalue">
-                {{ produto.value.quantidade }}x - {{ produto.key }}
-                <span *ngIf="produto.value.detalhesDivisao">
-                  - Total Divisões:
-                  {{ produto.value.detalhesDivisao.totalDivisoes }}
-                </span>
+              <li
+                *ngFor="let produto of categoria.value | keyvalue"
+                class="produto-item"
+              >
+                <span>{{ produto.value.quantidade }}x - {{ produto.key }}</span>
+                <div
+                  *ngIf="produto.value.detalhesDivisao"
+                  class="grafico-pizza"
+                >
+                  <ngx-charts-pie-chart
+                    [view]="[60, 60]"
+                    [results]="getPieChartData(produto.value.detalhesDivisao)"
+                    [doughnut]="false"
+                    [animations]="false"
+                    [scheme]="customColors"
+                  >
+                  </ngx-charts-pie-chart>
+                </div>
               </li>
             </ul>
           </div>
