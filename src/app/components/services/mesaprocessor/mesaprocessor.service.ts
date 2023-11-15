@@ -22,24 +22,32 @@ interface CategoriaPedidos {
 })
 export class MesaProcessorService {
   processarDetalhesMesa(mesa: Mesa): any {
-    return {
+    const detalhes = {
       numeroMesa: mesa.numeroMesa,
       totalMesa: mesa.totalConsumidoMesa,
       consumidores: mesa.consumidores.map(
         this.processarDetalhesConsumidor.bind(this)
       ),
     };
+
+    console.log('Detalhes processados da mesa:', detalhes);
+    return detalhes;
   }
 
   processarDetalhesConsumidor(consumidor: any): any {
     const pedidosAgrupados = this.agruparPedidosPorCategoria(
       consumidor.pedidos
     );
-    return {
+    console.log('Pedidos agrupados:', pedidosAgrupados);
+
+    const detalhesConsumidor = {
       nome: consumidor.nome,
       totalConsumido: consumidor.totalConsumido,
       categorias: pedidosAgrupados,
     };
+
+    console.log('Detalhes processados do consumidor:', detalhesConsumidor);
+    return detalhesConsumidor;
   }
 
   private processarDetalhesPedido(pedido: any): any {
@@ -62,8 +70,11 @@ export class MesaProcessorService {
   }
 
   private agruparPedidosPorProduto(categoria: any, pedido: any): void {
-    const nomeProduto = pedido.produto?.nome ?? 'Produto Desconhecido';
-    const temDivisoes = pedido.divisoes && pedido.divisoes.length > 0;
+    const detalhesPedido = this.processarDetalhesPedido(pedido); // Chama a função para processar os detalhes do pedido
+    const nomeProduto = detalhesPedido.nomeProduto; // Usa o nome do produto retornado
+    const temDivisoes =
+      detalhesPedido.detalhesDivisao &&
+      detalhesPedido.detalhesDivisao.totalDivisoes > 0;
     const chaveProduto = temDivisoes
       ? `${nomeProduto} (Com Divisões)`
       : nomeProduto;
@@ -71,12 +82,13 @@ export class MesaProcessorService {
     if (!categoria[chaveProduto]) {
       categoria[chaveProduto] = {
         quantidade: 0,
-        detalhesDivisao: temDivisoes ? pedido.detalhesDivisao : undefined,
+        detalhesDivisao: temDivisoes
+          ? detalhesPedido.detalhesDivisao
+          : undefined,
       };
     }
     categoria[chaveProduto].quantidade += pedido.quantidade;
   }
-
   private agruparPedidosPorCategoria(pedidos: any[]): CategoriaPedidos {
     const categorias: CategoriaPedidos = {};
     pedidos.forEach((pedido) => {

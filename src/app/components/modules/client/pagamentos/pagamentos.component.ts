@@ -43,7 +43,9 @@ export class PagamentosComponent implements OnInit, OnDestroy {
 
   carregarDetalhesDaMesa() {
     this.mesaService.obterMesaEspecifica().subscribe((mesa: Mesa | null) => {
+      console.log('Dados recebidos da API:', mesa);
       if (mesa) {
+        console.log('Dados processados:', this.detalhesDaMesa);
         this.detalhesDaMesa =
           this.mesaProcessorService.processarDetalhesMesa(mesa);
 

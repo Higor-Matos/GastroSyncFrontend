@@ -29,7 +29,7 @@
             <strong>{{ categoria.key }}:</strong>
             <ul>
               <li *ngFor="let produto of categoria.value | keyvalue">
-                {{ produto.key }} - Quantidade: {{ produto.value.quantidade }}
+                {{ produto.value.quantidade }}x - {{ produto.key }}
                 <span *ngIf="produto.value.detalhesDivisao">
                   - Total Divisões:
                   {{ produto.value.detalhesDivisao.totalDivisoes }}
