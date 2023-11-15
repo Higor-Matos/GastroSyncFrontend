@@ -1,17 +1,17 @@
 <!-- pagamentos.component.html -->
-
-<div *ngIf="detalhesDaMesa">
-  <!-- Card para o Total Consumido -->
-  <app-total-card [total]="detalhesDaMesa.totalMesa"></app-total-card>
-
-  <!-- Card para os Detalhes da Mesa e Consumidores -->
-
+<div *ngIf="detalhesDaMesa" [style.margin-bottom.px]="alturaBarraInferior">
   <div *ngIf="detalhesDaMesa">
+    <!-- Card para o Total Consumido -->
+    <app-total-card [total]="detalhesDaMesa.totalMesa"></app-total-card>
+
+    <!-- Card para os Detalhes da Mesa e Consumidores -->
     <div
       *ngFor="let consumidor of detalhesDaMesa.consumidores"
       class="card shadow"
     >
       <div class="card-content">
+        <img [src]="consumidor.avatar" class="avatar" />
+        <!-- Adiciona o avatar aqui -->
         <h4>{{ consumidor.nome }}</h4>
         <p>Total Consumido: {{ consumidor.totalConsumido | currency }}</p>
         <div class="lista-produtos">
@@ -24,6 +24,7 @@
             </li>
           </ul>
         </div>
+        <button class="btn-pagar">Pagar</button>
       </div>
     </div>
   </div>

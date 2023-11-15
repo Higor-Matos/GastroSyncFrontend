@@ -15,7 +15,9 @@
 }
 
 .lista-produtos {
-  max-height: 200px;
+  max-height: calc(
+    3 * 2.5em
+  ); /* Altura baseada no número de itens (3) e na altura estimada de cada item */
   overflow-y: auto;
 }
 
@@ -23,4 +25,21 @@
   h4 {
     margin-top: 0;
   }
+}
+
+.btn-pagar {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-bottom: 5px;
 }
