@@ -54,17 +54,26 @@ export class MesaProcessorService {
     const detalhesDivisao =
       pedido.divisoes && pedido.divisoes.length > 0
         ? {
-            divisores: pedido.divisoes.length,
+            valorDividido:
+              pedido.divisoes.reduce(
+                (acc: any, div: { valorDividido: any }) =>
+                  acc + div.valorDividido,
+                0
+              ) / pedido.divisoes.length,
             totalDivisoes: pedido.divisoes.reduce(
               (acc: any, div: { totalDivisoes: any }) =>
                 acc + div.totalDivisoes,
               0
             ),
           }
-        : { divisores: 0, totalDivisoes: 0 };
+        : null;
 
     return {
       nomeProduto: pedido.produto?.nome ?? 'Produto Desconhecido',
+      quantidade: pedido.quantidade,
+      preco: detalhesDivisao
+        ? detalhesDivisao.valorDividido
+        : pedido.produto?.preco,
       detalhesDivisao: detalhesDivisao,
     };
   }
@@ -75,18 +84,27 @@ export class MesaProcessorService {
     const temDivisoes =
       detalhesPedido.detalhesDivisao &&
       detalhesPedido.detalhesDivisao.totalDivisoes > 0;
-    const chaveProduto = temDivisoes ? `${nomeProduto}` : nomeProduto;
 
-    if (!categoria[chaveProduto]) {
-      categoria[chaveProduto] = {
+    if (!categoria[nomeProduto]) {
+      categoria[nomeProduto] = {
         quantidade: 0,
         detalhesDivisao: temDivisoes
           ? detalhesPedido.detalhesDivisao
           : undefined,
+        preco: 0,
       };
     }
-    categoria[chaveProduto].quantidade += pedido.quantidade;
+
+    categoria[nomeProduto].quantidade += pedido.quantidade;
+
+    if (temDivisoes) {
+      categoria[nomeProduto].preco +=
+        detalhesPedido.detalhesDivisao.valorDividido;
+    } else {
+      categoria[nomeProduto].preco += pedido.produto.preco;
+    }
   }
+
   private agruparPedidosPorCategoria(pedidos: any[]): CategoriaPedidos {
     const categorias: CategoriaPedidos = {};
     pedidos.forEach((pedido) => {

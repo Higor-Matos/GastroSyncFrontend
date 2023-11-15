@@ -32,7 +32,10 @@
                 *ngFor="let produto of categoria.value | keyvalue"
                 class="produto-item"
               >
-                <span>{{ produto.value.quantidade }}x - {{ produto.key }}</span>
+                <span
+                  >{{ produto.value.quantidade }}x - {{ produto.key }}: R$
+                  {{ produto.value.preco | currency }}</span
+                >
                 <div
                   *ngIf="produto.value.detalhesDivisao"
                   class="grafico-pizza"
@@ -50,6 +53,7 @@
             </ul>
           </div>
         </div>
+
         <button class="btn-pagar">Pagar</button>
       </div>
     </div>
