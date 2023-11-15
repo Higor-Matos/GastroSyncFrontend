@@ -70,8 +70,8 @@ export class MesaProcessorService {
   }
 
   private agruparPedidosPorProduto(categoria: any, pedido: any): void {
-    const detalhesPedido = this.processarDetalhesPedido(pedido); // Chama a função para processar os detalhes do pedido
-    const nomeProduto = detalhesPedido.nomeProduto; // Usa o nome do produto retornado
+    const detalhesPedido = this.processarDetalhesPedido(pedido);
+    const nomeProduto = detalhesPedido.nomeProduto;
     const temDivisoes =
       detalhesPedido.detalhesDivisao &&
       detalhesPedido.detalhesDivisao.totalDivisoes > 0;
