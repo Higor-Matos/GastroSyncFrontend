@@ -7,32 +7,10 @@ import { AvatarService } from '../../../services/avatar/avatar.service';
 import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
 import { Subscription } from 'rxjs';
 
-interface PedidoAgrupado {
-  nomeProduto: string;
-  detalhesDivisao: any;
-}
+import { PedidoAgrupado } from './interfaces/pedido-agrupado.interface';
+import { ConsumidorDetalhado } from './interfaces/consumidor-detalhado.interface';
+import { DetalhesMesa } from './interfaces/detalhes-mesa.interface';
 
-interface CategoriaProdutos {
-  [produtoNome: string]: {
-    quantidade: number;
-    detalhesDivisao?: any;
-  };
-}
-
-interface ConsumidorDetalhado {
-  nome: string;
-  totalConsumido: number;
-  avatar: string;
-  categorias: {
-    [categoria: string]: CategoriaProdutos;
-  };
-}
-
-interface DetalhesMesa {
-  numeroMesa: number;
-  totalMesa: number;
-  consumidores: ConsumidorDetalhado[];
-}
 @Component({
   selector: 'app-pagamentos',
   templateUrl: './pagamentos.component.html',
