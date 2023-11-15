@@ -4,7 +4,6 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { LocalMesaService } from './localmesa.service';
 import { environment } from '../../../../app/environment/environment';
-import { MesaProcessorService } from '../mesaprocessor/mesaprocessor.service';
 export interface Mesa {
   id: number;
   numeroMesa: number;
@@ -21,8 +20,7 @@ export class MesaService {
 
   constructor(
     private http: HttpClient,
-    private localMesaService: LocalMesaService,
-    private mesaProcessorService: MesaProcessorService
+    private localMesaService: LocalMesaService
   ) {}
 
   private consumidoresAtualizadosSource = new BehaviorSubject<any[]>([]);
@@ -90,8 +88,6 @@ export class MesaService {
     );
   }
 
-  // mesa.service.ts
-
   obterMesaEspecifica(): Observable<Mesa | null> {
     return this.obterTodasAsMesas().pipe(
       map((resposta: Mesa | null) => {
@@ -100,7 +96,6 @@ export class MesaService {
           return null;
         }
 
-        // Supondo que 'resposta' seja do tipo 'Mesa | null'
         const mesas: Mesa[] = Array.isArray(resposta) ? resposta : [resposta];
 
         const numeroDaMesa = this.obterNumeroDaMesa();
