@@ -75,9 +75,7 @@ export class MesaProcessorService {
     const temDivisoes =
       detalhesPedido.detalhesDivisao &&
       detalhesPedido.detalhesDivisao.totalDivisoes > 0;
-    const chaveProduto = temDivisoes
-      ? `${nomeProduto} (Com Divisões)`
-      : nomeProduto;
+    const chaveProduto = temDivisoes ? `${nomeProduto}` : nomeProduto;
 
     if (!categoria[chaveProduto]) {
       categoria[chaveProduto] = {

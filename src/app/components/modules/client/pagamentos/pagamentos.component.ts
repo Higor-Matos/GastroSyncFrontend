@@ -20,13 +20,18 @@ export class PagamentosComponent implements OnInit, OnDestroy {
   detalhesDaMesa?: DetalhesMesa;
   alturaBarraInferior: number = 0;
   private subscriptions: Subscription[] = [];
+  customColors: any;
 
   constructor(
     private mesaService: MesaService,
     private mesaProcessorService: MesaProcessorService,
     private avatarService: AvatarService,
     private barraInferiorService: BarraInferiorService
-  ) {}
+  ) {
+    this.customColors = {
+      domain: ['#E53935', '#4CAF50'],
+    };
+  }
 
   ngOnInit() {
     this.carregarDetalhesDaMesa();
@@ -39,6 +44,18 @@ export class PagamentosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  getPieChartData(detalhesDivisao: any) {
+    const totalDivisoes = detalhesDivisao.totalDivisoes;
+    if (totalDivisoes > 0) {
+      const valorPorDivisao = 100 / totalDivisoes;
+      return Array.from({ length: totalDivisoes }, (v, i) => ({
+        name: `Parte ${i + 1}`,
+        value: valorPorDivisao,
+      }));
+    }
+    return [];
   }
 
   carregarDetalhesDaMesa() {
