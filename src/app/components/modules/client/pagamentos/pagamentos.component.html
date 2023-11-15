@@ -1,32 +1,30 @@
+<!-- pagamentos.component.html -->
+
 <div *ngIf="detalhesDaMesa">
   <!-- Card para o Total Consumido -->
   <app-total-card [total]="detalhesDaMesa.totalMesa"></app-total-card>
 
   <!-- Card para os Detalhes da Mesa e Consumidores -->
-  <mat-card>
-    <mat-card-title
-      >Detalhes da Mesa {{ detalhesDaMesa.numeroMesa }}</mat-card-title
+
+  <div *ngIf="detalhesDaMesa">
+    <div
+      *ngFor="let consumidor of detalhesDaMesa.consumidores"
+      class="card shadow"
     >
-    <mat-card-content>
-      <app-book
-        *ngFor="let consumidor of detalhesDaMesa.consumidores"
-        [nomeConsumidor]="consumidor.nome"
-      >
-      </app-book>
-      <div *ngFor="let consumidor of detalhesDaMesa.consumidores">
-        <!-- pagamentos.component.html -->
-
+      <div class="card-content">
+        <h4>{{ consumidor.nome }}</h4>
         <p>Total Consumido: {{ consumidor.totalConsumido | currency }}</p>
-
-        <ul>
-          <li *ngFor="let pedido of consumidor.pedidos">
-            Produto Consumido: {{ pedido.nomeProduto }}
-            <span *ngIf="pedido.detalhesDivisao">
-              - {{ pedido.detalhesDivisao }}</span
-            >
-          </li>
-        </ul>
+        <div class="lista-produtos">
+          <ul>
+            <li *ngFor="let pedido of consumidor.pedidos">
+              {{ pedido.nomeProduto }}
+              <span *ngIf="pedido.detalhesDivisao"
+                >- {{ pedido.detalhesDivisao }}</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </div>
