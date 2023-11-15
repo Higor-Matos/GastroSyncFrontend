@@ -1,0 +1,13 @@
+.card-content {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.lista-produtos {
+  max-height: calc(3 * 2.5em);
+  overflow-y: auto;
+  margin-bottom: 10px;
+}

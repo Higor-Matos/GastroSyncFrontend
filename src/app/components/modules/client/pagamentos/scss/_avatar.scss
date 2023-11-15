@@ -1,0 +1,17 @@
+.avatar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.nome-consumidor {
+  font-size: 1.2em;
+  font-weight: bold;
+}
