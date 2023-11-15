@@ -12,13 +12,18 @@
       class="card shadow"
     >
       <div class="card-content">
-        <img
-          [src]="consumidor.avatar"
-          class="avatar"
-          alt="Avatar do Consumidor"
-        />
-        <h4>{{ consumidor.nome }}</h4>
-        <p>Consumo: {{ consumidor.totalConsumido | currency }}</p>
+        <div class="avatar-container">
+          <img
+            [src]="consumidor.avatar"
+            class="avatar"
+            alt="Avatar do Consumidor"
+          />
+          <span class="nome-consumidor">{{ consumidor.nome }}</span>
+        </div>
+        <p class="total-consumido">
+          Total Consumido: {{ consumidor.totalConsumido | currency }}
+        </p>
+        <hr class="divisor" />
         <div class="lista-produtos">
           <ul>
             <li *ngFor="let pedido of consumidor.pedidos">
