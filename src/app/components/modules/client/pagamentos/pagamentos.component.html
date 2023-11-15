@@ -25,14 +25,18 @@
         </p>
         <hr class="divisor" />
         <div class="lista-produtos">
-          <ul>
-            <li *ngFor="let pedido of consumidor.pedidos">
-              {{ pedido.nomeProduto }}
-              <span *ngIf="pedido.detalhesDivisao"
-                >- {{ pedido.detalhesDivisao }}</span
-              >
-            </li>
-          </ul>
+          <div *ngFor="let categoria of consumidor.categorias | keyvalue">
+            <strong>{{ categoria.key }}:</strong>
+            <ul>
+              <li *ngFor="let produto of categoria.value | keyvalue">
+                {{ produto.key }} - Quantidade: {{ produto.value.quantidade }}
+                <span *ngIf="produto.value.detalhesDivisao">
+                  - Total Divisões:
+                  {{ produto.value.detalhesDivisao.totalDivisoes }}
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
         <button class="btn-pagar">Pagar</button>
       </div>
