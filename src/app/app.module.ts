@@ -19,6 +19,7 @@ import { BarradeNavegacaoInferiorComponent } from './components/shared/config/ba
 import { SharedModule } from './components/shared/module/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { PagamentoDialogComponent } from './components/modules/client/pagamentos/pagamentodialog/pagamento-dialog.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { PagamentoDialogComponent } from './components/modules/client/pagamentos
       progressBar: true,
       preventDuplicates: true,
     }),
-
+    FontAwesomeModule,
     MatBottomSheetModule,
     MatExpansionModule,
     MatListModule,

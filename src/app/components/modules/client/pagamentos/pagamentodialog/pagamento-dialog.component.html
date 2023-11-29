@@ -1,50 +1,56 @@
 <div class="card-pagamento">
-  <h3>Valor Total: R$ {{ data.valorTotal | number : "1.2-2" }}</h3>
+  <div class="valor-total">
+    <p>Valor Total: R$ {{ data.valorTotal | number : "1.2-2" }}</p>
+  </div>
 
-  <!-- Opções de Pagamento -->
+  <!-- Opções de Pagamento organizadas em duas linhas -->
   <div class="opcoes-pagamento">
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('PIX')"
-      [class.selected]="opcaoPagamentoSelecionada === 'PIX'"
-    >
-      PIX
-    </button>
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('Apple Pay')"
-      [class.selected]="opcaoPagamentoSelecionada === 'Apple Pay'"
-    >
-      Apple Pay
-    </button>
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('Google Pay')"
-      [class.selected]="opcaoPagamentoSelecionada === 'Google Pay'"
-    >
-      Google Pay
-    </button>
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('Cartão de Crédito')"
-      [class.selected]="opcaoPagamentoSelecionada === 'Cartão de Crédito'"
-    >
-      Cartão de Crédito
-    </button>
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('Cartão de Débito')"
-      [class.selected]="opcaoPagamentoSelecionada === 'Cartão de Débito'"
-    >
-      Cartão de Débito
-    </button>
-    <button
-      class="btn-opcao"
-      (click)="selecionarOpcaoPagamento('Dinheiro')"
-      [class.selected]="opcaoPagamentoSelecionada === 'Dinheiro'"
-    >
-      Dinheiro
-    </button>
+    <div class="linha-pagamento">
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('PIX')"
+        [class.selected]="opcaoPagamentoSelecionada === 'PIX'"
+      >
+        <fa-icon [icon]="faBarcode"></fa-icon> PIX
+      </button>
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('Apple Pay')"
+        [class.selected]="opcaoPagamentoSelecionada === 'Apple Pay'"
+      >
+        <fa-icon [icon]="faApple"></fa-icon> Apple Pay
+      </button>
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('Google Pay')"
+        [class.selected]="opcaoPagamentoSelecionada === 'Google Pay'"
+      >
+        <fa-icon [icon]="faGoogle"></fa-icon> Google Pay
+      </button>
+    </div>
+    <div class="linha-pagamento">
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('Cartão de Crédito')"
+        [class.selected]="opcaoPagamentoSelecionada === 'Cartão de Crédito'"
+      >
+        <fa-icon [icon]="faCreditCard"></fa-icon> Cartão de Crédito
+      </button>
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('Cartão de Débito')"
+        [class.selected]="opcaoPagamentoSelecionada === 'Cartão de Débito'"
+      >
+        <fa-icon [icon]="faCreditCard"></fa-icon> Cartão de Débito
+      </button>
+      <button
+        class="btn-opcao"
+        (click)="selecionarOpcaoPagamento('Dinheiro')"
+        [class.selected]="opcaoPagamentoSelecionada === 'Dinheiro'"
+      >
+        <fa-icon [icon]="faMoneyBillWave"></fa-icon> Dinheiro
+      </button>
+    </div>
   </div>
 
   <!-- Botão Confirmar -->
