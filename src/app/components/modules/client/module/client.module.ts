@@ -8,6 +8,7 @@ import { PagamentosComponent } from '../pagamentos/pagamentos.component';
 import { MatCardModule } from '@angular/material/card';
 import { TotalCardComponent } from '../pagamentos/totalcard/totalcard.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [ClientComponent, PagamentosComponent, TotalCardComponent],
@@ -17,6 +18,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     SharedModule,
     MatCardModule,
     NgxChartsModule,
+    FontAwesomeModule,
   ],
 })
 export class ClientModule {}

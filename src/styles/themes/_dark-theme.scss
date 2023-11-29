@@ -28,6 +28,36 @@ $custom-shadow-dark: rgba(0, 0, 0, 0.24);
     color: white;
   }
 
+  .valor-total {
+    &:hover {
+      border: #0266cc 2px solid !important;
+    }
+  }
+
+  .btn-confirmar {
+    background-color: #0266cc;
+    color: white;
+    &:hover {
+      background-color: darken(#0266cc, 15%);
+    }
+  }
+
+  .btn-opcao {
+    background-color: #d6d6d6;
+    color: black;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+    &:hover {
+      background-color: darken(#d6d6d6, 15%);
+    }
+    &.selected {
+      background-color: darken(#d6d6d6, 15%);
+      color: black;
+    }
+  }
+
   .btn-pagar:hover {
     background-color: #0056b3;
   }

@@ -1,33 +1,59 @@
 .card-pagamento {
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 
-  h3 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+  .valor-total {
+    max-width: 180px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    p {
+      font-size: 1em;
+      color: #555;
+      margin: 5px 0;
+      font-weight: bold;
+    }
   }
 
   .opcoes-pagamento {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
 
-    .btn-opcao {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background-color: #4caf50;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    .linha-pagamento {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      width: 100%;
+      animation: fadeInUp 0.5s ease-in-out;
 
-      &:hover {
-        background-color: darken(#4caf50, 10%);
-      }
-      &.selected {
-        background-color: #007bff; // Cor quando o botão está selecionado
-        color: white;
+      .btn-opcao {
+        flex: 1 1 30%;
+        margin: 0 5px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        fa-icon {
+          margin-right: 5px;
+        }
       }
     }
   }
@@ -35,30 +61,34 @@
   .btn-confirmar {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #e53935;
-    color: white;
+    border-radius: 25px;
     cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: darken(#e53935, 10%);
-    }
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
   }
 }
 
-.btn-opcao {
-  // ... estilos existentes ...
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.container-cards {
-  .card {
-    margin-bottom: 20px;
-    // Resto das suas estilizações para os cards...
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .btn-pagar {
-    // Estilizações para o botão pagar...
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
