@@ -1,5 +1,4 @@
 <!-- pagamentos.component.html -->
-
 <div *ngIf="detalhesDaMesa" [style.margin-bottom.px]="alturaBarraInferior">
   <!-- Card para o Total Consumido no topo -->
   <app-total-card [total]="detalhesDaMesa.totalMesa"></app-total-card>
@@ -53,8 +52,13 @@
             </ul>
           </div>
         </div>
-
-        <button class="btn-pagar">Pagar</button>
+        <button
+          class="btn-pagar"
+          (click)="abrirOpcoesPagamento(consumidor.totalConsumido)"
+          [disabled]="botaoPagarDesabilitado"
+        >
+          Pagar
+        </button>
       </div>
     </div>
   </div>

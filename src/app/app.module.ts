@@ -18,12 +18,14 @@ import { MenuSuperiorComponent } from './components/shared/config/menusuperior/m
 import { BarradeNavegacaoInferiorComponent } from './components/shared/config/barradenavegacaoinferior/barradenavegacaoinferior.component';
 import { SharedModule } from './components/shared/module/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { PagamentoDialogComponent } from './components/modules/client/pagamentos/pagamentodialog/pagamento-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuSuperiorComponent,
     BarradeNavegacaoInferiorComponent,
+    PagamentoDialogComponent,
   ],
   imports: [
     BrowserModule,

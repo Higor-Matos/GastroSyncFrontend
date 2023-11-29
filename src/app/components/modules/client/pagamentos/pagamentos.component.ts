@@ -6,6 +6,8 @@ import { MesaProcessorService } from '../../../services/mesaprocessor/mesaproces
 import { AvatarService } from '../../../services/avatar/avatar.service';
 import { BarraInferiorService } from '../../../services/barrainferior/barrainferior.service';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { PagamentoDialogComponent } from './pagamentodialog/pagamento-dialog.component';
 
 import { PedidoAgrupado } from './interfaces/pedido-agrupado.interface';
 import { ConsumidorDetalhado } from './interfaces/consumidor-detalhado.interface';
@@ -21,12 +23,15 @@ export class PagamentosComponent implements OnInit, OnDestroy {
   alturaBarraInferior: number = 0;
   private subscriptions: Subscription[] = [];
   customColors: any;
-
+  mostrarOpcoesPagamento: boolean = false;
+  valorTotalConsumidor: number = 0;
+  botaoPagarDesabilitado: boolean = false;
   constructor(
     private mesaService: MesaService,
     private mesaProcessorService: MesaProcessorService,
     private avatarService: AvatarService,
-    private barraInferiorService: BarraInferiorService
+    private barraInferiorService: BarraInferiorService,
+    private dialog: MatDialog
   ) {
     this.customColors = {
       domain: ['#E53935', '#4CAF50'],
@@ -44,6 +49,43 @@ export class PagamentosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  abrirOpcoesPagamento(valorTotal: number): void {
+    this.botaoPagarDesabilitado = true;
+    let dialogJustOpened = true;
+    const dialogRef = this.dialog.open(PagamentoDialogComponent, {
+      data: { valorTotal },
+      disableClose: false,
+      hasBackdrop: true,
+    });
+
+    dialogRef.afterOpened().subscribe(() => {
+      dialogJustOpened = false;
+    });
+
+    const clickListener = (event: MouseEvent) => {
+      if (dialogJustOpened) {
+        return;
+      }
+
+      const target = event.target as Element;
+      if (target?.closest('.cdk-overlay-container')) {
+        return;
+      }
+
+      dialogRef.close();
+      document.body.removeEventListener('click', clickListener);
+    };
+
+    setTimeout(() => {
+      document.body.addEventListener('click', clickListener);
+    }, 0);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.botaoPagarDesabilitado = false;
+      document.body.removeEventListener('click', clickListener);
+    });
   }
 
   getPieChartData(detalhesDivisao: any) {
