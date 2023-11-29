@@ -21,7 +21,7 @@
           <span class="nome-consumidor">{{ consumidor.nome }}</span>
         </div>
         <p class="total-consumido">
-          Total Consumido: {{ consumidor.totalConsumido | currency }}
+          Total Consumido: R$ {{ consumidor.totalConsumido | number : "1.2-2" }}
         </p>
         <hr class="divisor" />
         <div class="lista-produtos">
@@ -34,8 +34,8 @@
               >
                 <span
                   >{{ produto.value.quantidade }}x - {{ produto.key }}: R$
-                  {{ produto.value.preco | currency }}</span
-                >
+                  {{ produto.value.preco | number : "1.2-2" }}
+                </span>
                 <div
                   *ngIf="produto.value.detalhesDivisao"
                   class="grafico-pizza"
