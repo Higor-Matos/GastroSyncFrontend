@@ -13,7 +13,7 @@ import { PagamentosComponent } from '../pagamentos/pagamentos.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [MesaResolverGuard], // Adicionado o Guard aqui para a rota base
+    canActivate: [MesaResolverGuard],
     children: [
       { path: 'cardapio', component: CardapioComponent },
       { path: 'pedidos', component: PedidosComponent },

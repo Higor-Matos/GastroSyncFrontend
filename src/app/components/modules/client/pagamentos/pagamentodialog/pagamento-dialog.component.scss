@@ -1,0 +1,64 @@
+.card-pagamento {
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .opcoes-pagamento {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+
+    .btn-opcao {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken(#4caf50, 10%);
+      }
+      &.selected {
+        background-color: #007bff; // Cor quando o botão está selecionado
+        color: white;
+      }
+    }
+  }
+
+  .btn-confirmar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e53935;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken(#e53935, 10%);
+    }
+  }
+}
+
+.btn-opcao {
+  // ... estilos existentes ...
+}
+
+.container-cards {
+  .card {
+    margin-bottom: 20px;
+    // Resto das suas estilizações para os cards...
+  }
+
+  .btn-pagar {
+    // Estilizações para o botão pagar...
+  }
+}
