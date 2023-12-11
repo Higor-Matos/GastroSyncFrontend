@@ -1,4 +1,4 @@
-# GastroSync - Backend
+# GastroSync - Frontend
 
 <p align="center">
   <img src="https://i.imgur.com/9bopGVU.png" alt="GastroSync Logo" width="600">
