@@ -52,11 +52,11 @@ Certifique-se de que o Docker esteja instalado em sua máquina antes de prossegu
 
 ## Demonstração
 
-<p align="center">
-  <a href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHdoMmU0YzFzMnFvanRra243ZXd3am9iMHAybXR4dDR2dTQ2b2FndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwfpfuYu6wnQRrZni6/giphy.gif">Aqui uma demonstração</a>
-  <br>
-  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHdoMmU0YzFzMnFvanRra243ZXd3am9iMHAybXR4dDR2dTQ2b2FndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwfpfuYu6wnQRrZni6/giphy.gif" width="600">
-</p>
+Aqui uma demonstração:
+
+![Demonstração](https://giphy.com/gifs/dwfpfuYu6wnQRrZni6)
+
+[Link para o GIF completo](https://giphy.com/gifs/dwfpfuYu6wnQRrZni6)
 
 
 ## CI/CD
