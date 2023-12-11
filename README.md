@@ -1,27 +1,66 @@
-# GastroSyncFrontend
+# GastroSync - Backend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+<p align="center">
+  <img src="https://i.imgur.com/9bopGVU.png" alt="GastroSync Logo" width="600">
+</p>
 
-## Development server
+[Premiado como melhor projeto na feira de projetos da UNIPAM em 2023](https://youtu.be/3Smsd7WIpfQ)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Introdução
 
-## Code scaffolding
+Bem-vindo ao GastroSync Frontend, a solução de gerenciamento avançada para estabelecimentos gastronômicos. Meu sistema integra pedidos, divisão de contas, processamento de pagamentos e gestão do estabelecimento, incluindo recursos como ativação de cover e controle da comissão de 10% do garçom, tudo em um único aplicativo.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologias Utilizadas
 
-## Build
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) 
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white) 
+![GitHub Actions](https://img.shields.io/badge/github-2088FF?style=for-the-badge&logo=github-actions&logoColor=white) 
+![SonarQube](https://img.shields.io/badge/sonarqube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white) 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Testes
 
-## Running unit tests
+### Testes Unitários e de Integração
+Realizamos testes unitários e de integração extensivos, garantindo a robustez do sistema.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Qualidade de Software
 
-## Running end-to-end tests
+### SonarQube
+<p align="center">
+<img src="https://i.imgur.com/SOK1zVq.png" alt="Sonar" width="600">
+</p>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+O SonarQube é essencial para a análise e manutenção da qualidade do código.
 
-## Further help
+- Análise do SonarCloud: [SonarCloud - GastroSync Backend](https://sonarcloud.io/project/overview?id=Higor-Matos_GastroSyncFrontEnd)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Instalação e Configuração
+
+Certifique-se de que o Docker esteja instalado em sua máquina antes de prosseguir com a instalação e configuração do projeto. Aqui está o passo a passo:
+
+1. Clone o projeto:
+   ```bash
+   git clone https://github.com/Higor-Matos/GastroSyncFrontend.git
+
+2. Navegue para a pasta do projeto:
+   ```bash
+   cd GastroSyncFrontend
+
+3. Inicie o projeto usando o Docker Compose:
+   ```bash
+   docker-compose up
+
+## Demonstração
+
+<p align="center">
+  <a href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHdoMmU0YzFzMnFvanRra243ZXd3am9iMHAybXR4dDR2dTQ2b2FndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwfpfuYu6wnQRrZni6/giphy.gif">Aqui uma demonstração</a>
+  <br>
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHdoMmU0YzFzMnFvanRra243ZXd3am9iMHAybXR4dDR2dTQ2b2FndCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwfpfuYu6wnQRrZni6/giphy.gif" width="600">
+</p>
+
+
+## CI/CD
+
+### GitHub Actions e Vercel
+![GitHub Actions](https://i.imgur.com/U8z54yK.png) ![Vercel](https://i.imgur.com/H4pBikz.png)
+Nosso processo de CI/CD é eficiente, utilizando GitHub Actions e Vercel.
