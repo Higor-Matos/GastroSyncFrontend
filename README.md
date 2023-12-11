@@ -54,10 +54,9 @@ Certifique-se de que o Docker esteja instalado em sua máquina antes de prossegu
 
 Aqui uma demonstração:
 
-![Demonstração](https://giphy.com/gifs/dwfpfuYu6wnQRrZni6)
-
-[Link para o GIF completo](https://giphy.com/gifs/dwfpfuYu6wnQRrZni6)
-
+<p align="center">
+  <img src="/Apresentacao/mobile.gif" alt="Demonstração" width="400">
+</p>
 
 ## CI/CD
 
